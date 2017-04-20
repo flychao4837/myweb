@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>ES6 Promise</title>
+</head>
+<style type="text/css">
+*{padding:0;margin:0;}
+a{cursor:pointer;}
+input[name=imgUrl]{width: 500px;}
+img{width: 50px;}
+</style>
+<script type="text/javascript" src="/global/jquery.min.js"></script>
+<body>
+	<div id="box" style="width:600px;height:320px;background-color:#f6f6f6;">
+	<p>promist 测试</p>
+	</div>
+	<input type="text" name="imgUrl" placeholder="请输入图片Url"/>
+
+	<a class="getImg">获取图片</a>
+</body>
+</html>
+<script type="text/javascript">
+function append(msg){
+	$("#box").append('<p>'+msg+'</p>')
+}
+const preloadImage = function (path) {
+	return new Promise(function (resolve, reject) {
+		var image = new Image();
+		image.onload  = function(){
+			//onload不代表图片一定存在，图片404
+			if(image){
+				resolve(image)
+			}else{
+				reject({'msg':'Could not load image at ','path': path})
+			}
+		};
+		image.onerror = function(){
+			reject({'msg':'Could not load image at ',"path": path});
+		};
+		image.src = path;
+	});
+};
+
+
+$(".getImg").on("click" ,function(){
+	var url = $.trim($("input[name=imgUrl]").val());
+	if(url){
+		preloadImage(url)
+			.then(
+				function(img){
+					//resolve
+					$("#box").append(img)
+				},function(err){
+					//reject
+					console.log(err.path)
+				}
+			)
+			.catch(function(msg){
+				append("catch error:"+msg)
+			})
+	}else{
+		alert("请输入图片Url")
+	}
+})
+
+
+
+function runAsync(){
+    var p = new Promise(function(resolve, reject){
+        //做一些异步操作
+        setTimeout(function(){
+            setTimeout(function(){
+            	append('执行完成');
+            },10)
+            resolve('随便什么数据');
+        }, 1000);
+    });
+    return p;            
+}
+function getA(){
+	var p = new Promise(function(resolvecall, rejectcall){
+        //做一些异步操作
+        setTimeout(function(){
+        	append("getA console");
+        	//reject更改状态 resolve不会响应
+        	resolvecall("getA") 
+        	//rejectcall("getA") 
+        }, 1000);
+    });
+    return p; 
+}
+function getB(){
+	var p = new Promise(function(resolve, reject){
+        //做一些异步操作
+        //setTimeout(function(){
+        	append("getB console");
+        	resolve(function(){console.log("resolve getB")})
+        //}, 100);
+    });
+    return p; 
+}
+function getC(){
+	var p = new Promise(function(resolve, reject){
+        //做一些异步操作
+        append("getA resolve console ");
+        resolve("getC")
+        // setTimeout(function(){
+        // 	append("getA resolve console ");
+        // 	resolve("getC")
+        // }, 1);
+    });
+    return p; 
+}
+
+runAsync()
+	.then(function(data){
+		append(data)
+		if(typeof(data)==="function"){
+			data.call(data)
+		}
+		return getA()
+	})
+	.then(function(data){ // do promise A
+		reject()//这里reject 后 状态更改，后续的promise不会执行
+		append(data);
+		if(typeof(data)==="function"){
+			data.call(data)
+		}
+		return getB()
+	},function(data){
+		console.log(data);
+		if(typeof(data)==="function"){
+			data.call(data)
+		}
+		return getC();
+	})
+	.then(function(data){
+		append(data)
+		if(typeof(data)==="function"){
+			data.call(data)
+		}
+		return four
+	},function(){})
+	.then(function(data){
+		append(data)
+		if(typeof(data)==="function"){
+			data.call(data)
+		}
+	},function(){})
+	.catch(function(reason){
+		alert(reason)
+	})
+</script>
+<script type="text/javascript">
+function getsubjet(){
+    return new Promise(function(resolve,reject){
+        var grade_id = $("#grade_list_1").val()||0;
+        $.ajax({
+            url: '/api/sales/leads19/subject_list',
+            type: 'GET',
+            dataType: 'json',
+            data: {'grade_id': grade_id},
+        })
+        .done(function(res) {
+            resolve(res);
+        })
+        .fail(function() {
+            reject({'msg':'学科列表获取失败'});
+        })
+    })
+}
+function getcourse(){
+    return new Promise(function(resolve,reject){
+        var grade_id = $("#grade_list_1").val()||0;
+        var subject_id = $("#subject_id_1").val() ||0;
+        $.ajax({
+            url: '/api/sales/leads19/course_list',
+            type: 'GET',
+            dataType: 'json',
+            data: {'grade_id': grade_id,'subject_id':subject_id}
+        })
+        .done(function(res) {
+            resolve(res);
+        })
+        .fail(function() {
+            reject({'msg':'课程列表获取失败'});
+        })
+    })
+}
+function getteacher(){
+    return new Promise(function(resolve,reject){
+        var grade_id = $("#grade_list_1").val()||0;
+        var subject_id = $("#subject_id_1").val() ||0;
+        var course_id = $("#course_id_1").val()|| 0;
+        $.ajax({
+            url: '/api/sales/leads19/teacher_list',
+            type: 'GET',
+            dataType: 'json',
+            data: {'grade_id':grade_id,'subject_id':subject_id,'course_id':course_id},
+        })
+        .done(function(res) {
+            resolve(res);
+        })
+        .fail(function() {
+            reject({'msg':'老师名单取失败'});
+        })
+    })
+}
+$("#grade_list_1").on("change" ,function(){
+    getsubjet()
+        .then(
+            function(res){
+                if(res.errcode=="0"){
+                    console.log(res)
+                    return getcourse();
+                }else{
+                    reject({"errmsg":"学科列表reject"})
+                }
+            },
+            function(err){
+                console.log(err)
+                reject()
+            }
+        )
+        .then(
+            function(res){
+                if(res.errcode=="0"){
+                    console.log(res)
+                    reject({{"errmsg":"强制老师列表reject"}});
+                    return getteacher();
+                }else{
+                    reject({"errmsg":"课程列表reject"})
+                }
+            },
+            function(err){
+                alert(err.errmsg);
+            }
+        )
+        .then(
+            function(){
+                alert("三级联动完成")
+            },
+            function(err){
+                alert(err.errmsg);
+            }
+        )
+        .catch(
+            function(msg){
+                alert(msg);
+            }
+        )
+});
+</script>
+
