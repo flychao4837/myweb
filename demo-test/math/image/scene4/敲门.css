@@ -1,0 +1,16 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:f80390cd510598ed62e56f9513c814fd:728e568380a96baf45757bea0a0d2646:df76bac4b6dd7a3234109b654784eb19$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(敲门.png);}
+
+.声音效果0001 {width:180px; height:180px; background-position: -2px -2px}
+.声音效果0002 {width:180px; height:180px; background-position: -184px -2px}

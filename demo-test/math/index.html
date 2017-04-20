@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="stage" data-tag="0">
+        <!--所有场景均拆分成独立场景，涉及到每个场景的前进、后退、刷新 混合场景后不太方便-->
+        <!--引入-->
+        <div class="scene scene_0 hide" data-tag="1">
+            <div class="title_box"><img class="title forscale start" data-width="360" src="javascript:void(0);"></div>
+            <div class="layout_mask"></div>
+        </div>
+        <div class="scene scene_1 hide" data-tag="1" data-sub="1_1">
+            <div class="forscale m_1" data-width="225"></div>
+            <div class="forscale m_2" data-width="172"></div>
+            <img class="forscale cat" data-width="120" src="javascript:void(0);">
+        </div>
+        <!--宠物店内-->
+        <div class="scene scene_1_1 hide" data-tag="1">
+            <div class="hide forscale  m_1_1" data-width="320"></div>
+            <div class="hide forscale  m_2_1" data-width="320"></div>
+        </div>
+        <!--头脑风暴-->
+        <div class="scene scene_2 hide" data-tag="2">
+            <div class="scene_title scene2_title forscale" data-width="249" ></div>
+            <img class="sprite forscale cat_1 mask" data-width="215" src="javascript:void(0);" data-sound="cat_1_sound" data-correct="1">
+            <img class="sprite forscale cat_2 mask" data-width="223" src="javascript:void(0);" data-sound="cat_2_sound">
+            <img class="sprite forscale cat_3 mask" data-width="184" src="javascript:void(0);" data-sound="cat_3_sound">
+            <img class="sprite forscale lion mask" data-width="288" src="javascript:void(0);" data-sound="lion_sound">
+            <img class="sprite forscale cat_4 mask" data-width="278" src="javascript:void(0);" data-sound="cat_4_sound"> 
+        </div>
+        <!--新知-展示遗传图片-->
+        <div class="scene scene_3 hide" data-tag="3">
+        </div>
+        <!--任务 1-->
+        <div class="scene scene_4 hide" data-tag="4">
+            <svg id="svgForStroke4" width="10" height="400" xmlns="http://www.w3.org/2000/svg" class="hide">
+                <g>
+                    <line fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="round" x1="10" y1="0" x2="10" y2="400"/>
+                </g>
+            </svg>
+            <div class="scene_title scene4_title forscale" data-width="249"></div>
+            <ul class="clear parent block">
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale panda_1" data-width="160"></li>
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale panda_2" data-width="160" data-correct="1"></li>
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale panda_3" data-width="160"></li>
+            </ul>
+            <div class="block textcenter child">
+                <img class="sprite forscale panda_4" data-width="160">
+            </div>
+        </div>
+        <!--任务 2-->
+        <div class="scene scene_5 hide" data-tag="5">
+            <svg id="svgForStroke5" width="400" height="400" xmlns="http://www.w3.org/2000/svg" class="hide">
+                <g>
+                    <line fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="round" x1="400" y1="0" x2="0" y2="400"/>
+                </g>
+            </svg>
+            <div class="scene_title scene5_title forscale" data-width="249" ></div>
+            <div class="block textcenter parent">
+                <img class="sprite forscale scene5_parent" data-width="200">
+            </div>
+            <ul class="clear child block">
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale scene5_child_3" data-width="200" data-correct="1"></li>
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale scene5_child_2" data-width="200"></li>
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale scene5_child_1" data-width="200"></li>
+            </ul>
+        </div>
+        <!--任务 3-->
+        <div class="scene scene_6 hide" data-tag="6">
+            <svg id="svgForStroke6" width="400" height="400" xmlns="http://www.w3.org/2000/svg" class="hide">
+                <g>
+                    <line fill="none" stroke="#000000" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="round" x1="0" y1="0" x2="400" y2="400"/>
+                </g>
+            </svg>
+            <div class="scene_title scene6_title forscale" data-width="249" ></div>
+            <ul class="clear parent block">
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale scene6_parent_1" data-width="200" data-correct="1"></li>
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale scene6_parent_2" data-width="200"></li>
+                <li class="left inlineblock textcenter col33"><img class="sprite forscale scene6_parent_3" data-width="200"></li>
+            </ul>
+            <div class="block textcenter child">
+                <img class="sprite forscale scene6_child" data-width="200">
+            </div>
+        </div>
+        <!--剩余任务-->
+        <div class="scene scene_7 hide" data-tag="7">
+            <div class="scene_title scene7_title forscale" data-width="249" ></div>
+        </div>
+        <div class="scene scene_8 hide" data-tag="8">
+            <div class="scene_title scene8_title forscale" data-width="249" ></div>
+        </div>
+        <div class="scene scene_9 hide" data-tag="9">
+            <div class="scene_title scene9_title forscale" data-width="249" ></div>
+        </div>
+        <div class="scene scene_10 hide" data-tag="10">
+            <div class="scene_title scene10_title forscale" data-width="249" ></div>
+        </div>
+        <!--总结-->
+        <div class="scene scene_11 hide" data-tag="11">
+            <p class="summary">我们的任务是，我们解决了吗？</p>
+        </div>
+        <!--延伸-->
+        <div class="scene scene_12 hide" data-tag="12">
+            <div class="forscale alpha_clap hide" data-width="168"></div>
+            <div class="forscale alpha_say" data-width="185"></div>
+            <div class="forscale emma_clap" data-width="186"></div>
+        </div>
+        <!--顶部工具栏-->
+        <div class="headertool hide">
+            <ul class="clear">
+                <li class="gohome">
+                    <a class="gethome"></a>
+                </li>
+                <li class='setting'>
+                    <a class="setconfig"></a>
+                </li>
+            </ul>
+        </div>
+        <!--顶部--设置工具栏----功能层-->
+        <div class="setting_layout hide">
+            <div>
+                <a class="getmenu" style="display:none;"></a>
+            </div>
+            <div>
+                <a class="getnotice"></a>
+            </div>
+            <div>
+                <a class="setmusic"></a>
+            </div>
+            <div>
+                <a class="close_setting_layout"></a>
+            </div>
+        </div>
+        <!--底部工具栏-->
+        <div class="footertool hide">
+            <ul class="clear">
+                <li><a class="pre" data-target="0"></a></li>
+                <li class="textcenter"><a class="reload" data-target="1"></a></li>
+                <li class="textright"><a class='next' data-target="2"></a></li>
+            </ul>
+        </div>
+        <!--目录弹层-->
+        <div class="nemu_layout hide">
+            <p>我是目录部分<p>
+            <div class="menu_list">
+                <p><a data-target="1">场景1</a></p>
+                <p><a data-target="2">场景2</a></p>
+                <p><a data-target="3">场景3</a><p>
+                <p><a data-target="4">场景4</a></p>
+            </div>
+            <p class="textcenter"><a class="close_nemu_layout">关闭</a></p>
+        </div>
+        <!--规则说明-->
+        <div class="rule_intro_box hide">
+            <div class="rule_intro">
+                <a class="rule_close"></a>
+                <div class="block textcenter rule_img">
+                    <img src="image/rule.png" width="60%" class="forscale rule"/>
+                </div>
+                <div class="forscale alpha_intro" data-width="185"></div>
+                <div class="forscale emma_intro" data-width="320"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="backgroundsound" loop="loop"></audio>
+    <div class="dialog_global_layout" style="z-index: 10000;">
+        <p class="tip_msg">已加载0%</p>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/createjs.min.js"></script>
+<script type="text/javascript" src="js/requestAnimateFrame.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
