@@ -16,7 +16,7 @@ $(function(){
 	stage.target = 0;
 	stage.fileList={};
 	stage.sceneList=[];
-	stage.TotalScene = 5;//总的章节、场景数
+	stage.TotalScene = 6;
 	//场景内行为处理
 	var scene = {
 		globalAudio : $("#globalAudio"),
@@ -240,6 +240,7 @@ $(function(){
 		scene_5 : {
 			dom : $(".scene_5"),
 			enter : function(cb){
+				$(".stage").css({'background-color':'#f6f6f6'})
 				scene.scene_4.exit();
 				scene.backgroundsound[0].pause();
 				scene.globalAudio[0].pause();
@@ -253,8 +254,46 @@ $(function(){
 				});
 			},
 			exit : function(cb){
+				$(".stage").css({'background-color':'#f6f6f6'})
 				scene.backgroundsound[0].pause();
 				scene.globalAudio[0].pause();
+				this.dom.fadeOut(function(){
+					if(typeof(cb)==="function"){
+						cb.call(cb)
+					}
+				});
+			}
+		},
+		scene_6 : {
+			dom : $(".scene_6"),
+			enter : function(cb){
+				$(".stage").css({'background-color':'#f6f6f6'})
+				scene.scene_5.exit();
+				scene.backgroundsound[0].pause();
+				scene.globalAudio[0].pause();
+				scene.globalAudio.off("ended");
+				clearTimeout(scene.timer);
+				this.dom.fadeIn(function(){
+					scene.timer = setTimeout(function(){
+ 						scene.globalAudio.attr("src" ,stage.fileList['scene6_background_sound'].src);
+						scene.globalAudio[0].play();
+						scene.globalAudio.one("ended" ,function(){
+							scene.scene_6.dom.fadeOut(1200, function() {
+								//背景变黑
+								$(".stage").css({'background-color':'#000'});
+							});
+						})
+					}, 2000)
+					if(typeof(cb)==="function"){
+						cb.call(cb)
+					}
+				});
+			},
+			exit : function(cb){
+				scene.backgroundsound[0].pause();
+				scene.globalAudio[0].pause();
+				scene.globalAudio.off("ended");
+				clearTimeout(scene.timer);
 				this.dom.fadeOut(function(){
 					if(typeof(cb)==="function"){
 						cb.call(cb)
@@ -288,28 +327,23 @@ $(function(){
 		stage.initW=0;
 		stage.initH =0;
 		stage.time = 0;
-		if(winRatio>=gbRatio){//图片宽高比小，以图为准
-			//console.log("背景图 比例"+gbRatio)
+		if(winRatio>=gbRatio){
 			stage.initH = winH;
 			stage.initW = parseInt(stage.initH*gbRatio);
-		}else{//图片宽高比大，以窗口短的一边为准
-			//console.log("window 比例"+winRatio)
+		}else{
 			stage.initH = winH;
 			stage.initW = parseInt(stage.initH*winRatio);
 		}
-		//console.log(stage.initW+"__"+stage.initH);
 		stageDom.css({'width':stage.initW,'height':stage.initH});
 		$(".headertool,.footertool").css('width',stage.initW);
 		$(".gohome").css('width',stage.initW-120);
 		$(".layout_mask").css({'width':stage.initW,'height':stage.initH});
-		//stage.entry(); //缩放屏幕时不再从第一幕开始播放
 		stage.scene = scene;
 		var tag = $(".stage .scene:visible").attr("data-tag") ||1;
 		stage.setPageTag(tag);
 		var scaleImage = $(".forscale");
 		$.each(scaleImage,function(i, el) {
 			var that = $(el);
-			//console.log(imgscalewithheight)
 			if( that[0].nodeName.toLowerCase() !="img" ){
 				that.css("transform","scale("+imgscalewithheight+")")
 			}else{
@@ -319,7 +353,6 @@ $(function(){
 			}
 		});
 	}
-	//页面缩放后更改场景尺寸，保持全屏
 	win.on("resize" ,function(){
 		stage.Init();
 	})
@@ -397,6 +430,7 @@ $(function(){
 			//场景5
 			{id: "scene5_background", src:"image/scene5/scene5_background.png"},
 		    
+		    {id:"scene6_background_sound", src:"image/scene6/scene6_background_sound.mp3"},
 		]
 		queue.on("complete", handleComplete, this);
 		queue.on("progress" ,handleFileProgress);
@@ -409,10 +443,26 @@ $(function(){
 		    $(".scene_0").css("background-image",'url('+rootpath+queue.getItem("background").src+')');
 		    $(".scene_1").css("background-image",'url('+rootpath+queue.getItem("scene1_background").src+')');
 		    
-		    $(".scene_0 .title").attr('src',rootpath+queue.getItem("title").src);
+		    $(".title").attr('src',rootpath+queue.getItem("title").src);
+
+		    $(".graph_1>img").attr('src',rootpath+queue.getItem("graph_1").src);
+		    $(".graph_2>img").attr('src',rootpath+queue.getItem("graph_2").src);
+		    $(".graph_3>img").attr('src',rootpath+queue.getItem("graph_3").src);
+		    $(".graph_4>img").attr('src',rootpath+queue.getItem("graph_4").src);
+		    $(".graph_5>img").attr('src',rootpath+queue.getItem("graph_5").src);
+		    $(".graph_6>img").attr('src',rootpath+queue.getItem("graph_6").src);
+		    $(".graph_7>img").attr('src',rootpath+queue.getItem("graph_7").src);
+		    $(".graph_8>img").attr('src',rootpath+queue.getItem("graph_8").src);
+		    $(".graph_9>img").attr('src',rootpath+queue.getItem("graph_9").src);
+		    $(".graph_10>img").attr('src',rootpath+queue.getItem("graph_10").src);
+		    $(".graph_11>img").attr('src',rootpath+queue.getItem("graph_11").src);
+		    $(".graph_12>img").attr('src',rootpath+queue.getItem("graph_12").src);
+		    $(".graph_13>img").attr('src',rootpath+queue.getItem("graph_13").src);
+		    $(".graph_14>img").attr('src',rootpath+queue.getItem("graph_14").src);
+		    $(".graph_15>img").attr('src',rootpath+queue.getItem("graph_15").src);
+		    $(".graph_16>img").attr('src',rootpath+queue.getItem("graph_16").src);
+		    $(".graph_17>img").attr('src',rootpath+queue.getItem("graph_17").src);
 		    
-		    //css中的 hover，link等样式图先append到页面，避免执行样式规则时，重复请求图片，
-		    //单纯的请求图片后并不会改变浏览器中的图片缓存状态
 		    $("body").append($('<img src="'+rootpath+queue.getItem("menu").src+'" class="hide">'));
 		    $("body").append($('<img src="'+rootpath+queue.getItem("notice").src+'" class="hide">'));
 		    $("body").append($('<img src="'+rootpath+queue.getItem("music").src+'" class="hide">'));
@@ -424,7 +474,9 @@ $(function(){
 
 		    $(".scene_1 .m_1.speak ,.scene_2 .m_1.speak").css("background-image",'url('+rootpath+queue.getItem("alpha_say").src+')')
 		    $(".scene_1 .m_2.speak").css("background-image",'url('+rootpath+queue.getItem("emma_say").src+')')
-		   	$(".scene_1 .square.speak,.scene_3 .square,.scene_4 .square").css("background-image",'url('+rootpath+queue.getItem("square_say").src+')')
+		   	$(".scene_1 .square.speak,.scene_3 .square,.scene_4 .square,.scene_6 .square").css("background-image",'url('+rootpath+queue.getItem("square_say").src+')')
+		   	
+		   	$(".scene_2 .question").attr("src",rootpath+queue.getItem("question ").src)
 
 		   	$(".scene_2").css("background-image",'url('+rootpath+queue.getItem("scene2_background").src+')')
 		   	$(".scene_2 .question").attr("src",rootpath+queue.getItem("question ").src)
@@ -440,6 +492,10 @@ $(function(){
 		    $(".scene_4 .knock").css("background-image",'url('+rootpath+queue.getItem("frame_knockdoor").src+')')
 
 		    $(".scene_5").css("background-image",'url('+rootpath+queue.getItem("scene5_background").src+')');
+
+		    $(".scene_6").css("background-image",'url('+rootpath+queue.getItem("scene1_background").src+')');
+		    $(".scene_6 .m_1.speak").css("background-image",'url('+rootpath+queue.getItem("alpha_say").src+')')
+		    $(".scene_6 .m_2.speak").css("background-image",'url('+rootpath+queue.getItem("emma_say").src+')')
 		    //音效设置
 		    scene.backgroundsound.attr("src",rootpath+queue.getItem("backgroundsound").src);
 		    scene.backgroundsound[0].pause();
@@ -487,6 +543,10 @@ $(function(){
 		    scene.globalAudio.attr('src',rootpath+queue.getItem("4_d_square_1").src)
 		    scene.globalAudio[0].pause();
 		    stage.fileList['4_d_square_1'] = queue.getItem("4_d_square_1");
+
+		    scene.globalAudio.attr('src',rootpath+queue.getItem("scene6_background_sound").src)
+		    scene.globalAudio[0].pause();
+		    stage.fileList['scene6_background_sound'] = queue.getItem("scene6_background_sound");
 		    
 		    stage.Init();
 		    stage.entry();
@@ -494,12 +554,9 @@ $(function(){
 		}
 		//处理单个文件加载
 		function handleFileLoad(event) {
-		    //console.log("文件类型: " + event.item.type);
 		    if(event.item.type == "image"){
-		       // console.log("图片已成功加载");
 		    }
 		}
-		//处理加载错误：大家可以修改成错误的文件地址，可在控制台看到此方法调用
 		function loadError(evt) {
 		    console.log("加载出错！",evt.text);
 		}
@@ -560,6 +617,8 @@ $(function(){
 		//章节后退
 		$(".next").on("click",function(){
 			var tag = $(this).attr("data-target");
+			scene.globalAudio.attr("src" ,stage.fileList['poke_sound'].src);
+			scene.globalAudio[0].play();
 			if(tag<1){
 				alert("已经是第一章了")
 				return;
@@ -569,6 +628,8 @@ $(function(){
 		})
 		//章节刷新
 		$(".reload").on("click" ,function(){
+			scene.globalAudio.attr("src" ,stage.fileList['poke_sound'].src);
+			scene.globalAudio[0].play();
 			var tag = $(this).attr("data-target");
 			var total = stage.TotalScene;//总的章节、场景数
 			if(tag<1){
@@ -583,6 +644,8 @@ $(function(){
 		})
 		//章节前进
 		$(".pre").on("click", function(){
+			scene.globalAudio.attr("src" ,stage.fileList['poke_sound'].src);
+			scene.globalAudio[0].play();
 			var tag = $(this).attr("data-target");
 			var total = stage.TotalScene;//总的章节、场景数
 			if(tag<1){
@@ -690,7 +753,6 @@ $(function(){
 			e.stopPropagation();
 			e.preventDefault();
 			var that = $(this);
-			//三角形 第一次说3 第二次爆炸
 			if(that.hasClass('bomb')){
 				if(that.hasClass('active')){
 					boom.say();
@@ -709,6 +771,8 @@ $(function(){
 			scene.globalAudio[0].play();
 		})
 		$(".scene_4").on("click",function(){
+			scene.globalAudio.attr("src" ,stage.fileList['poke_sound'].src);
+			scene.globalAudio[0].play();
 			knock.stop();
 			if(!$(".scene_4 .knock:visible")[0]){
 				$(".scene_4 .knock").fadeIn(100);
@@ -732,6 +796,8 @@ $(function(){
 			})
 		})
 		$(".scene_5").on("click" ,function(){
+			scene.globalAudio.attr("src" ,stage.fileList['poke_sound'].src);
+			scene.globalAudio[0].play();
 			$(".scene_5 .graph_8").addClass('active');
 		})
 	}
@@ -759,7 +825,6 @@ $(function(){
 			alphamove.dom[0].style.backgroundPosition = "-2px -2px";
 		}
 	};
-	
 	var emmamove={
 		dom : $(".scene_1 .m_2.move"),
 		timer: void(0),
@@ -808,14 +873,24 @@ $(function(){
 		timer: void(0),
 		say:function(){
 			var i = 0;
-			squarespeak.timer =  window.setInterval(frameAnmi, 100);
-
+			squarespeak.timer =  window.setInterval(frameAnmi, 140);
+			var t=1;
 			function frameAnmi() {
-			    if(i >3) { 
-			    	i = 0;  //重新开始循环
-			    }else{
-				    squarespeak.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
-				    i++;
+				++t;
+				if((t<20 && t>10 )|| (t>30 && t<40)){
+					if(i >4) { 
+				    	i = 0;  //重新开始循环
+				    }else{
+					    squarespeak.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
+					    i++;
+					}
+				}else{
+					if(i >1) { 
+			    		i = 0;  //重新开始循环
+				    }else{
+					    squarespeak.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
+					    i++;
+					}
 				}
 			}
 		},
@@ -872,14 +947,25 @@ $(function(){
 		timer: void(0),
 		say:function(){
 			var i = 0;
-			squarespeak1.timer =  window.setInterval(frameAnmi, 100);
+			squarespeak1.timer =  window.setInterval(frameAnmi, 140);
 
+			var t=1;
 			function frameAnmi() {
-			    if(i >3) { 
-			    	i = 0;  //重新开始循环
-			    }else{
-				    squarespeak1.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
-				    i++;
+				++t;
+				if((t<20 && t>10 )|| (t>30 && t<40)){
+					if(i >4) { 
+				    	i = 0;  //重新开始循环
+				    }else{
+					    squarespeak1.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
+					    i++;
+					}
+				}else{
+					if(i >1) { 
+			    		i = 0;  //重新开始循环
+				    }else{
+					    squarespeak1.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
+					    i++;
+					}
 				}
 			}
 		},
@@ -896,12 +982,12 @@ $(function(){
 			boom.timer =  window.setInterval(frameAnmi, 100);
 
 			function frameAnmi() {
-			    if(i >21) { 
+			    if(i >15) { 
 			    	//i = 0;  //重新开始循环
 			    	clearInterval(this.timer);
 			    	boom.dom.hide();
 			    }else{
-				    boom.dom[0].style.backgroundPosition = "-" + i * 256 + "px -2px";
+				    boom.dom[0].style.backgroundPosition = "-" + i * 264 + "px -2px";
 				    i++;
 				}
 			}
@@ -939,12 +1025,23 @@ $(function(){
 			var i = 0;
 			squarespeak2.timer =  window.setInterval(frameAnmi, 100);
 
+			var t=1;
 			function frameAnmi() {
-			    if(i >3) { 
-			    	i = 0;  //重新开始循环
-			    }else{
-				    squarespeak2.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
-				    i++;
+				++t;
+				if((t<20 && t>10 )|| (t>30 && t<40)){
+					if(i >4) { 
+				    	i = 0;  //重新开始循环
+				    }else{
+					    squarespeak2.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
+					    i++;
+					}
+				}else{
+					if(i >1) { 
+			    		i = 0;  //重新开始循环
+				    }else{
+					    squarespeak2.dom[0].style.backgroundPosition = "-" + i * 182 + "px -2px";
+					    i++;
+					}
 				}
 			}
 		},

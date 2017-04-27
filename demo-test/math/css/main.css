@@ -249,7 +249,7 @@ img{border:none;}
     -webkit-animation: m2_move 1.6s steps(20) 1 forwards;
 	animation: m2_move 1.6s steps(20) 1 forwards;
 }
-.scene_1 .m_1.speak ,.scene_2 .m_1.speak,.scene_4 .m_1.speak{
+.scene_1 .m_1.speak ,.scene_2 .m_1.speak,.scene_4 .m_1.speak,.scene_6 .m_1.speak{
     background-image: url("../image/scene1/alpha_say.png");
     background-position: -2px -2px;
     background-repeat: no-repeat;
@@ -270,7 +270,7 @@ img{border:none;}
     -ms-transform-origin: 0 100% 0;
     transform-origin: 0 100% 0;
 }
-.scene_1 .m_2.speak,.scene_4 .m_2.speak{
+.scene_1 .m_2.speak,.scene_4 .m_2.speak,.scene_6 .m_2.speak{
 	background-image: url("../image/scene1/emma_say.png");
     background-position: -2px -2px;
     background-repeat: no-repeat;
@@ -291,7 +291,7 @@ img{border:none;}
     -ms-transform-origin: 0 100% 0;
     transform-origin: 0 100% 0;
 }
-.scene_1 .square,.scene_3 .square,.scene_4 .square{
+.scene_1 .square,.scene_3 .square,.scene_4 .square,.scene_6 .square{
     /*background-image: url("../image/scene1/square_say.png");*/
     background-position: -2px -2px;
     background-repeat: no-repeat;
@@ -357,10 +357,10 @@ img{border:none;}
 }
 .scene_3 .bomb{
 	position: absolute;
- 	height: 353px;
-    left: 63%;
-    top: 10%;
-    width: 256px;
+ 	height: 182px;
+    left: 58%;
+    top: 9%;
+    width: 264px;
     cursor: pointer;
 }
 .scene_3 .square{
@@ -386,8 +386,8 @@ img{border:none;}
     background-repeat: no-repeat;
     background-size: auto auto;
 	position: absolute;
-	left: 8%;
-	top: 8%;
+	left: 5%;
+	top: 5%;
 	width: 180px;
 	height: 180px;
 }
@@ -413,6 +413,44 @@ img{border:none;}
 .scene_5 .graph_17{top: 72%;left: 63%;}
 .scene_5 .graph_8.active{top: 52%;}
 
+.scene_6 .graph_1{
+	left: 40%;
+	top: 40%;
+}
+.scene_6 .graph_3{
+	left: 55%;
+	top: 37%;
+}
+.scene_6 .graph_6{
+	left: 67%;
+	top: 40%;
+}
+.scene_6 .graph_8{
+	position: absolute;
+    left: 78%;
+    top: 48%;
+}
+.scene_6 .graph_10{
+	position: absolute;
+    left: 76%;
+    top: 56%;
+}
+.scene_6 .graph_11{
+	position: absolute;
+    left: 75%;
+    top: 65%;
+}
+.scene_6 .graph_12{
+   	position: absolute;
+    left: 55%;
+    top: 68%;
+
+}
+.scene_6 .graph_13{
+   	position: absolute;
+    left: 45%;
+    top: 65%;
+}
 /*按钮功能图层*/
 .nemu_layout {
     background-color: #f6f6f5;
