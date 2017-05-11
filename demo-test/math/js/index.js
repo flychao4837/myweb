@@ -27,12 +27,14 @@ $(function(){
 		scene_0 :{
 			dom: $(".scene_0"),
 			enter:function(){
-				scene.headertool.hide();
+				stage.visible($(".gohome"))
+				scene.headertool.show();
 				this.dom.fadeIn(function(){
 					scene.backgroundsound[0].play();
 				})
 			},
 			exit : function(cb){
+				stage.disvisible($(".gohome"))
 				this.dom.fadeOut(function(){
 					if(typeof(cb)==="function"){
 						cb.call(cb)
@@ -337,7 +339,7 @@ $(function(){
 		stageDom.css({'width':stage.initW,'height':stage.initH});
 		$(".headertool,.footertool").css('width',stage.initW);
 		$(".gohome").css('width',stage.initW-120);
-		$(".layout_mask").css({'width':stage.initW,'height':stage.initH});
+		$(".layout_mask ,.rule_intro_box").css({'width':stage.initW,'height':stage.initH});
 		stage.scene = scene;
 		var tag = $(".stage .scene:visible").attr("data-tag") ||1;
 		stage.setPageTag(tag);
@@ -398,6 +400,7 @@ $(function(){
 			{id: "scene1_background", src:"image/scene1/scene1_background.jpg"},
 			{id: "alpha_walk", src:"image/scene1/alpha_walk.png"},
 			{id: "alpha_say", src:"image/scene1/alpha_say.png"},
+			{id: "alpha_say_2", src:"image/scene2/alpha_say.png"},
 			{id: "emma_walk", src:"image/scene1/emma_walk.png"},
 			{id: "emma_say", src:"image/scene1/emma_say.png"},			
 			{id:"talk_1", src:"image/scene1/talk_1.mp3"},
@@ -429,8 +432,15 @@ $(function(){
 
 			//场景5
 			{id: "scene5_background", src:"image/scene5/scene5_background.png"},
-		    
 		    {id:"scene6_background_sound", src:"image/scene6/scene6_background_sound.mp3"},
+
+		    //规则介绍
+		    {id: "rule", src:"image/rule.png"},
+		    {id:"n_notice_a", src:"image/n_notice_a.mp3"},
+		    {id:"n_content_e", src:"image/n_content_e.mp3"},
+		    {id:"classring", src:"image/classring.mp3"},
+		    {id: "rule_close", src:"image/rule_close.png"},
+		    {id: "task_background", src:"image/task_background.png"},
 		]
 		queue.on("complete", handleComplete, this);
 		queue.on("progress" ,handleFileProgress);
@@ -472,16 +482,16 @@ $(function(){
 		    $(".scene_1 .m_1").css("background-image",'url('+rootpath+queue.getItem("alpha_walk").src+')')
 		    $(".scene_1 .m_2").css("background-image",'url('+rootpath+queue.getItem("emma_walk").src+')')
 
-		    $(".scene_1 .m_1.speak ,.scene_2 .m_1.speak").css("background-image",'url('+rootpath+queue.getItem("alpha_say").src+')')
+		    $(".scene_1 .m_1.speak").css("background-image",'url('+rootpath+queue.getItem("alpha_say").src+')')
 		    $(".scene_1 .m_2.speak").css("background-image",'url('+rootpath+queue.getItem("emma_say").src+')')
 		   	$(".scene_1 .square.speak,.scene_3 .square,.scene_4 .square,.scene_6 .square").css("background-image",'url('+rootpath+queue.getItem("square_say").src+')')
 		   	
 		   	$(".scene_2 .question").attr("src",rootpath+queue.getItem("question ").src)
-
-		   	$(".scene_2").css("background-image",'url('+rootpath+queue.getItem("scene2_background").src+')')
+		   	$(".scene_2 .m_1.speak").css("background-image",'url('+rootpath+queue.getItem("alpha_say_2").src+')')
+		   	//$(".scene_2").css("background-image",'url('+rootpath+queue.getItem("scene2_background").src+')')
 		   	$(".scene_2 .question").attr("src",rootpath+queue.getItem("question ").src)
 
-		   	$(".scene_3").css("background-image",'url('+rootpath+queue.getItem("scene3_background").src+')')
+		   	//$(".scene_3").css("background-image",'url('+rootpath+queue.getItem("scene3_background").src+')')
 		   	$(".scene_3 .question").attr("src",rootpath+queue.getItem("question ").src)
 
 		   	$(".scene_3 .bomb").css("background-image",'url('+rootpath+queue.getItem("frame_triangle_bomb").src+')')
@@ -491,11 +501,15 @@ $(function(){
 		    $(".scene_4 .m_2.speak").css("background-image",'url('+rootpath+queue.getItem("emma_say").src+')')
 		    $(".scene_4 .knock").css("background-image",'url('+rootpath+queue.getItem("frame_knockdoor").src+')')
 
-		    $(".scene_5").css("background-image",'url('+rootpath+queue.getItem("scene5_background").src+')');
+		    //$(".scene_5").css("background-image",'url('+rootpath+queue.getItem("scene5_background").src+')');
 
 		    $(".scene_6").css("background-image",'url('+rootpath+queue.getItem("scene1_background").src+')');
 		    $(".scene_6 .m_1.speak").css("background-image",'url('+rootpath+queue.getItem("alpha_say").src+')')
 		    $(".scene_6 .m_2.speak").css("background-image",'url('+rootpath+queue.getItem("emma_say").src+')')
+
+		    $(".rule_intro .rule_close").css("background-image",'url('+rootpath+queue.getItem("rule_close").src+')')
+		    $(".rule_intro,.scene_2,.scene_3,.scene_5").css("background-image",'url('+rootpath+queue.getItem("task_background").src+')');
+
 		    //音效设置
 		    scene.backgroundsound.attr("src",rootpath+queue.getItem("backgroundsound").src);
 		    scene.backgroundsound[0].pause();
@@ -548,6 +562,19 @@ $(function(){
 		    scene.globalAudio[0].pause();
 		    stage.fileList['scene6_background_sound'] = queue.getItem("scene6_background_sound");
 		    
+		    //规则介绍
+			scene.globalAudio.attr('src',rootpath+queue.getItem("n_notice_a").src)
+		    scene.globalAudio[0].pause();
+			stage.fileList['n_notice_a'] = queue.getItem("n_notice_a");
+
+			scene.globalAudio.attr('src',rootpath+queue.getItem("n_content_e").src)
+		    scene.globalAudio[0].pause();
+			stage.fileList['n_content_e'] = queue.getItem("n_content_e");
+
+			scene.globalAudio.attr('src',rootpath+queue.getItem("classring").src)
+		    scene.globalAudio[0].pause();
+			stage.fileList['classring'] = queue.getItem("classring");
+
 		    stage.Init();
 		    stage.entry();
 		    $(".dialog_global_layout").remove();
@@ -593,6 +620,20 @@ $(function(){
 				that.addClass('active')
 				scene.backgroundsound[0].pause();
 			}
+		})
+		//规则
+		$(".getnotice").on("click" ,function(){
+			$(".rule_intro_box").fadeIn(100,function(){
+				scene.globalAudio.attr("src" ,stage.fileList['classring'].src);
+				scene.globalAudio[0].play();
+			});
+		})
+		$(".rule_close").on("click" ,function(){
+			scene.globalAudio.off("ended");
+			scene.globalAudio[0].pause();
+			alphaintro.stop();
+			emmaintro.stop();
+			$(".rule_intro_box").fadeOut();
 		})
 		//展示课程目录
 		$(".getmenu").on("click" ,function(){
@@ -800,6 +841,27 @@ $(function(){
 			scene.globalAudio[0].play();
 			$(".scene_5 .graph_8").addClass('active');
 		})
+		//规则介绍
+		$(".rule_intro .alpha_intro").on("click" ,function(){
+			scene.globalAudio.off("ended");
+			emmaintro.stop();
+			scene.globalAudio.attr("src" ,stage.fileList['n_notice_a'].src);
+			scene.globalAudio[0].play();
+			alphaintro.say();
+			scene.globalAudio.one("ended",function(){
+				alphaintro.stop();
+			})
+		});
+		$(".rule_intro .emma_intro").on("click" ,function(){
+			scene.globalAudio.off("ended");
+			alphaintro.stop();
+			scene.globalAudio.attr("src" ,stage.fileList['n_content_e'].src);
+			scene.globalAudio[0].play();
+			emmaintro.say();
+			scene.globalAudio.one("ended",function(){
+				emmaintro.stop();
+			})
+		})
 	}
 	/**帧动画--逐个设置**/
 	//场景1-1
@@ -822,7 +884,7 @@ $(function(){
 		},
 		stop:function(){
 			clearInterval(this.timer);
-			alphamove.dom[0].style.backgroundPosition = "-2px -2px";
+			alphamove.dom[0].style.backgroundPosition = "-1264px -2px";
 		}
 	};
 	var emmamove={
@@ -905,33 +967,12 @@ $(function(){
 		say:function(){
 			var i = 0;
 			alphaspeak.timer =  window.setInterval(frameAnmi, 100);
-
-			function frameAnmi() {
-			    if(i >23) { 
-			    	i = 0;  //重新开始循环
-			    }else{
-				    alphaspeak.dom[0].style.backgroundPosition = "-" + i * 171 + "px -2px";
-				    i++;
-				}
-			}
-		},
-		stop:function(){
-			clearInterval(this.timer);
-			alphaspeak.dom[0].style.backgroundPosition = "-2px -2px";
-		}
-	}
-	var alphaspeak={
-		dom : $(".scene_2 .m_1.speak"),
-		timer: void(0),
-		say:function(){
-			var i = 0;
-			alphaspeak.timer =  window.setInterval(frameAnmi, 100);
 			//requestAnimationFrame(frameAnmi);
 			function frameAnmi() {
-			    if (i >22) { 
+			    if (i >3) { 
 			    	i = 0;  //重新开始循环
 			    }else{
-				    alphaspeak.dom[0].style.backgroundPosition = "-" + i * 173 + "px -2px";
+				    alphaspeak.dom[0].style.backgroundPosition = "-" + i * 252 + "px -2px";
 				    i++;
 				}
 			    //requestAnimationFrame(frameAnmi)
@@ -1048,6 +1089,49 @@ $(function(){
 		stop:function(){
 			clearInterval(this.timer);
 			squarespeak2.dom[0].style.backgroundPosition = "-2px -2px";
+		}
+	}
+	//规则介绍
+	var alphaintro = {
+		dom : $(".rule_intro .alpha_intro"),
+		timer: void(0),
+		say:function(){
+			var i = 1;
+			alphaintro.timer =  window.setInterval(frameAnmi, 100);
+
+			function frameAnmi() {
+			    if(i >9) { 
+			    	i = 1;  //重新开始循环
+			    }else{
+				    alphaintro.dom[0].style.backgroundPosition = "-" + i * 187 + "px -2px";
+				    i++;
+				}
+			}
+		},
+		stop:function(){
+			clearInterval(this.timer);
+			alphaintro.dom[0].style.backgroundPosition = "-2px -2px";
+		}
+	}
+	var emmaintro = {
+		dom : $(".rule_intro .emma_intro"),
+		timer: void(0),
+		say:function(){
+			var i = 1;
+			emmaintro.timer =  window.setInterval(frameAnmi, 100);
+
+			function frameAnmi() {
+			    if(i >4) { 
+			    	i = 1;  //重新开始循环
+			    }else{
+				    emmaintro.dom[0].style.backgroundPosition = "-" + i * 322 + "px -2px";
+				    i++;
+				}
+			}
+		},
+		stop:function(){
+			clearInterval(this.timer);
+			emmaintro.dom[0].style.backgroundPosition = "-2px -2px";
 		}
 	}
 })
