@@ -44,7 +44,7 @@ $(function(){
 		var winH = win.height();
 		var winW = win.width();
 		var winRatio = winW/winH;
-		imgscalewithheight = winH/768;
+		imgscalewithheight = winH/760;
 		stage.initW=0;
 		stage.initH =0;
 		stage.time = 0;

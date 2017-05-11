@@ -99,15 +99,18 @@ img{border:none;}
     background-repeat: no-repeat;
     background-size: 90% auto;
     display: inline-block;
+    overflow: hidden;
+    font-size: 0;
 }
 .scene_6_l .scene_6_l_box>img{
     max-width: 520px;
 }
-.silder{
+.slider{
     position: relative;
     clear: both;
     overflow: hidden;
     zoom:1;
+    position: relative;
 }
 .btn_play{
     position: absolute;
