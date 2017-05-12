@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="stage" data-tag="0">
+        <!--所有场景均拆分成独立场景，涉及到每个场景的前进、后退、刷新 混合场景后不太方便-->
+        <!--引入-->
+        <div class="scene scene_0 hide" data-tag="1">
+            <div class="title_box"><img class="title forscale start" data-width="320" src="javascript:void(0);"></div>
+            <div class="layout_mask"></div>
+        </div>
+        <div class="scene scene_1 hide" data-tag="1">
+            <div class="forscale m_1 move" data-width="156"></div>
+            <div class="forscale m_2 move" data-width="241"></div>
+            
+            <div class="forscale m_2 speak hide" data-width="253"></div>
+
+            <div class="forscale square speak" data-width="180"></div>
+        </div>
+        <!--新知1-->
+        <div class="scene scene_2 hide" data-tag="2">
+            <div class="inlineblock sprite graph_1"><img class="forscale" data-width="215" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_3"><img class="forscale" data-width="190" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_4"><img class="forscale" data-width="186" src="javascript:void(0);"/></div>
+            <div class="inlineblock move sprite graph_2"><img class="forscale" data-width="170" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_6"><img class="forscale" data-width="205" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_7"><img class="forscale" data-width="195" src="javascript:void(0);"/></div>
+            <img class="forscale question hide" data-width="69" >
+            <div class="forscale m_1 speak hide" data-width="250"></div>
+        </div>
+        <!--新知2-->
+        <div class="scene scene_3 hide" data-tag="3">
+            <div class="inlineblock sprite graph_1"><img class="forscale" data-width="215" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_3"><img class="forscale" data-width="190" src="javascript:void(0);"/></div>
+            <div class="inlineblock forscale sprite bomb" data-width="264"></div>
+            <div class="inlineblock sprite graph_6"><img class="forscale" data-width="205" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_7"><img class="forscale" data-width="195" src="javascript:void(0);"/></div>
+            <img class="forscale question" data-width="69" >
+            <div class="forscale square speak" data-width="180"></div>
+        </div>
+
+        <div class="scene scene_4 hide" data-tag="4">
+            <div class="forscale knock hide" data-width="180"></div>
+
+            <div class="forscale m_1 speak" data-width="253"></div>
+            <div class="forscale m_2 speak" data-width="253"></div>
+
+            <div class="forscale square speak" data-width="180"></div>
+        </div>
+        <div class="scene scene_5 hide" data-tag="5">
+            <div class="inlineblock sprite graph_5"><img class="forscale" data-width="261" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_9"><img class="forscale" data-width="195" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_8"><img class="forscale" data-width="43" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_10"><img class="forscale" data-width="250" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_11"><img class="forscale" data-width="110" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_12"><img class="forscale" data-width="275" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_13"><img class="forscale" data-width="145" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_14"><img class="forscale" data-width="185" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_15"><img class="forscale" data-width="229" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_16"><img class="forscale" data-width="241" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_17"><img class="forscale" data-width="205" src="javascript:void(0);"/></div>
+        </div>
+        <div class="scene scene_6 hide" data-tag="6">
+            <div class="forscale m_1 speak" data-width="253"></div>
+            <div class="forscale m_2 speak" data-width="253"></div>
+            <div class="forscale square speak" data-width="180"></div>
+
+            <div class="inlineblock sprite graph_1"><img class="forscale" data-width="140" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_3"><img class="forscale" data-width="120" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_6"><img class="forscale" data-width="135" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_8"><img class="forscale" data-width="43" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_10"><img class="forscale" data-width="165" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_11"><img class="forscale" data-width="75" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_12"><img class="forscale" data-width="185" src="javascript:void(0);"/></div>
+            <div class="inlineblock sprite graph_13"><img class="forscale" data-width="96" src="javascript:void(0);"/></div>
+        </div>
+        <!--顶部工具栏-->
+        <div class="headertool hide">
+            <ul class="clear">
+                <li class="gohome">
+                    <a class="gethome"></a>
+                </li>
+                <li class='setting'>
+                    <a class="setconfig"></a>
+                </li>
+            </ul>
+        </div>
+        <!--顶部--设置工具栏----功能层-->
+        <div class="setting_layout hide">
+            <div>
+                <a class="getmenu" style="display:none;"></a>
+            </div>
+            <div>
+                <a class="getnotice"></a>
+            </div>
+            <div>
+                <a class="setmusic"></a>
+            </div>
+            <div>
+                <a class="close_setting_layout"></a>
+            </div>
+        </div>
+        <!--底部工具栏-->
+        <div class="footertool hide">
+            <ul class="clear">
+                <li><a class="pre" data-target="0"></a></li>
+                <li class="textcenter"><a class="reload" data-target="1"></a></li>
+                <li class="textright"><a class='next' data-target="2"></a></li>
+            </ul>
+        </div>
+        <!--规则说明-->
+        <div class="rule_intro_box hide">
+            <div class="rule_intro">
+                <a class="rule_close"></a>
+                <div class="block textcenter rule_img">
+                    <img src="image/rule.png" width="60%" class="forscale rule"/>
+                </div>
+                <div class="forscale alpha_intro" data-width="185"></div>
+                <div class="forscale emma_intro" data-width="320"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="backgroundsound" loop="loop"></audio>
+    <audio id="globalAudio"></audio>
+    <div class="dialog_global_layout" style="z-index: 10000;">
+        <p class="tip_msg">已加载0%</p>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/createjs.min.js"></script>
+<script type="text/javascript" src="js/requestAnimateFrame.js"></script>
+<script type="text/javascript" src="js/index.js"></script>

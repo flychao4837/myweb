@@ -341,7 +341,7 @@ $(function(){
 		$(".gohome").css('width',stage.initW-120);
 		$(".layout_mask ,.rule_intro_box").css({'width':stage.initW,'height':stage.initH});
 		stage.scene = scene;
-		var tag = $(".stage .scene:visible").attr("data-tag") ||1;
+		var tag = $(".stage .scene:visible").attr("data-tag") ||$(".reload").attr("data-target")||1;
 		stage.setPageTag(tag);
 		var scaleImage = $(".forscale");
 		$.each(scaleImage,function(i, el) {
@@ -735,6 +735,9 @@ $(function(){
 			return false;
 		}else{
 			var curscene = $(".scene:visible");
+			if(!curscene[0]){
+				curscene = $(".scene_"+tag)
+			}
 			curscene.fadeOut( function() {
 				scene["scene_"+tag].enter();
 				stage.setPageTag(tag);
