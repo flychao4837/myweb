@@ -14,6 +14,10 @@
 .inline{display: inline;}
 .textcenter{text-align: center;}
 .textright{text-align: right;}
+.fz_0{font-size: 0;}
+.font-warning{
+    color: #f58d49;
+}
 .box {
     display:-moz-box;
     display:-webkit-box;
@@ -83,9 +87,9 @@ html,body{background-color: #f3eddd;}
     width: 100%;
     height: 100%;
     overflow: hidden;
-    margin-top: 45px;
+    margin-top: 0.6rem;
     display:inline-block;
-    padding: 0 30px;
+    padding: 0 0.4rem;
 }
 .banner{
     position: relative;
@@ -146,7 +150,7 @@ html,body{background-color: #f3eddd;}
     background-repeat: no-repeat;
     background-size: 100%;
     width: 0.64rem;
-    height: 0.64rem;
+    height: 1.6rem;
 }
 
 .tab-home .icon-yd {
@@ -171,7 +175,7 @@ html,body{background-color: #f3eddd;}
 }
 /*slider*/
 .slider{
-	padding-top: 40px;
+	padding-top: 0.533333rem;
 }
 .slider .hiSlider-item{
     text-align: center;
@@ -247,10 +251,196 @@ html,body{background-color: #f3eddd;}
     display: inline-block;
 }
 
+/*我的*/
+.content-my{
+    margin-top:1.466666rem;
+}
+.user_img{
+    width: 1.86666rem;
+    height: 1.86666rem;
+    border:0.13333rem solid #f39c57;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+.user_img>img{
+    border-radius: 50%;
+    width: 100%;
+}
+.user_name{
+    font-size: 0.32rem;
+    margin-top:0.13333rem;
+    line-height: 1;
+    color: #191919;
+}
+.list .list-item{
+    border-bottom: 1px solid #d3d3d3;
+    padding-top:0.72rem;
+    padding-bottom: 0.4rem;
+    cursor: pointer;
+}
+.list .list-item:last-child{
+    border-bottom: none;
+}
+.list .list-item .icon{
+    width: 0.48rem;
+    height: 0.48rem;
+    background-position: center top;
+    background-size: 100%;
+    margin-left: 0.266666667rem;
+}
+.list .list-item .title{
+    font-size: 0.48rem;
+    color: #323f6c;
+    padding-left: 0.9333333rem;
+    line-height: 1;
+}
+.list .list-item .icon_user{
+    background-image: url(../image/icon_my.png);
+}
+.list .list-item  .icon_progress{
+    background-image: url(../image/icon_progress.png);
+}
+.list .list-item .icon_history{
+    background-image: url(../image/icon_history.png);
+}
+.list .list-item .icon_promiss{
+    background-image: url(../image/icon_promiss.png);
+}
+.list .list-item .icon_help{
+    background-image: url(../image/icon_help.png);
+}
+.pause-read,.pause-read:link,.pause-read:hover,.pause-read:active{
+    font-size: 0.48rem;
+    line-height: 1;
+    text-decoration: underline;
+    padding:0.4rem 0;
+    color: #323f6c;
+}
 
+/*我的个人信息*/
+.content-myinfo{
+    margin-top: 0.8533333rem;
+}
+.goback{
+    margin-left: 0.3466666rem;
+    display: inline-block;
+    width: 0.56rem;
+    height: 0.48rem;
+    background-image: url(../image/return.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: left center;
+    margin-bottom: 0.13333333rem;
+}
+.form-box{
+    margin-top: 1.3333333rem;
+    padding: 0.4rem 1.06666667rem;
+}
+.form-control,.sex-box{
+    margin-bottom: 0.26666666rem;
+}
+.sex-box {
+    padding: 0.4rem 0.48rem;
+    font-size: 0.32rem;
+}
+.sex-box .sex-item{
+    padding-left: 0.64rem;
+}
+.form-control{
+    display: block;
+}
+.form-control >input{
+    width: 100%;
+    height: 0.96rem;
+    border:1px solid #c7c8c6;
+    border-radius: 0.5rem;
+    padding: 0 0.48rem;
+    font-size: 0.32rem;
+    color: #4c5976;
+}
+.edit>.edit-userinfo{
+    display: inline-block;
+    width: 100%;
+    height: 0.96rem;
+    border-radius: 0.5rem;
+    padding: 0 0.48rem;
+    font-size: 0.48rem;
+    color: #fff;
+    background-color: #33cc00;
+    text-align: center;
+    line-height: 0.96rem;
+    border: none;
+}
+/*我的进度及评分*/
+.user .read-total{
+    text-align: center;
+    color: #535879;
+    font-size: 0.3733333rem;
+    padding: 0.32rem 0 0.133333rem;
+}
+.user .read-total>span{
+    color: #f16500;
+}
+.progress-list .start-time{
+    font-size: 0.32rem;
+    color: #535879;
+    line-height: 1;
+    padding-bottom: 0.133333rem;
+}
+.progress-list .list{
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 0.466666rem;
+}
+.progress-list .list .list-item{
+    padding: 0 0.26666rem 0 0.533333rem;
+    font-size: 0.32rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+}
+.progress-list .list .list-item .week-name{
+    color: #404040;
+}
 
-
-
+/*我的阅读历史*/
+.histroy-list .list-item{
+    padding: 0;
+    height: 3.6rem;
+}
+.histroy-list .list-item .book-cover{
+    text-align: center;
+    font-size: 3.6rem;
+}
+.histroy-list .list-item .book-cover>img{
+    width: 2rem;
+    height: 2.533333rem;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.histroy-list .list-item .read-status{
+    text-align: right;
+    font-size: 3.6rem;
+}
+.histroy-list .list-item .time{
+    line-height: 3.6rem;
+    text-align: right;
+    font-size: 0.32rem;
+    color: #323f6c;
+}
+.histroy-list .list-item .read-status>img{
+    width:2.4rem;
+}
+.histroy-list .list-item .play,.histroy-list .list-item .display{
+    font-size: 3.6rem;
+    text-align: right;
+    display: block;
+}
+.histroy-list .list-item .play>img,.histroy-list .list-item .display>img{
+    width: 1.2rem;
+    vertical-align: middle;
+}
 /* 
 @3倍图方案
 dpr<=2 都用750下的2倍图

@@ -8,7 +8,7 @@
     
     <meta content="朗读者新计划" name="description" />
     <meta content="" name="author" />
-    <title>我的</title>
+    <title>我的个人信息</title>
     <script type="text/javascript" src="js/flexible_css.js"></script>
     <script type="text/javascript" src="js/flexible.js"></script>
 
@@ -16,7 +16,8 @@
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <dic class="content content-my">
+    <dic class="content content-myinfo">
+        <a class="goback"></a>
         <div class="user">
             <div class="fz_0 textcenter">
                 <div class="user_img">
@@ -25,41 +26,39 @@
             </div>
             <p class="textcenter user_name">段全鑫</p>
         </div>
-        <div class="list fz_0">
-            <div class="list-item">
-                <div class="box fz_0">
-                    <div class="icon icon_user"></div>
-                    <a class="boxflex title" href="userinfo.html" target="_self">个人信息</a>
+        <div class="form-box">
+            <div class="sex-box box">
+                <span>性别</span>
+                <div class="boxflex">
+                    <div class="box">
+                        <div class="sex-item">
+                            <input type="radio" />
+                            <label>男</label>
+                        </div>
+                        <div class="sex-item">
+                            <input type="radio" />
+                            <label>女</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="list-item">
-                <div class="box fz_0">
-                    <div class="icon icon_progress"></div>
-                    <a class="boxflex title" href="progress.html" target="_self">进度及评分</a>
-                </div>
+            <div class="form-control">
+                <input class="input" name="user_name" type="text" placeholder="请输入姓名"/>
             </div>
-            <div class="list-item">
-                <div class="box fz_0">
-                    <div class="icon icon_history"></div>
-                    <a class="boxflex title" href="histroy.html" target="_self">阅读历史</a>
-                </div>
+            <div class="form-control">
+                <input class="input" name="age" type="number" placeholder="请选择年纪"/>
             </div>
-            <div class="list-item">
-                <div class="box">
-                    <div class="icon icon_promiss"></div>
-                    <a class="boxflex title" href="promiss.html" target="_self">保证金</a>
-                </div>
+            <div class="form-control">
+                <input class="input" name="address" type="text" placeholder="请输入地址"/>
             </div>
-            <div class="list-item">
-                <div class="box">
-                    <div class="icon icon_help"></div>
-                    <a class="boxflex title" href="help.html" target="_self">帮助</a>
-                </div>
+            <div class="form-control">
+                <input class="input" name="phone" type="text" placeholder="请输入联系电话"/>
+            </div>
+            <div class="edit">
+                <a class="edit-userinfo" type="button">完&nbsp;&nbsp;&nbsp;&nbsp;成</a>
             </div>
         </div>
-        <div class="textcenter">
-            <a class="btn pause-read">申请阅读暂停</a>
-        </div>  
+
         <div class="footer">
             <div class="row">
                 <div class="col-6 tab tab-home">

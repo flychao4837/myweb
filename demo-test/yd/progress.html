@@ -8,7 +8,7 @@
     
     <meta content="朗读者新计划" name="description" />
     <meta content="" name="author" />
-    <title>我的</title>
+    <title>我的进度及评分</title>
     <script type="text/javascript" src="js/flexible_css.js"></script>
     <script type="text/javascript" src="js/flexible.js"></script>
 
@@ -16,7 +16,8 @@
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <dic class="content content-my">
+    <dic class="content content-myinfo">
+        <a class="goback"></a>
         <div class="user">
             <div class="fz_0 textcenter">
                 <div class="user_img">
@@ -24,42 +25,47 @@
                 </div>
             </div>
             <p class="textcenter user_name">段全鑫</p>
+            <p class="read-total">坚持了<span>1</span>天，累计朗读了<span>76</span>分钟</p>
         </div>
-        <div class="list fz_0">
-            <div class="list-item">
-                <div class="box fz_0">
-                    <div class="icon icon_user"></div>
-                    <a class="boxflex title" href="userinfo.html" target="_self">个人信息</a>
+
+        <div class="progress-box">
+            <p style="margin:25px;">svg 圆形 进度条</p>
+        </div>
+        <div class="progress-list">
+            <p class="start-time">开始时间：2017年4月15日</p>
+            <div class="list">
+                <div class="list-item">
+                    <div class="box">
+                        <div class="week-name">
+                            第五周
+                        </div>
+                        <div class="boxflex">
+                            <p class="font-warning textright">任务开始时间：2017年4月15日 20：00</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="list-item">
-                <div class="box fz_0">
-                    <div class="icon icon_progress"></div>
-                    <a class="boxflex title" href="progress.html" target="_self">进度及评分</a>
+                <div class="list-item">
+                    <div class="box">
+                        <div class="week-name">
+                            第四周
+                        </div>
+                        <div class="boxflex">
+                            <p class="font-warning textright">-3分</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="list-item">
-                <div class="box fz_0">
-                    <div class="icon icon_history"></div>
-                    <a class="boxflex title" href="histroy.html" target="_self">阅读历史</a>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="box">
-                    <div class="icon icon_promiss"></div>
-                    <a class="boxflex title" href="promiss.html" target="_self">保证金</a>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="box">
-                    <div class="icon icon_help"></div>
-                    <a class="boxflex title" href="help.html" target="_self">帮助</a>
+                <div class="list-item">
+                    <div class="box">
+                        <div class="week-name">
+                            第三周
+                        </div>
+                        <div class="boxflex">
+                            <p class="font-warning textright">5分</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="textcenter">
-            <a class="btn pause-read">申请阅读暂停</a>
-        </div>  
         <div class="footer">
             <div class="row">
                 <div class="col-6 tab tab-home">
