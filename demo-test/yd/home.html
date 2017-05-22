@@ -2,23 +2,66 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>首页</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="" name="description" />
+    
+    <meta content="朗读者新计划" name="description" />
     <meta content="" name="author" />
-    <link href="css/reset.css?v=3" rel="stylesheet" type="text/css" />
+    <title>朗读者新计划</title>
+
+    <script type="text/javascript" src="js/flexible_css.js"></script>
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <!-- <meta name="viewport" content="width=750,initial-scale=0.4266666666666667,maximum-scale=0.4266666666666667,minimum-scale=0.4266666666666667,user-scalable=no"> -->
+    <!-- <script type="text/javascript" src="js/mobile-util.js"></script> -->
+
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="css/jquery.hiSlider.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="stage" data-tag="0">
-        <a class="start block margin-10">开始录音</a>
-        <a class="stop block margin-10">停止录音</a>
-        <a class="play block margin-10">下载录音并播放</a>
-    </div>
-    <div class="msg">
-
+    <dic class="content">
+        <div class="banner">
+            <div class="slider">
+                <ul class="hiSlider hiSlider3">
+                    <li class="hiSlider-item">
+                        <img src="image/cover_1.jpg" alt="">
+                        <p class="reader">领读者：果果</p>
+                        <p class="title">郑渊洁10年未出版的经典童话</p>
+                        <p class="read_time">共<span>1254</span>字 | 平均时长5分钟</p>
+                    </li>
+                    <li class="hiSlider-item">
+                        <img src="image/cover_2.jpg" alt="">
+                        <p>领读者：默默</p>
+                        <p>郑渊洁10年未出版的经典童话</p>
+                        <p>共<span style="color:red">2254</span>字 | 平均时长12分钟</p>
+                    </li>
+                    <li class="hiSlider-item">
+                        <img src="image/cover_3.jpg" alt="">
+                        <p>领读者：小小</p>
+                        <p>郑渊洁10年未出版的经典童话</p>
+                        <p>共<span style="color:red">3254</span>字 | 平均时长15分钟</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="task_info">
+                <p>第<span>10</span>本</p>
+                <p><span>2周</span></p>
+            </div>
+        </div>
+        <div class="action">
+            <a class="recorder">
+                <i class="icon icon_record"></i>
+            </a>
+        </div>
+        <div class="footer">
+            <a class="btn btn_sign">立即报名</a>
+        </div>
     </div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.hiSlider.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 <!--淘宝flexble 适配方案 + grid布局-->

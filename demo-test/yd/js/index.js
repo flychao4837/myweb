@@ -2,9 +2,9 @@ $(function(){
 	wx.config({
 		debug: false,
 		appId: 'wx50a3dfbc40d2d623',
-		timestamp: 1494942693,
+		timestamp: 1495247239,
 		nonceStr: '89be8675f7c79ed8072bdcf16176fefa',
-		signature: '6bbe4ab6eca160aee4665de97c6b6bbe66a8760d',
+		signature: '673d5534a9a639746123bda6c34b5960012010c5',
 		jsApiList: [
 			'checkJsApi',
 			'startRecord',
@@ -45,7 +45,11 @@ $(function(){
 	    localId: '',
 	    serverId: ''
 	};
-	var list =[]
+	var list =[];
+	var localtmp = localStorage.getItem("voice");
+	if(localtmp){
+		list = JSON.parse(localtmp);
+	}
 	var showMsg = function(msg){
 		$(".msg").append('<p>'+msg+'</p>');
 	}
@@ -59,12 +63,20 @@ $(function(){
 	$(".stop").on("click", function(){
 		stoprecord();
 	})
+	//播放本地录音
+	$(".playlocal").on("click", function(){
+		if(list.length>0){
+			playLocalRecord(0)
+		}else{
+			showMsg("请先录制声音再试听");
+		}
+	})
+	//停止播放
+	$(".stopplay").on("click", function(){
+		stopPlay();
+	})
 	//下载录音、播放
 	$(".play").on("click", function(){
-		// if (voice.serverId == '') {
-		//   alert('请先使用 uploadVoice 上传声音');
-		//   return;
-		// }
 		wx.downloadVoice({
 		  	serverId: "guVjSLHhdAbf9c1v5x4jFQyQrIH_uVJlJQz2MhascV0M4dVahiHOrcro0ItGXcRS",
 		  	success: function (res) {
@@ -104,6 +116,7 @@ $(function(){
 							serverId: "",
 						}
 						list.push(item);
+						localStorage.setItem("voice",JSON.stringify(list));
 						showMsg('录音一分钟' + res.localId);
 						if(list.length <10){
 							showMsg("onVoiceRecordEnd  list ="+list.length);
@@ -131,18 +144,15 @@ $(function(){
 					serverId: "",
 				}
 				list.push(item);
+				localStorage.setItem("voice",JSON.stringify(list));
 				if(list.length <10){
 					showMsg("list ="+list.length);
-					startrecord();
 				}else{
-					clearTimeout(timer);
 					showMsg("录满10个了 上传第一个录音文件 id是 "+list[0].localId)
-					//uploadLocal(list[0].localId);
-					//doUpload();
+					doUpload();
 				}
 			},
 	  		fail: function (res) {
-	  			clearTimeout(timer);
 	    		showMsg(JSON.stringify(res));
 	  		}
 		});
@@ -157,10 +167,10 @@ $(function(){
 			localId: id,
 			isShowProgressTips:0,
 			success: function (res) {
-			    showMsg('上传语音成功，serverId 为' + res.serverId);
+			    showMsg(i+'上传语音成功serverId ' + res.serverId);
 			    list[i].serverId = res.serverId;
 			    voice.serverId = res.serverId;
-			    //checkUpload();
+			    doUpload();
 			},
 			fail: function (res) {
         		showMsg(JSON.stringify(res));
@@ -172,12 +182,46 @@ $(function(){
 		for(var i=0,len=list.length;i<len;i++){
 			var item = list[i];
 			if(!item.serverId){
-				uploadLocal(item.localId,i)
+				uploadLocal(item.localId,i);
+				break;
+			}
+			if((i+1==len) && item.serverId){
+				playLocalRecord(0)
 			}
 		}
 		return false;
 	}
+	function playLocalRecord(i){
+		var localId = list[i].localId;
+		var len = list.length;
+		if(!localId){
+			showMsg("本地录音不存在 id:"+localId);
+		}else{
+			voice.localId = localId;
+			wx.playVoice({
+			  	localId: localId,
+			});
+			wx.onVoicePlayEnd({
+				complete: function (res) {
+					showMsg('录音（' + res.localId + '）播放结束');
+					if(i<len){
+						playLocalRecord(i*1+1);
+					}
+				}
+			});
+		}
+	}
 
+	function stopPlay(){
+		var localId = voice.localId;
+		if(!localId){
+			showMsg("本地音频ID获取错误");
+		}else{
+			wx.stopVoice({
+			  	localId: localId,
+			});
+		}
+	}
 	/**********************************************************
 	// 4 音频接口
 	// 4.2 开始录音

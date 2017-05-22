@@ -1,7 +1,4 @@
-*{box-sizing:border-box;}
-html,body{width: 100%;height: 100%;overflow: hidden;background-color: #f6f6f6;}
-a{cursor: pointer;text-decoration: none;}
-img{border:none;}
+
 .hide{display: none;}
 .show{display: block;}
 .block{display: block;}
@@ -17,5 +14,275 @@ img{border:none;}
 .inline{display: inline;}
 .textcenter{text-align: center;}
 .textright{text-align: right;}
+.box {
+    display:-moz-box;
+    display:-webkit-box;
+    display:box;
+    width: 100%;
+}
+.boxflex {
+    -moz-box-flex:1;
+    -webkit-box-flex:1;
+    box-flex:1;
+    height: inherit;
+    width: 100%;
+}
+/*box高拉伸一致*/
+.box-align-stretch{
+    -moz-box-align:stretch;
+    -webkit-box-align:stretch;
+    -o-box-align:stretch;
+    box-align:stretch;
+}
+.box-pack-center{
+    -moz-box-pack:center;
+    -webkit-box-pack:center;
+    -o-box-pack:center;
+    box-pack:center;
+}
+.row{
+    overflow: hidden;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+.row [class^="col-"]{
+    float: left;
+}
+.col-12{
+    width: 100%;
+}
+.col-6{
+    width: 50%;
+}
+.col-4{
+    width: 33.333%;
+}
+.col-3{
+    width: 25%;
+}
+
 .margin-10{margin: 10px;}
 .padding-10{padding:10px;}
+
+.icon{
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+.icon_record{
+	background-image: url(../image/icon_micphone.png);
+	background-size: 180px;
+}
+
+html,body{background-color: #f3eddd;}
+.content{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 45px;
+    display:inline-block;
+    padding: 0 30px;
+}
+.banner{
+    position: relative;
+}
+.btn{
+    display: inline-block;
+    width: 100%;
+    border:none;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+.btn:hover,.btn:active{
+    opacity: .8;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: center;
+}
+.btn_sign{
+    color: #fff;
+    background-color: #ca2218;
+    font-size: 0.64rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+}
+.footer .tab{
+    font-size: 0.48rem;
+    background-color: #646d8c;
+    color: #fff;
+}
+.footer .tab.active{
+    background-color: #525c7f;
+    color: #37d900;
+}
+.footer .tab .btn {
+    background-repeat: no-repeat;
+    display: block;
+    height: 1.6rem;
+    line-height: 1.6rem;
+}
+.footer .tab .btn p{
+    height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: left;
+    padding-left: 20px; 
+}
+.footer .tab .btn .icon {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 0.64rem;
+    height: 0.64rem;
+}
+
+.tab-home .icon-yd {
+    background-image: url("../image/icon_book_gray.png");
+    background-size: 100% auto;
+    height: 1.6rem;
+    margin-left: 30px;
+    width: 0.64rem;
+}
+.tab-home.active .icon-yd{
+    background-image: url(../image/icon_book_green.png);
+}
+.tab-my .icon-my{
+    background-image: url(../image/icon_mine_gray.png);
+    background-size: 100% auto;
+    height: 1.6rem;
+    margin-left: 30px;
+    width: 0.64rem;
+}
+.tab-my.active .icon-my{
+    background-image: url(../image/icon_mine_green.png);
+}
+/*slider*/
+.slider{
+	padding-top: 40px;
+}
+.slider .hiSlider-item{
+    text-align: center;
+}
+.slider .hiSlider-item>img{
+    width: 50%;
+}
+.slider .reader{
+    font-size: 12px;
+    padding: 6px 0;
+}
+[data-dpr="2"] .reader{
+    font-size: 24px;
+    padding: 24px 0;
+}
+[data-dpr="3"] .reader {
+    font-size: 36px;
+    padding-top: 36px 0;
+}
+
+.slider .read_time {
+    font-size: 12px;
+}
+[data-dpr="2"] .read_time{
+    font-size: 24px;
+}
+[data-dpr="3"] .read_time{
+    font-size: 36px;
+}
+
+.slider .title{
+	font-size: 24px;
+	line-height: 36px;
+}
+[data-dpr="2"] .title{
+    font-size: 48px;
+    line-height: 72px;
+}
+[data-dpr="3"] .title{
+    font-size: 72px;
+    line-height: 108px
+}
+.task_info{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 1.6rem;
+	height: 1.6rem;
+	background:url(../image/bg_weekinfo.png) no-repeat center;
+	background-size: 100%;
+}
+.task_info > p {
+    font-size: 12px;
+    line-height: 0.8rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.task_info > p>span{
+	font-size: 24px;
+	color: #f45f00;
+}
+
+.action{
+	margin-top: 50px;
+	text-align: center;
+}
+.action .recorder{
+	margin-top: 50px;
+    width: 180px;
+    height: 180px;
+    background-color: #33cc00;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+
+
+/* 
+@3倍图方案
+dpr<=2 都用750下的2倍图
+dpr =3 用1125下的 3倍图
+*/
+.btn-android {
+  background-image: url("../img/@2x/android.png?v=@@version");
+  [data-dpr="3"] & {
+    background-image: url("../img/@3x/android.png?v=@@version");
+  }
+}
+
+
+
+/* 1px 边框 IOS直接用1px android需重新适配*/
+.setTopLine(@c: #C7C7C7) {
+  & {
+    position: relative;
+  }
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid @c;
+  }
+
+  [data-dpr="1"] &:before {
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+  }
+}
