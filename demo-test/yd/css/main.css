@@ -31,6 +31,27 @@
     height: inherit;
     width: 100%;
 }
+.boxflex3 {
+    -moz-box-flex:3;
+    -webkit-box-flex:3;
+    box-flex:3;
+    height: inherit;
+    width: 100%;
+}
+.boxflex4 {
+    -moz-box-flex:4;
+    -webkit-box-flex:4;
+    box-flex:4;
+    height: inherit;
+    width: 100%;
+}
+.boxflex6 {
+    -moz-box-flex:6;
+    -webkit-box-flex:6;
+    box-flex:6;
+    height: inherit;
+    width: 100%;
+}
 /*box高拉伸一致*/
 .box-align-stretch{
     -moz-box-align:stretch;
@@ -321,6 +342,8 @@ html,body{background-color: #f3eddd;}
 /*我的个人信息*/
 .content-myinfo{
     margin-top: 0.8533333rem;
+    overflow-y: scroll;
+    padding-bottom: 2.6rem;
 }
 .goback{
     margin-left: 0.3466666rem;
@@ -332,6 +355,27 @@ html,body{background-color: #f3eddd;}
     background-size: 100%;
     background-position: left center;
     margin-bottom: 0.13333333rem;
+}
+.content-myinfo .user_img{
+    position: relative;
+}
+.content-myinfo .user_img .add_img{
+    position: absolute;
+    width: 0.7466666rem;
+    height: 0.7466666rem;
+    bottom: -0.133333rem;
+    right: -0.2733333rem;
+    display: inline-block;
+    background:url(../image/add_user_img.png) no-repeat center;
+    background-size: 100%;
+    cursor: pointer;
+}
+.content-myinfo .user_img .add_img>input{
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
 .form-box{
     margin-top: 1.3333333rem;
@@ -373,12 +417,55 @@ html,body{background-color: #f3eddd;}
     border: none;
 }
 /*我的进度及评分*/
-.user .read-total{
+.content-myinfo .user{
+    position: relative;
+}
+.content-myinfo .user .medal{
+    position: absolute;
+    top: 0.1333333rem;
+    right: 1.2rem;
+    width: 0.9066666rem;
+}
+.content-myinfo .user .read-total{
     text-align: center;
     color: #535879;
     font-size: 0.3733333rem;
     padding: 0.32rem 0 0.133333rem;
+    border-bottom: 1px solid #c4c7c7;
 }
+/***svg***/
+.processingbar1,.processingbar2,.processingbar3{
+    position: relative;
+    margin-top: 1.466666rem; 
+    text-align: center;
+}
+.processingbar2{
+    margin-top: 0.32rem;
+    margin-bottom: 0.32rem;
+}
+.processingbar1 .text-info,.processingbar3 .text-info{
+    position: absolute;
+    top: 0.48rem;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    font-size: 0.32rem;
+}
+.processingbar2 .text-info{
+    position: absolute;
+    top: 0.6933333rem;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    font-size: 0.64rem;
+}
+.processingbar2 .text-info .slogn>img{
+    width: 1.28rem;
+}
+.processingbar1 .text-info .num,.processingbar3 .text-info .num{
+    font-size: 0.533333rem;
+}
+/*********svg end*********/
 .user .read-total>span{
     color: #f16500;
 }
@@ -387,6 +474,7 @@ html,body{background-color: #f3eddd;}
     color: #535879;
     line-height: 1;
     padding-bottom: 0.133333rem;
+    text-indent: 0.08rem;
 }
 .progress-list .list{
     border: 1px solid #d3d3d3;
@@ -411,7 +499,9 @@ html,body{background-color: #f3eddd;}
 }
 .histroy-list .list-item .book-cover{
     text-align: center;
-    font-size: 3.6rem;
+   /* font-size: 3.6rem;*/
+    height: 3.6rem;
+    line-height: 3.6rem;
 }
 .histroy-list .list-item .book-cover>img{
     width: 2rem;
@@ -421,7 +511,9 @@ html,body{background-color: #f3eddd;}
 }
 .histroy-list .list-item .read-status{
     text-align: right;
-    font-size: 3.6rem;
+    /* font-size: 3.6rem;*/
+    height: 3.6rem;
+    line-height: 3.6rem;
 }
 .histroy-list .list-item .time{
     line-height: 3.6rem;
@@ -431,15 +523,68 @@ html,body{background-color: #f3eddd;}
 }
 .histroy-list .list-item .read-status>img{
     width:2.4rem;
+    overflow: hidden;
+    vertical-align: middle;
 }
 .histroy-list .list-item .play,.histroy-list .list-item .display{
-    font-size: 3.6rem;
+    /* font-size: 3.6rem;*/
+    height: 3.6rem;
+    line-height: 3.6rem;
     text-align: right;
     display: block;
 }
 .histroy-list .list-item .play>img,.histroy-list .list-item .display>img{
     width: 1.2rem;
     vertical-align: middle;
+}
+.histroy-list .list-item .book-cover.unfinish{
+    opacity: 0.3;
+}
+
+
+/**我的保证金**/
+.content-deposit{
+    padding-bottom: 2.6rem;
+    overflow-y:scroll; 
+}
+.content-deposit .deposit-list{
+    margin-left: 0.533333rem;
+    margin-right: 0.24rem;
+    margin-top: 1rem;
+}
+.deposit-list .list .list-item{
+    padding: 0.32rem 0.48rem 0.32rem 0.08rem;
+    height: 1.46666666rem;
+}
+.content-deposit .deposit-icon>img{
+    height: 1.57333333rem;
+    vertical-align: bottom;
+    margin-top: 0.2rem;
+}
+.deposit-list .list .list-item.deposit-money{
+    padding: 0 0.48rem 0 0;
+    height: 2rem;
+}
+.deposit-list .list .list-item .money{
+    font-size: 0.58666666rem;
+    vertical-align: bottom;
+    line-height: 1;
+    margin-top: 1rem;
+    color: #f58d49;
+}
+
+.deposit-list .list .list-item p{
+    font-size: 0.32rem;
+    color: #525c7e;
+    line-height: 1;
+    vertical-align: bottom;
+}
+.deposit-list .list .list-item .act-time{
+    font-size: 0.24rem;
+    line-height: 1;
+    vertical-align: bottom;
+    color: #41456a;
+    margin-bottom: 0.2rem;
 }
 /* 
 @3倍图方案

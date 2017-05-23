@@ -21,15 +21,55 @@
         <div class="user">
             <div class="fz_0 textcenter">
                 <div class="user_img">
-                    <img src="image/sculpture.jpg">
+                    <img src="image/user_head.png">
                 </div>
             </div>
+            <img class="medal" src="image/medal.png" />
             <p class="textcenter user_name">段全鑫</p>
             <p class="read-total">坚持了<span>1</span>天，累计朗读了<span>76</span>分钟</p>
         </div>
 
         <div class="progress-box">
-            <p style="margin:25px;">svg 圆形 进度条</p>
+            <div class="row">
+                <div class="col-3">
+                    <div class="processingbar1">
+                        <svg width="140" height="140" viewbox="0 0 140 140">
+                            <circle id="base" cx="70" cy="70" r="60" stroke-width="10" stroke="#D1D3D7" fill="none"></circle>
+                            <circle id="progress" cx="70" cy="70" r="60" stroke-width="10" stroke="#00A5E0" fill="none" transform="matrix(0,-1,1,0,0,140)" stroke-dasharray="0 1069"></circle>
+                        </svg>
+                        <div class="text-info textcenter">
+                            <p class="font-warning num">10</p>
+                            <p>本</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="processingbar2">
+                        <svg width="278" height="278" viewbox="0 0 278 278">
+                            <circle id="base" cx="139" cy="139" r="129" stroke-width="10" stroke="#D1D3D7" fill="none"></circle>
+                            <circle id="progress" cx="139" cy="139" r="129" stroke-width="10" stroke="#00A5E0" fill="none" transform="matrix(0,-1,1,0,0,278)" stroke-dasharray="0 1069"></circle>
+                        </svg>
+                        <div class="text-info textcenter">
+                            <div class="slogn">
+                                <img src="image/slogn.png" />
+                            </div>
+                            <p class="num font-warning">66分</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="processingbar3">
+                        <svg width="140" height="140" viewbox="0 0 140 140">
+                            <circle id="base" cx="70" cy="70" r="60" stroke-width="10" stroke="#D1D3D7" fill="none"></circle>
+                            <circle id="progress" cx="70" cy="70" r="60" stroke-width="10" stroke="#00A5E0" fill="none" transform="matrix(0,-1,1,0,0,140)" stroke-dasharray="0 1069"></circle>
+                        </svg>
+                        <div class="text-info textcenter">
+                            <p class="font-warning num">3250</p>
+                            <p>字</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="progress-list">
             <p class="start-time">开始时间：2017年4月15日</p>
@@ -90,3 +130,26 @@
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+$(function(){
+    var num = 66;// 百分制
+    var r = 60; //圆半径
+    var r2 = 129;
+    var percent = num / 100, perimeter = Math.PI * 2 * r;
+    var perimeter2 = Math.PI * 2 * r2;
+    
+    $(".processingbar1 #progress")[0].setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
+    $(".processingbar2 #progress")[0].setAttribute('stroke-dasharray', perimeter2 * percent + " " + perimeter2 * (1- percent));
+    $(".processingbar3 #progress")[0].setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
+
+    var rate = parseInt($("html").css("font-size"))
+    var size = rate*1.8666666666666667;
+    $(".processingbar1>svg,.processingbar3>svg").attr({width:size,height:size});
+    //$(".processingbar1 .text-info,.processingbar3 .text-info").css({width:size});
+
+    var size2 = rate*3.7066666666666666;
+    $(".processingbar2>svg").attr({width:size2,height:size2});
+    //$(".processingbar2 .text-info").css({width:size2});
+})
+</script>

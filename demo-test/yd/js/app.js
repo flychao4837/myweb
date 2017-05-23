@@ -1,12 +1,7 @@
 'use strict'
 $(function(){
-	$('.hiSlider3').hiSlider({
-		isFlexible: true,
-		isSupportTouch: true,
-		isAuto:false,
-		isShowControls:false,
-		titleAttr: function(curIdx){
-			return $('img', this).attr('alt');
-		}
-	});
+	/*返回*/
+	$(".goback").on("click" ,function(){
+		window.history.go(-1)
+	})
 })

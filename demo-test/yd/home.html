@@ -63,5 +63,17 @@
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.hiSlider.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<!--淘宝flexble 适配方案 + grid布局-->
+<script type="text/javascript">
+$(function(){
+
+    $('.hiSlider3').hiSlider({
+        isFlexible: true,
+        isSupportTouch: true,
+        isAuto:false,
+        isShowControls:false,
+        titleAttr: function(curIdx){
+            return $('img', this).attr('alt');
+        }
+    });
+})
+</script>
