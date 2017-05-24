@@ -1,6 +1,8 @@
 /* jquery.hiSlider.css */
-.hiSlider-pages,
-.hiSlider-title{
+.hiSlider{
+    display: inline-block;
+}
+.hiSlider-pages{
     position: absolute;
     z-index: 3;
 }
@@ -34,29 +36,32 @@
 .hiSlider-title{
     bottom: 0;
     width: 100%;
-    padding: 6px 0;
-    color: #fff;
-    text-indent: 10px;
-    background: rgba(0,0,0,.6);
+    height: 0.32rem;
+    border-top: 1px solid #a2a0a4;
     z-index: 2;
-    font: 14px/2 "Microsoft YaHei", "Arial", "Tahoma"
 }
 .hiSlider-pages{
-    bottom: 10px;
-    right: 10px;
+    bottom: 0.16rem;
+    left: 50%;
     text-align: right;
+    background-color: #f3eddd;
+    padding:0 0.9333333rem;
+    margin-left: -1rem;
+
 }
 .hiSlider-pages a{
-    height: 12px;
-    width: 12px;
-    margin: 0 6px;
+    height: 0.32rem;
+    width: 0.32rem;
+    margin: 0 0.12rem;
     display: inline-block;
     overflow: hidden;
     text-indent: -100px;
     font-size: 0;
     border-radius: 50%;
-    background: #ddd;
+    background: #fff;
+    border:1px solid #f36b08;
+    border-radius: 50%;
 }
 .hiSlider-pages a.active{
-    background: #5472BF;
+    background: #f36b08;
 }

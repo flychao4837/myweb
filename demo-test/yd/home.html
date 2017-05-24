@@ -22,22 +22,37 @@
             <div class="slider">
                 <ul class="hiSlider hiSlider3">
                     <li class="hiSlider-item">
-                        <img src="image/cover_1.jpg" alt="">
-                        <p class="reader">领读者：果果</p>
+                        <div class="cover">
+                            <img src="image/cover_1.jpg" alt="">
+                            <a class="listen">
+                                <i class="status"></i>
+                            </a>
+                        </div>
+                        <p class="reader font-warning">领读者：果果</p>
                         <p class="title">郑渊洁10年未出版的经典童话</p>
-                        <p class="read_time">共<span>1254</span>字 | 平均时长5分钟</p>
+                        <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
                     </li>
                     <li class="hiSlider-item">
-                        <img src="image/cover_2.jpg" alt="">
-                        <p>领读者：默默</p>
-                        <p>郑渊洁10年未出版的经典童话</p>
-                        <p>共<span style="color:red">2254</span>字 | 平均时长12分钟</p>
+                        <div class="cover">
+                            <img src="image/cover_1.jpg" alt="">
+                            <a class="listen">
+                                <i class="status"></i>
+                            </a>
+                        </div>
+                        <p class="reader font-warning">领读者：果果</p>
+                        <p class="title">郑渊洁10年未出版的经典童话</p>
+                        <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
                     </li>
                     <li class="hiSlider-item">
-                        <img src="image/cover_3.jpg" alt="">
-                        <p>领读者：小小</p>
-                        <p>郑渊洁10年未出版的经典童话</p>
-                        <p>共<span style="color:red">3254</span>字 | 平均时长15分钟</p>
+                        <div class="cover">
+                            <img src="image/cover_1.jpg" alt="">
+                            <a class="listen">
+                                <i class="status"></i>
+                            </a>
+                        </div>
+                        <p class="reader font-warning">领读者：果果</p>
+                        <p class="title">郑渊洁10年未出版的经典童话</p>
+                        <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
                     </li>
                 </ul>
             </div>
@@ -55,13 +70,13 @@
             <a class="btn btn_sign">立即报名</a>
         </div>
     </div>
+    <audio id="globalAudio" class="hide"></audio>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.hiSlider.js"></script>
 <script type="text/javascript">
 $(function(){
-
     $('.hiSlider3').hiSlider({
         isFlexible: true,
         isSupportTouch: true,
@@ -71,5 +86,20 @@ $(function(){
             return $('img', this).attr('alt');
         }
     });
+    var d = $(".hiSlider-pages");
+    var w = d.width();
+    d.css('margin-left',-((w/2)*$("html").attr("data-dpr")+0.4*75))
+
+    /*试听*/
+    $(".slider").on("click",".listen" ,function(){
+        var audio = $("#globalAudio");
+        
+        $(".listen.active").removeClass('active')
+        $(this).addClass('active');
+        audio[0].pause();
+        var src = $(this).attr("data-src");
+        audio.attr("src",src);
+        audio[0].play();
+    })
 })
 </script>
