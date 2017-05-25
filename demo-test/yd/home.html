@@ -17,7 +17,7 @@
     <link href="css/jquery.hiSlider.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <dic class="content">
+    <div class="content">
         <div class="banner">
             <div class="slider">
                 <ul class="hiSlider hiSlider3">
@@ -46,7 +46,7 @@
                     <li class="hiSlider-item">
                         <div class="cover">
                             <img src="image/cover_1.jpg" alt="">
-                            <a class="listen">
+                            <a class="listen" data-my="image/user_head.png">
                                 <i class="status"></i>
                             </a>
                         </div>
@@ -60,6 +60,7 @@
                 <p>第<span>10</span>本</p>
                 <p><span>2周</span></p>
             </div>
+            <a class="task-tips"></a>
         </div>
         <div class="action">
             <a class="recorder">
@@ -87,7 +88,32 @@
             </div>
         </div>
     </div>
+
     <audio id="globalAudio" class="hide"></audio>
+    <!--周任务提示-->
+    <div class="layout layout-task-tip-box">
+        <div class="layout-task-tip">
+            <div class="tip-msg">
+                <p class="title font-warning">本周任务</p>
+                <p>一周我们为您和孩子准备了5本书</p>
+                <p>完成3本书阅读即可，关闭提示闯显示当前图书阅读要求<p>
+            </div>
+            <a class="close close-task-tip"></a>
+        </div>
+
+    </div>
+    <!--周任务进度-->
+    <div class="layout layout-task-progress-box hide">
+        <div class="layout-progress-tip">
+            <div class="tip-msg">
+                <p class="title font-warning">本周任务</p>
+                <p>一周我们为您和孩子准备了5本书</p>
+                <p>完成3本书阅读即可，关闭提示闯显示当前图书阅读要求<p>
+            </div>
+            <a class="close close-task-progress"></a>
+        </div>
+
+    </div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
@@ -117,6 +143,12 @@ $(function(){
         var src = $(this).attr("data-src");
         audio.attr("src",src);
         audio[0].play();
+    })
+
+    /*关闭周提示*/
+    $(".close-task-tip").on("click" ,function(){
+        $(".layout-task-tip-box").hide();
+        $(".layout-task-progress-box").show()
     })
 })
 </script>

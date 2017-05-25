@@ -220,6 +220,9 @@ html,body{background-color: #f3eddd;}
     border-radius: 50%;
     background: url(../image/default_head.png) no-repeat center/100%; 
 }
+.slider .hiSlider-item .cover .listen.my{
+    border-color: #80d958;
+}
 .slider .hiSlider-item .cover .listen.active{
     opacity: 0.7;
 }
@@ -230,6 +233,15 @@ html,body{background-color: #f3eddd;}
     background: url(../image/st_pause.png) no-repeat center/100%;
     border-radius: 50%;
     margin-top: 0.35rem;
+}
+.task-tips{
+    position: absolute;
+    top: 5.2rem;
+    right: 0.32rem;
+    display: inline-block;
+    width: 0.5333333rem;
+    height: 0.58666666rem;
+    background: url(../image/icon_download.png) no-repeat center/100%;
 }
 .slider .reader{
     font-size: 0.32rem;
@@ -727,6 +739,48 @@ html,body{background-color: #f3eddd;}
     color: #fff;
     background-color: #33cc00;
 }
+
+
+/*弹层、遮罩*/
+.layout{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index:1000;
+    background-color: rgba(155,155,170,.42);
+    top: 0;
+    left: 0;
+}
+.layout-task-tip{
+    width: 8.8rem;
+    height: auto;
+    top: 3rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -4.4rem;
+    text-align: center;
+}
+.layout-task-tip .tip-msg{
+    width: 100%;
+    height: 5.3333333rem;
+    border: 1px solid #6d6d72;
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 3px 2px #999,-1px -1px 3px 2px #999;
+    text-align: left;
+    padding-top: 0.7466666rem;
+    padding-left: 0.5866666rem;
+    padding-right: 0.5855555rem;
+    font-size: 0.3466666rem;
+    line-height: 150%;
+}
+.layout-task-tip  .close{
+    display: inline-block;
+    width: 1.12rem;
+    height: 1.12rem;
+    background: url(../image/layer_close.png) no-repeat center/100%;
+    margin-top: 0.48rem;
+}
+.layout-progress-tip
 /* 
 @3倍图方案
 dpr<=2 都用750下的2倍图
@@ -738,8 +792,6 @@ dpr =3 用1125下的 3倍图
     background-image: url("../img/@3x/android.png?v=@@version");
   }
 }
-
-
 
 /* 1px 边框 IOS直接用1px android需重新适配*/
 .setTopLine(@c: #C7C7C7) {
