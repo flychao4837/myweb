@@ -46,7 +46,7 @@
 	<h1>jquery.hiSlider.js 插件使用说明及示例</h1>
 	<h2>example1: 默认设置</h2>
 	
-	<ul class="hiSlider hiSlider1">
+	<!-- <ul class="hiSlider hiSlider1">
 		<li data-title="11111" class="hiSlider-item"><img src="images/1.jpg" alt="11111"></li>
 		<li data-title="22222" class="hiSlider-item"><img src="images/2.jpg" alt="22222"></li>
 		<li data-title="33333" class="hiSlider-item"><img src="images/3.jpg" alt="33333"></li>
@@ -61,7 +61,7 @@
 		<li class="hiSlider-item"><img src="images/3.jpg" alt="33333"></li>
 		<li class="hiSlider-item"><img src="images/4.jpg" alt="44444"></li>
 		<li class="hiSlider-item"><img src="images/5.jpg" alt="55555"></li>
-	</ul>
+	</ul> -->
 
 	<h2>example3: 支持触摸事件 + 弹性布局 (请在移动端测试)</h2>
 	<ul class="hiSlider hiSlider3">
@@ -73,41 +73,45 @@
 	</ul>
 
 	<h2>example4: 改变方向</h2>
-	<ul class="hiSlider hiSlider4">
+	<!-- <ul class="hiSlider hiSlider4">
 		<li data-title="11111" class="hiSlider-item"><img src="images/1.jpg" alt="11111"></li>
 		<li data-title="22222" class="hiSlider-item"><img src="images/2.jpg" alt="22222"></li>
 		<li data-title="33333" class="hiSlider-item"><img src="images/3.jpg" alt="33333"></li>
 		<li data-title="44444" class="hiSlider-item"><img src="images/4.jpg" alt="44444"></li>
 		<li data-title="55555" class="hiSlider-item"><img src="images/5.jpg" alt="55555"></li>
-	</ul>
+	</ul> -->
 	
 </div>
 
 <script src="js/jquery.1.9.1.js"></script>
 <script src="js/jquery.hiSlider.min.js"></script>
 <script>
-	$('.hiSlider1').hiSlider();
-	$('.hiSlider2').hiSlider({
-		isFlexible: true,
-		mode: 'fade',
-		isSupportTouch: false,
-		isShowTitle: false,
-		isShowPage: false,
-		titleAttr: function(curIdx){
-			return $('img', this).attr('alt');
-		}
-	});
+	// $('.hiSlider1').hiSlider();
+	// $('.hiSlider2').hiSlider({
+	// 	isFlexible: true,
+	// 	mode: 'fade',
+	// 	isSupportTouch: false,
+	// 	isShowTitle: false,
+	// 	isShowPage: false,
+	// 	titleAttr: function(curIdx){
+	// 		return $('img', this).attr('alt');
+	// 	}
+	// });
+	// $('.hiSlider4').hiSlider({
+	// 	startSlide: 2,
+	// 	direction: 'top'
+	// });
 	$('.hiSlider3').hiSlider({
 		isFlexible: true,
 		isSupportTouch: true,
 		titleAttr: function(curIdx){
 			return $('img', this).attr('alt');
+		},
+		onSwipeEnd:function(curIdx){
+			console.log(curIdx)
 		}
 	});
-	$('.hiSlider4').hiSlider({
-		startSlide: 2,
-		direction: 'top'
-	});
+
 </script>
 
 </body>
