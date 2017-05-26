@@ -739,8 +739,130 @@ html,body{background-color: #f3eddd;}
     color: #fff;
     background-color: #33cc00;
 }
-
-
+/*书录音*/
+  
+.home-device {
+    box-shadow: 0 0 5px #000;
+    height: 10.48rem;
+    margin: 0 auto;
+    position: relative;
+    width: 10rem;
+    text-align: center;
+}
+.swiper-main {
+    height: 10.48rem;
+    position: relative;
+    width: 10rem;
+}
+.swiper1, .swiper1 .swiper-slide ,.swiper1, .swiper1 .swiper-slide>img{
+    height: 10.48rem;
+    width: 10rem;
+    overflow: hidden;
+}
+.home-device .arrow-left {
+    background: rgba(0, 0, 0, 0) url("../image/prev_gray.png") no-repeat  left top/100%;
+    height: 1.28rem;
+    width: 1.28rem;
+    z-index: 100;
+    display: inline-block;
+    margin-top: 0.8rem;
+    margin-right: 0.72rem;
+    margin-bottom:0.36rem;
+}
+.home-device .arrow-left.active{
+    background-image: url("../image/prev_active.png");
+}
+.home-device .arrow-right {
+    background: rgba(0, 0, 0, 0) url("../image/next_gray.png") no-repeat left bottom/100%;
+    height: 1.28rem;
+    width: 1.28rem;
+    z-index: 100;
+    display: inline-block;
+    margin-top:0.8rem; 
+    margin-bottom:0.36rem;
+}
+/*320*480下高度不够*/
+@media screen and (max-width:321px){
+    [data-dpr="1"] .home-device .arrow-left,.home-device .arrow-right {
+        margin-top: 0.4rem;
+        margin-bottom:0.2rem; 
+    }
+}
+.home-device .arrow-right.active{
+    background-image: url("../image/next_active.png");
+}
+.pagination1 {
+    text-align: center;
+}
+.pagination1 .swiper-pagination-switch {
+    background: #999 none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px #555 inset;
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    margin: 0 3px;
+    width: 10px;
+}
+.pagination1 .swiper-active-switch {
+    background: #fff none repeat scroll 0 0;
+}
+.close-page{
+    width: 0.7733333rem;
+    height: 0.77333333rem;
+    position: absolute;
+    display: inline-block;
+    top: 0.9333333rem;
+    right: 0.8533333rem;
+    z-index: 999;
+    background: url(../image/layer_close.png) no-repeat center/100%;
+}
+.pagination1{
+    background: url(../image/bg-line.png) repeat-x center/100% 1px;
+    background-color: transparent;
+    margin:0 0.4rem;
+    position: relative;
+}
+.pagination1 .recorder-box{
+    background-color: #f3eddd;
+    padding:0 0.4rem;
+    display: inline-block;
+}
+.pagination1 .recorder{
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: #33cc00;
+    border-radius: 50%;
+    display: inline-block;
+}
+.pagination1 .recorder-box .timer{
+    display: inline-block;
+    position: absolute;
+    top: 0.586666rem;
+    left: 0.4rem;
+    font-size: 0.4rem;
+    font-weight: 100;
+    color: #2e3a69;
+}
+.pagination1 .recorder-box .counter{
+    padding:0 0.4rem;
+    display: inline-block;
+    background-color: #f3eddd;
+    position: absolute;
+    top: 50%;
+    right: 0.4533333rem;
+    margin-top: -0.266666rem;
+}
+.pagination1 .recorder-box .counter>span{
+    color: #fff;
+    display: block;
+    height: 0.53333333rem;
+    width: 1.1733333rem;
+    border-radius: 0.266666rem;
+    background-color: #a1a4ad;
+    text-align:center;
+    line-height: 0.53333333rem; 
+}
 /*弹层、遮罩*/
 .layout{
     position: fixed;
@@ -780,7 +902,10 @@ html,body{background-color: #f3eddd;}
     background: url(../image/layer_close.png) no-repeat center/100%;
     margin-top: 0.48rem;
 }
-.layout-progress-tip
+/*本周进度*/
+.layout-progress-tip{
+
+}
 /* 
 @3倍图方案
 dpr<=2 都用750下的2倍图
