@@ -109,9 +109,9 @@ example:
                     var dir = self.swipeDirection(touch.x1, touch.x2, touch.y1, touch.y2);
                     opt['onSwipe'+dir].call(this, touch);
                     self.moveTo(dir);
-                    opt.onSwipeEnd.call(this, touch);
+                    opt.onSwipeEnd.call(this, this.curIndex,touch);
                 }else{
-                    opt.onSwipeCancel.call(this, touch);
+                    opt.onSwipeCancel.call(this, this.curIndex,touch);
                 }
                 touch = {};
             });

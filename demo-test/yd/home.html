@@ -14,11 +14,15 @@
 
     <link href="css/reset.css" rel="stylesheet" type="text/css"/>
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
-    <link href="css/jquery.hiSlider.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="css/jquery.hiSlider.css" rel="stylesheet" type="text/css"/> -->
+    <link href="css/swiper.3.4.2.css" rel="stylesheet" type="text/css"/>
+    <link href="css/switchery.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="content">
+    <div class="content content-home">
         <div class="banner">
+            <!--             
             <div class="slider">
                 <ul class="hiSlider hiSlider3">
                     <li class="hiSlider-item">
@@ -55,7 +59,60 @@
                         <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
                     </li>
                 </ul>
+            </div> 
+            -->
+            <!--幻灯改版-->
+            <div class="home-device">
+                <div class="swiper-main">
+                    <div class="swiper-container swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="cover">
+                                    <img alt="" src="image/cover_1.jpg">
+                                    <a class="listen my flip out">
+                                        <img style="width: inherit; border-radius: 50%; border: 0.133333rem solid rgb(255, 51, 204);" src="image/user_head.png">
+                                        <i class="status"></i>
+                                    </a>
+                                    <a class="listen default flip "><img src="image/default_head.png" style="width: inherit; border-radius: 50%; border: 0.133333rem solid rgb(255, 51, 204);">
+                                        <i class="status"></i>
+                                    </a>
+
+                                    
+                                </div>
+                                <p class="reader font-warning"></p>
+                                <p class="title">郑渊洁10年未出版的经典童话</p>
+                                <p class="read_time">共<span class="font-warning blod">2254</span>字 | 平均时长<span class="font-warning blod">12</span>分钟</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cover">
+                                    <img src="image/cover_1.jpg" alt="">
+                                    <a class="listen">
+                                        <i class="status"></i>
+                                    </a>
+                                </div>
+                                <p class="reader font-warning"></p>
+                                <p class="title">郑渊洁10年未出版的经典童话</p>
+                                <p class="read_time">共<span class="font-warning blod">2254</span>字 | 平均时长<span class="font-warning blod">12</span>分钟</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cover">
+                                    <img src="image/cover_1.jpg" alt="">
+                                    <a class="listen">
+                                        <i class="status"></i>
+                                    </a>
+                                </div>
+                                <p class="reader font-warning"></p>
+                                <p class="title">郑渊洁10年未出版的经典童话</p>
+                                <p class="read_time">共<span class="font-warning blod">2254</span>字 | 平均时长<span class="font-warning blod">12</span>分钟</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination pagination-box">
+                    <div class="pagination-home"></div>
+                </div>
             </div>
+            <!--幻灯改版-->
             <div class="task_info">
                 <p>第<span>10</span>本</p>
                 <p><span>2周</span></p>
@@ -66,6 +123,12 @@
             <a class="recorder">
                 <i class="icon icon_record"></i>
             </a>
+            <div class="switch-box">
+                <!-- <input type="checkbox" class="js-switch js-check-change" checked="false" data-switchery="false"/> -->
+                <span class="switchery switchery-default off" >
+                    <small></small>
+                </span>
+            </div>
         </div>
         <div class="footer">
             <div class="row">
@@ -91,7 +154,7 @@
 
     <audio id="globalAudio" class="hide"></audio>
     <!--周任务提示-->
-    <div class="layout layout-task-tip-box">
+    <div class="layout layout-task-tip-box hide">
         <div class="layout-task-tip">
             <div class="tip-msg">
                 <p class="title font-warning">本周任务</p>
@@ -106,9 +169,31 @@
     <div class="layout layout-task-progress-box hide">
         <div class="layout-progress-tip">
             <div class="tip-msg">
-                <p class="title font-warning">本周任务</p>
-                <p>一周我们为您和孩子准备了5本书</p>
-                <p>完成3本书阅读即可，关闭提示闯显示当前图书阅读要求<p>
+                <div class="user-icon">
+                    <div class="user_img">
+                        <img src="image/user_head.png">
+                    </div>
+                    <div class="ribbon">
+                        <div class="icon-ribbon">
+                            <p class="user-name">段全鑫</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slogn">
+                    <img src="image/slogn.png"/>
+                </div>
+                <p class="title">计划进度</p>
+                <div class="progress-box">
+                    <div class="progress-bar">
+                        <span class="progress-cover"></span>
+                    </div>
+                </div>
+                <p class="read-info">坚持了<span class="font-warning days">1</span>天&nbsp;&nbsp;累计阅读了<span class="font-warning time">76</span>分钟</p>
+                <div class="share-box">
+                    <a class="btn-share">
+                        <span>立即分享</span>
+                    </a>
+                </div>
             </div>
             <a class="close close-task-progress"></a>
         </div>
@@ -117,21 +202,36 @@
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.hiSlider.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.hiSlider.js"></script> -->
+<script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
+<script type="text/javascript" src="js/switchery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-    $('.hiSlider3').hiSlider({
-        isFlexible: true,
-        isSupportTouch: true,
-        isAuto:false,
-        isShowControls:false,
-        titleAttr: function(curIdx){
-            return $('img', this).attr('alt');
-        }
+//$(function(){
+    // $('.hiSlider3').hiSlider({
+    //     isFlexible: true,
+    //     isSupportTouch: true,
+    //     isAuto:false,
+    //     isShowControls:false,
+    //     titleAttr: function(curIdx){
+    //         return $('img', this).attr('alt');
+    //     },
+    //     onSwipeEnd:function(curIdx){
+    //         console.log(curIdx)
+    //     }
+    // });
+    // var d = $(".hiSlider-pages");
+    // var w = d.width();
+    // d.css('margin-left',-((w/2)*$("html").attr("data-dpr")+0.4*75))
+
+    //Main Swiper
+    var swiper = new Swiper('.swiper', {
+        pagination : '.pagination-home', //分页容器
+        loop:false,                  //无缝循环滚动
+        grabCursor: true,            //滑动时鼠标样式     
+        onImagesReady: function(){
+            console.log("onImagesReady");
+        }  
     });
-    var d = $(".hiSlider-pages");
-    var w = d.width();
-    d.css('margin-left',-((w/2)*$("html").attr("data-dpr")+0.4*75))
 
     /*试听*/
     $(".slider").on("click",".listen" ,function(){
@@ -145,10 +245,59 @@ $(function(){
         audio[0].play();
     })
 
+
+    $(".task-tips").on("click" ,function(){
+        $(".layout-task-tip-box").show();
+    })
     /*关闭周提示*/
     $(".close-task-tip").on("click" ,function(){
         $(".layout-task-tip-box").hide();
         $(".layout-task-progress-box").show()
     })
-})
+
+    /*关闭分享提示*/
+    $(".close-task-progress").on("click" ,function(){
+        $(".layout-task-progress-box").hide();
+    });
+
+    $(".layout-task-progress-box .btn-share").on("click" ,function(){
+        alert("微信分享");
+    })
+
+    // var switchdefaults = {
+    //     color          : '#33cc00',
+    //     secondaryColor : '#f69b58',
+    //     className      : 'switchery',
+    //     disabled       : false,
+    //     disabledOpacity: 0.5,
+    //     speed          : '0.5s',
+    // }
+    // var switchery = new Switchery($(".js-switch")[0], switchdefaults);
+    // $(".js-check-change").on("change" ,function(){
+    //     var that = $(this);
+    //     var status = that.prop("checked");
+    //     console.log(status);
+    // })
+    //switchery切换 判断是否有个人录音，来决定是否切换、翻转
+    $(".switchery").on("click" ,function(){
+        var that = $(this);
+        var curIdx = swiper.realIndex;
+        var box = $($(".content-home .home-device .swiper-slide")[curIdx]);
+        var eleFront = box.find(".listen.default");
+        var eleBack = box.find(".listen.my");
+        if(that.hasClass('off')){
+            eleFront.addClass("out").removeClass("in");
+            setTimeout(function() {
+                eleBack.addClass("in").removeClass("out");
+            }, 225);
+        }else{
+            eleBack.addClass("out").removeClass("in");
+            setTimeout(function() {
+                eleFront.addClass("in").removeClass("out");
+            }, 225);
+        }
+        that.toggleClass('off');
+        that.toggleClass('on');
+    })
+//})
 </script>

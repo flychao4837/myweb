@@ -14,8 +14,9 @@
 .textcenter{text-align: center;}
 .textright{text-align: right;}
 .fz_0{font-size: 0;}
+.blod{font-weight: 600; padding: 0 2px;}
 .font-warning{
-    color: #f58d49;
+    color: #f58d49 !important;
 }
 .box {
     display:-moz-box;
@@ -242,6 +243,7 @@ html,body{background-color: #f3eddd;}
     width: 0.5333333rem;
     height: 0.58666666rem;
     background: url(../image/icon_download.png) no-repeat center/100%;
+    z-index: 1000;
 }
 .slider .reader{
     font-size: 0.32rem;
@@ -285,6 +287,111 @@ html,body{background-color: #f3eddd;}
     font-size: 72px;
     line-height: 108px
 }*/
+
+
+/**********************/
+.content-home .home-device {
+    box-shadow: none;
+    height: 9.0666666rem;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+    text-align: center;
+}
+.content-home .swiper-main {
+    height: 9.0666666rem;
+    position: relative;
+    width: 100%;
+    padding-top: 0.6rem;
+}
+.content-home .swiper .swiper-slide .cover>img{
+    width: 50%;
+}
+.home-device .swiper-slide{
+    text-align: center;
+}
+.home-device .swiper-slide .cover{
+    position: relative;
+    padding-bottom: 0.48rem;
+}
+.home-device .swiper-slide .cover>img{
+    width: 50%;
+    height: 6.08rem;
+}
+.home-device .swiper-slide .cover .listen{
+    position: absolute;
+    bottom:0;
+    left: 50%;
+    display: inline-block;
+    width: 1.86666666rem;
+    height: 1.86666666rem;
+    margin-left: -0.93333333rem;
+    border:0.13333333rem solid #f39a51;
+    border-radius: 50%;
+    background: url(../image/default_head.png) no-repeat center/100%; 
+}
+.home-device .swiper-slide .cover .listen.my{
+    border-color: #80d958;
+}
+.home-device .swiper-slide .cover .listen.active{
+    opacity: 0.7;
+}
+.home-device .swiper-slide .cover .listen.active .status{
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url(../image/st_pause.png) no-repeat center/100%;
+    border-radius: 50%;
+    margin-top: 0.35rem;
+}
+.home-device .reader{
+    font-size: 0.32rem;
+    padding: 0.24rem 0 0.32rem;
+    line-height: 1;
+    vertical-align: baseline;   
+}
+.home-device .read_time {
+    font-size: 0.32rem;
+    line-height: 1;
+    vertical-align: baseline;
+    padding-bottom: 0.48rem;
+    color: #5a6387;
+}
+.home-device .title{
+    font-size: 0.64rem;
+    line-height: 1;
+    vertical-align: baseline;
+    padding-bottom: 0.2666666rem;
+    color: #485879;
+    font-weight: 600;
+}
+.content-home .pagination.pagination-box{
+    height: 0.48rem;
+    line-height: 0.48rem;
+    background: url(../image/bg-line.png) repeat-x center/100% 1px;
+    background-color: transparent;
+}
+.content-home .pagination.pagination-box .pagination-home{
+    display: inline-block;
+    padding:0 0.08rem;
+    background-color: #f3eddd;
+}
+.content-home .pagination.pagination-box .pagination-home .swiper-pagination-bullet {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 100%;
+    display: inline-block;
+    height: 0.26666666rem;
+    opacity: 1;
+    width: 0.26666666rem;
+    border: 1px solid #f36b0b;
+    margin-left: 0.13333333rem;
+    margin-right: 0.133333333rem;
+}
+.content-home .pagination.pagination-box .pagination-home .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background-color: #f36b0b;
+}
+/**********************/
+
 .task_info{
 	position: absolute;
 	top: 0;
@@ -308,6 +415,7 @@ html,body{background-color: #f3eddd;}
 .action{
 	margin-top: 0.666666666rem;
 	text-align: center;
+    position: relative;
 }
 .action .recorder{
     width: 2.4rem;
@@ -315,6 +423,73 @@ html,body{background-color: #f3eddd;}
     background-color: #33cc00;
     border-radius: 50%;
     display: inline-block;
+}
+.action .switch-box{
+    position: absolute;
+    top: 0.906666666rem;
+    right: 0.26666666rem;
+}
+.action .switch-box .switchery{
+    height: 0.4rem;
+    width: 0.74666666rem;
+}
+.action .switch-box .switchery > small{
+    width: 0.2226666rem;
+    height: 0.226666rem;
+    top: 0.08rem;
+}
+/*关闭状态*/
+.action .switch-box .switchery.off{
+    background-color: #f69b58;
+    border-color: #f69b58;
+    box-shadow: 0 0 0 0 #f69b58 inset;
+    -webkit-transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s;
+    -moz-transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s;
+    transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s;
+}
+.action .switch-box .switchery.off>small{
+    left: 0.08rem;
+    -webkit-transition: background-color 0.5s ease 0s, left 0.25s ease 0s;
+    -moztransition: background-color 0.5s ease 0s, left 0.25s ease 0s;
+    transition: background-color 0.5s ease 0s, left 0.25s ease 0s;
+}
+/*打开状态*/
+.action .switch-box .switchery.on{
+    background-color: #33cc00;
+    border-color: #33cc00;
+    box-shadow: 0 0 0 7.5px #33cc00 inset;
+    -webkit-transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s, background-color 1.5s ease 0s;
+    -moz-transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s, background-color 1.5s ease 0s;
+    transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s, background-color 1.5s ease 0s;
+}
+.action .switch-box .switchery.on>small{
+    background-color: #fff;
+    left: 0.46rem;
+    -webkit-transition: background-color 0.5s ease 0s, left 0.25s ease 0s;
+    -moz-transition: background-color 0.5s ease 0s, left 0.25s ease 0s;
+    transition: background-color 0.5s ease 0s, left 0.25s ease 0s;
+}
+/*头像翻转*/
+.in {
+    animation-duration: 350ms;
+    animation-timing-function: ease-out;
+}
+.out {
+    animation-duration: 225ms;
+    animation-timing-function: ease-in;
+}
+.flip {
+    backface-visibility: hidden;
+    transform: translateX(0px);
+}
+.flip.in {
+    animation-duration: 225ms;
+    animation-name: flipintoright;
+}
+.flip.out {
+    animation-duration: 175ms;
+    animation-name: flipouttoleft;
+    transform: rotateY(-90deg) scale(0.9);
 }
 
 /*我的*/
@@ -904,7 +1079,105 @@ html,body{background-color: #f3eddd;}
 }
 /*本周进度*/
 .layout-progress-tip{
+    width: 8.8rem;
+    height: auto;
+    top: 3rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -4.4rem;
+    text-align: center;
+}
+.layout-progress-tip .tip-msg{
+    width: 100%;
+    height: 8.6666666rem;
+    border: 1px solid #6d6d72;
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 3px 2px #999,-1px -1px 3px 2px #999;
+    text-align: center;
+    font-size: 0.32rem;
+    line-height: 120%;
+}
+.layout-progress-tip  .close{
+    display: inline-block;
+    width: 1.12rem;
+    height: 1.12rem;
+    background: url(../image/layer_close.png) no-repeat center/100%;
+    margin-top: 0.48rem;
+}
+.layout-progress-tip .user-icon{
+    position: relative;
+    text-align: center;
+}
+.layout-progress-tip .user_img{
+    top: -0.7466666rem;
+}
+.layout-progress-tip .ribbon{
+    bottom: 0.32rem;
+    left: 50%;
+    margin-left: -1.8rem;
+    position: absolute;
+}
+.layout-progress-tip .ribbon .icon-ribbon{
+    display: inline-block;
+    width: 3.6rem;
+    height: 0.96rem;
+    background: url(../image/icon_ribbon.png) no-repeat center/100%;
+}
+.layout-progress-tip .ribbon .icon-ribbon .user-name{
+    color: #fff;
+    font-size: 0.32rem;
+    padding-top: 0.12rem;
+}
+.layout-progress-tip .tip-msg .slogn>img{
+    width: 1.9466666rem;
+    margin-top: 0.46666666rem;
+}
+.layout-progress-tip .tip-msg .title{
+    margin-top: 0.48rem;
+    font-size: 0.64rem;
+    text-align: center;
+    color: #303b60;
+    line-height: 1;
+}
+.layout-progress-tip .tip-msg .progress-box{
+    margin:0.2rem 0.3333333rem 0.26666666rem;
+}
+.layout-progress-tip .tip-msg .progress-bar{
+    display: inline-block;
+    width: 100%;
+    height: 0.48rem;
+    border:1px solid #81819b;
+    border-radius: 0.08rem;
+    background-color: #f2f2f2;
+    text-align: left;
+    overflow: hidden;
+}
+.layout-progress-tip .tip-msg .progress-cover{
+    height: 0.48rem;
+    border: 1px solid transparent;
+    background-color: #f27920;
+    display: inline-block;
+    width: 10%;
+}
+.layout-progress-tip .tip-msg .read-info{
+    font-size: 0.32rem;
+    line-height: 1;
+    margin-bottom: 0.613333333rem;
+    color: #4f587e;
+}
+.share-box{
+    border-top: 1px solid #a4a4a4;
+    padding-top: 0.453333333rem;
+}
 
+.btn-share>span{
+    font-size: 0.4266666rem;
+    color: #218f15;
+    padding-left: 1.06666666rem;
+    vertical-align: middle;
+    height: 0.693333333rem;
+    line-height: 0.693333333rem;
+    background: url(../image/icon_share.png) no-repeat left center/0.6rem 0.6rem;
 }
 /* 
 @3倍图方案

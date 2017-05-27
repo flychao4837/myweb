@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/flexible.js"></script>
 
 <link href="css/reset.css" rel="stylesheet" type="text/css"/>
-<link href="css/swiper.css" rel="stylesheet" type="text/css"/>
+<link href="css/swiper.3.4.2.css" rel="stylesheet" type="text/css"/>
 <link href="css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -22,12 +22,7 @@
             <div class="swiper-main">
                 <div class="swiper-container swiper1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="image/1.jpg">
-                            <p class="reader font-warning">领读者：果果</p>
-                            <p class="title">郑渊洁10年未出版的经典童话</p>
-                            <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
-                        </div>
+                        <div class="swiper-slide"><img src="image/1.jpg"></div>
                         <div class="swiper-slide"><img src="image/2.jpg"></div>
                         <div class="swiper-slide"><img src="image/3.jpg"></div>
                         <div class="swiper-slide"><img src="image/4.jpg"></div>
@@ -56,14 +51,17 @@
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/swiper-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
 <script type="text/javascript">
 //$(function(){
     //Main Swiper
     var swiper = new Swiper('.swiper1', {
         //pagination : '.pagination1', //分页容器
         loop:false,                  //无缝循环滚动
-        grabCursor: true,            //滑动时鼠标样式       
+        grabCursor: true,            //滑动时鼠标样式     
+        onImagesReady: function(){
+            console.log("onImagesReady");
+        }  
     });
     $(".pagination1 .timer").html("00:00:00");
     var itemlen = $(".swiper-slide").length;
@@ -75,7 +73,7 @@
         var that = $(this);
         e.preventDefault();
         
-        swiper.swipePrev();
+        swiper.slidePrev();
         $(".pagination1 .counter>span").html((+swiper.realIndex+1)+"/"+len);
         $('.arrow-right').addClass('active')
         if(idx==0|| idx==1){
@@ -89,7 +87,7 @@
         var len = swiper.slides.length;
         var that = $(this);
         e.preventDefault();
-        swiper.swipeNext();
+        swiper.slideNext();
         $(".pagination1 .counter>span").html((+swiper.realIndex+1)+"/"+len);
         $('.arrow-left').addClass('active');
         if(idx==len-1|| idx==len-2){
