@@ -137,6 +137,7 @@ html,body{background-color: #f3eddd;}
     height: 1.6rem;
     line-height: 1.6rem;
     text-align: center;
+    z-index: 1002;
 }
 .footer-margin{
     margin-bottom: 2.6rem;
@@ -508,6 +509,7 @@ html,body{background-color: #f3eddd;}
 }
 .layout.layout-record{
     background-color: #f2f2f2;
+    z-index: 9999;
 }
 /*我的*/
 .content-my{
@@ -1016,7 +1018,7 @@ html,body{background-color: #f3eddd;}
     position: relative;
 }
 .pagination1 .recorder-box{
-    background-color: #f3eddd;
+    background-color: #f2f2f2;
     padding:0 0.4rem;
     display: inline-block;
 }
@@ -1196,6 +1198,28 @@ html,body{background-color: #f3eddd;}
     line-height: 0.693333333rem;
     background: url(../image/icon_share.png) no-repeat left center/0.6rem 0.6rem;
 }
+
+/*浮动滑动层*/
+.layout-userinfo ,.layout-progress,.layout-history,.layout-deposit{
+    background-color: #f2f2f2;
+    padding-bottom: 1.6rem;
+    -webkit-transform:translateX(100%);
+    -moz-transform:translateX(100%);
+    transform:translateX(100%);
+
+
+    -moz-transition: transform 0.82s;
+    -webkit-transition: transform 0.82s;
+    transition: transform 0.82s;
+}
+.layout-userinfo.on,.layout-progress.on,.layout-history.on,.layout-deposit.on{
+    -webkit-transform:translateX(0);
+    -moz-transform:translateX(0);
+    transform:translateX(0);
+}
+.layout .content>div:last-child{
+    margin-bottom: 1.6rem;
+}     
 /* 
 @3倍图方案
 dpr<=2 都用750下的2倍图

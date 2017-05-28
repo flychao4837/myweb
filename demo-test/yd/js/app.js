@@ -2,7 +2,7 @@
 //$(function(){
 	/*返回*/
 	$(".goback").on("click" ,function(){
-		window.history.go(-1)
+		$(this).parents(".layout").removeClass('on');
 	})
 	/*首页JS*/
     var globalAudio = $("#globalAudio");
@@ -16,6 +16,7 @@
         	$(".tab.active").removeClass('active');
         	that.addClass('active');
             globalAudio[0].pause();
+            $(".layout.on").removeClass('on');
             $(".content-home").show();
             $(".content-my").hide();
             //TODO 我的滑动页初始位置,
@@ -177,4 +178,65 @@
         globalAudio[0].pause();
         //TOTO 清理录音，微信录音处理，文件本地存储等操作
     })
+
+    /*评分及进度*/
+    function initProgress(a,b,c){
+    	var num = 66;// 百分制
+	    var r = 60; //圆半径
+	    var r2 = 129;
+	    var percent = num / 100, perimeter = Math.PI * 2 * r;
+	    var perimeter2 = Math.PI * 2 * r2;
+	    
+	    $(".processingbar1 #progress")[0].setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
+	    $(".processingbar2 #progress")[0].setAttribute('stroke-dasharray', perimeter2 * percent + " " + perimeter2 * (1- percent));
+	    $(".processingbar3 #progress")[0].setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
+
+	    var rate = parseInt($("html").css("font-size"))
+	    var size = rate*1.8666666666666667;
+	    $(".processingbar1>svg,.processingbar3>svg").attr({width:size,height:size});
+	    //$(".processingbar1 .text-info,.processingbar3 .text-info").css({width:size});
+
+	    var size2 = rate*3.7066666666666666;
+	    $(".processingbar2>svg").attr({width:size2,height:size2});
+	    //$(".processingbar2 .text-info").css({width:size2});
+    }
+    initProgress();
+    /**我的-子页面滑动**/
+    $(".content-my").on("click",".userinfo",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-userinfo");
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    $(".content-my").on("click",".progress",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-progress");
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    $(".content-my").on("click",".history",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-history");
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    $(".content-my").on("click",".deposit",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-deposit");
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    
 //})
