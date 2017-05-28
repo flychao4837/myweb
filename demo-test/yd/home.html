@@ -14,79 +14,29 @@
 
     <link href="css/reset.css" rel="stylesheet" type="text/css"/>
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
-    <!-- <link href="css/jquery.hiSlider.css" rel="stylesheet" type="text/css"/> -->
     <link href="css/swiper.3.4.2.css" rel="stylesheet" type="text/css"/>
     <link href="css/switchery.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/uiDialog.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <!--朗读者计划页面-->
     <div class="content content-home">
         <div class="banner">
-            <!--             
-            <div class="slider">
-                <ul class="hiSlider hiSlider3">
-                    <li class="hiSlider-item">
-                        <div class="cover">
-                            <img src="image/cover_1.jpg" alt="">
-                            <a class="listen">
-                                <i class="status"></i>
-                            </a>
-                        </div>
-                        <p class="reader font-warning">领读者：果果</p>
-                        <p class="title">郑渊洁10年未出版的经典童话</p>
-                        <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
-                    </li>
-                    <li class="hiSlider-item">
-                        <div class="cover">
-                            <img src="image/cover_1.jpg" alt="">
-                            <a class="listen">
-                                <i class="status"></i>
-                            </a>
-                        </div>
-                        <p class="reader font-warning">领读者：果果</p>
-                        <p class="title">郑渊洁10年未出版的经典童话</p>
-                        <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
-                    </li>
-                    <li class="hiSlider-item">
-                        <div class="cover">
-                            <img src="image/cover_1.jpg" alt="">
-                            <a class="listen" data-my="image/user_head.png">
-                                <i class="status"></i>
-                            </a>
-                        </div>
-                        <p class="reader font-warning">领读者：果果</p>
-                        <p class="title">郑渊洁10年未出版的经典童话</p>
-                        <p class="read_time">共<span class="font-warning">2254</span>字 | 平均时长<span class="font-warning">12</span>分钟</p>
-                    </li>
-                </ul>
-            </div> 
-            -->
             <!--幻灯改版-->
             <div class="home-device">
                 <div class="swiper-main">
                     <div class="swiper-container swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-book-id="1">
                                 <div class="cover">
-                                    <img alt="" src="image/cover_1.jpg">
-                                    <a class="listen my flip out">
-                                        <img style="width: inherit; border-radius: 50%; border: 0.133333rem solid rgb(255, 51, 204);" src="image/user_head.png">
+                                    <img src="image/cover_1.jpg">
+                                    <a class="listen my flip out" data-media="image/2.mp3">
+                                        <img src="image/user_head.png" />
                                         <i class="status"></i>
                                     </a>
-                                    <a class="listen default flip "><img src="image/default_head.png" style="width: inherit; border-radius: 50%; border: 0.133333rem solid rgb(255, 51, 204);">
-                                        <i class="status"></i>
-                                    </a>
-
-                                    
-                                </div>
-                                <p class="reader font-warning"></p>
-                                <p class="title">郑渊洁10年未出版的经典童话</p>
-                                <p class="read_time">共<span class="font-warning blod">2254</span>字 | 平均时长<span class="font-warning blod">12</span>分钟</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="cover">
-                                    <img src="image/cover_1.jpg" alt="">
-                                    <a class="listen">
+                                    <a class="listen default flip" data-media="image/1.mp3">
+                                        <img src="image/default_head.png" />
                                         <i class="status"></i>
                                     </a>
                                 </div>
@@ -94,10 +44,23 @@
                                 <p class="title">郑渊洁10年未出版的经典童话</p>
                                 <p class="read_time">共<span class="font-warning blod">2254</span>字 | 平均时长<span class="font-warning blod">12</span>分钟</p>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-book-id="2">
+                                <div class="cover">
+                                    <img src="image/cover_1.jpg">
+                                    <a class="listen default" data-media="image/1.mp3">
+                                        <img src="image/default_head.png" />
+                                        <i class="status"></i>
+                                    </a>
+                                </div>
+                                <p class="reader font-warning"></p>
+                                <p class="title">郑渊洁10年未出版的经典童话</p>
+                                <p class="read_time">共<span class="font-warning blod">2254</span>字 | 平均时长<span class="font-warning blod">12</span>分钟</p>
+                            </div>
+                            <div class="swiper-slide" data-book-id="3">
                                 <div class="cover">
                                     <img src="image/cover_1.jpg" alt="">
-                                    <a class="listen">
+                                    <a class="listen default" data-media="image/1.mp3">
+                                        <img src="image/default_head.png" />
                                         <i class="status"></i>
                                     </a>
                                 </div>
@@ -124,15 +87,60 @@
                 <i class="icon icon_record"></i>
             </a>
             <div class="switch-box">
-                <!-- <input type="checkbox" class="js-switch js-check-change" checked="false" data-switchery="false"/> -->
                 <span class="switchery switchery-default off" >
                     <small></small>
                 </span>
             </div>
         </div>
+    </div>
+    <!--我的页面-->
+    <div class="content content-my hide">
+        <div class="user">
+            <div class="fz_0 textcenter">
+                <div class="user_img">
+                    <img src="image/user_head.png">
+                </div>
+            </div>
+            <p class="textcenter user_name">段全鑫</p>
+        </div>
+        <div class="list fz_0">
+            <div class="list-item">
+                <div class="box fz_0">
+                    <div class="icon icon_user"></div>
+                    <a class="boxflex title" href="userinfo.html" target="_self">个人信息</a>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="box fz_0">
+                    <div class="icon icon_progress"></div>
+                    <a class="boxflex title" href="progress.html" target="_self">进度及评分</a>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="box fz_0">
+                    <div class="icon icon_history"></div>
+                    <a class="boxflex title" href="histroy.html" target="_self">阅读历史</a>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="box">
+                    <div class="icon icon_promiss"></div>
+                    <a class="boxflex title" href="deposit.html" target="_self">保证金</a>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="box">
+                    <div class="icon icon_help"></div>
+                    <a class="boxflex title" href="help.html" target="_self">帮助</a>
+                </div>
+            </div>
+        </div>
+        <div class="textcenter">
+            <a class="btn pause-read">申请阅读暂停</a>
+        </div>  
         <div class="footer">
             <div class="row">
-                <div class="col-6 tab tab-home active">
+                <div class="col-6 tab tab-home">
                     <a class="btn">
                         <div class="box">
                             <span class="icon icon-yd "></span>
@@ -140,7 +148,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-6 tab tab-my ">
+                <div class="col-6 tab tab-my active">
                     <a class="btn">
                         <div class="box">
                             <span class="icon icon-my"></span>
@@ -148,6 +156,26 @@
                         </div>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-6 tab tab-home active">
+                <a class="btn">
+                    <div class="box">
+                        <span class="icon icon-yd "></span>
+                        <p class="boxflex">朗读者计划</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-6 tab tab-my">
+                <a class="btn">
+                    <div class="box">
+                        <span class="icon icon-my"></span>
+                        <p class="boxflex">我的</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -163,7 +191,6 @@
             </div>
             <a class="close close-task-tip"></a>
         </div>
-
     </div>
     <!--周任务进度-->
     <div class="layout layout-task-progress-box hide">
@@ -197,107 +224,45 @@
             </div>
             <a class="close close-task-progress"></a>
         </div>
-
+    </div>
+    <!--全屏录音页面-->
+    <div class="layout layout-record hide">
+        <div class="content-record">
+            <div class="home-device">
+                <div class="swiper-main">
+                    <div class="swiper-container swiper1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="image/1.jpg"></div>
+                            <div class="swiper-slide"><img src="image/2.jpg"></div>
+                            <div class="swiper-slide"><img src="image/3.jpg"></div>
+                            <div class="swiper-slide"><img src="image/4.jpg"></div>
+                            <div class="swiper-slide"><img src="image/5.jpg"></div>
+                            <div class="swiper-slide"><img src="image/6.jpg"></div>
+                            <div class="swiper-slide"><img src="image/7.jpg"></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="arrow-left" href="#"></a> 
+                <a class="arrow-right active" href="#"></a>
+                <div class="pagination pagination1">
+                    <div class="recorder-box">
+                        <div class="timer">00:00:00</div>
+                        <a class="recorder">
+                            <i class="icon icon_record"></i>
+                        </a>
+                        <div class="counter"><span>1/20</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="close-page"></a>
     </div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<!-- <script type="text/javascript" src="js/jquery.hiSlider.js"></script> -->
+<script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
 <script type="text/javascript" src="js/switchery.min.js"></script>
-<script type="text/javascript">
-//$(function(){
-    // $('.hiSlider3').hiSlider({
-    //     isFlexible: true,
-    //     isSupportTouch: true,
-    //     isAuto:false,
-    //     isShowControls:false,
-    //     titleAttr: function(curIdx){
-    //         return $('img', this).attr('alt');
-    //     },
-    //     onSwipeEnd:function(curIdx){
-    //         console.log(curIdx)
-    //     }
-    // });
-    // var d = $(".hiSlider-pages");
-    // var w = d.width();
-    // d.css('margin-left',-((w/2)*$("html").attr("data-dpr")+0.4*75))
+<script type="text/javascript" src="js/uiDialog.js"></script>
 
-    //Main Swiper
-    var swiper = new Swiper('.swiper', {
-        pagination : '.pagination-home', //分页容器
-        loop:false,                  //无缝循环滚动
-        grabCursor: true,            //滑动时鼠标样式     
-        onImagesReady: function(){
-            console.log("onImagesReady");
-        }  
-    });
-
-    /*试听*/
-    $(".slider").on("click",".listen" ,function(){
-        var audio = $("#globalAudio");
-        
-        $(".listen.active").removeClass('active')
-        $(this).addClass('active');
-        audio[0].pause();
-        var src = $(this).attr("data-src");
-        audio.attr("src",src);
-        audio[0].play();
-    })
-
-
-    $(".task-tips").on("click" ,function(){
-        $(".layout-task-tip-box").show();
-    })
-    /*关闭周提示*/
-    $(".close-task-tip").on("click" ,function(){
-        $(".layout-task-tip-box").hide();
-        $(".layout-task-progress-box").show()
-    })
-
-    /*关闭分享提示*/
-    $(".close-task-progress").on("click" ,function(){
-        $(".layout-task-progress-box").hide();
-    });
-
-    $(".layout-task-progress-box .btn-share").on("click" ,function(){
-        alert("微信分享");
-    })
-
-    // var switchdefaults = {
-    //     color          : '#33cc00',
-    //     secondaryColor : '#f69b58',
-    //     className      : 'switchery',
-    //     disabled       : false,
-    //     disabledOpacity: 0.5,
-    //     speed          : '0.5s',
-    // }
-    // var switchery = new Switchery($(".js-switch")[0], switchdefaults);
-    // $(".js-check-change").on("change" ,function(){
-    //     var that = $(this);
-    //     var status = that.prop("checked");
-    //     console.log(status);
-    // })
-    //switchery切换 判断是否有个人录音，来决定是否切换、翻转
-    $(".switchery").on("click" ,function(){
-        var that = $(this);
-        var curIdx = swiper.realIndex;
-        var box = $($(".content-home .home-device .swiper-slide")[curIdx]);
-        var eleFront = box.find(".listen.default");
-        var eleBack = box.find(".listen.my");
-        if(that.hasClass('off')){
-            eleFront.addClass("out").removeClass("in");
-            setTimeout(function() {
-                eleBack.addClass("in").removeClass("out");
-            }, 225);
-        }else{
-            eleBack.addClass("out").removeClass("in");
-            setTimeout(function() {
-                eleFront.addClass("in").removeClass("out");
-            }, 225);
-        }
-        that.toggleClass('off');
-        that.toggleClass('on');
-    })
-//})
-</script>
+<script type="text/javascript" src="js/app.js"></script>
