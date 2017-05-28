@@ -549,6 +549,9 @@ html,body{background-color: #f3eddd;}
     background-size: 100%;
     margin-left: 0.266666667rem;
 }
+.list .list-item .small{
+    font-size: 0.32rem;
+}
 .list .list-item .title{
     font-size: 0.48rem;
     color: #525c7e;
@@ -1208,9 +1211,9 @@ html,body{background-color: #f3eddd;}
     transform:translateX(100%);
 
 
-    -moz-transition: transform 0.82s;
-    -webkit-transition: transform 0.82s;
-    transition: transform 0.82s;
+    -moz-transition: transform 0.62s;
+    -webkit-transition: transform 0.62s;
+    transition: transform 0.62s;
 }
 .layout-userinfo.on,.layout-progress.on,.layout-history.on,.layout-deposit.on{
     -webkit-transform:translateX(0);

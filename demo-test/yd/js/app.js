@@ -35,7 +35,7 @@
             //TODO 我的滑动页初始位置,
         }
     })
-    //Main Swiper
+    //首页幻灯
     var swiper = new Swiper('.swiper', {
         pagination : '.pagination-home', //分页容器
         loop:false,                  //无缝循环滚动
@@ -132,7 +132,22 @@
         grabCursor: true,            //滑动时鼠标样式     
         onImagesReady: function(){
             console.log("onImagesReady");
-        }  
+        },
+        onTransitionEnd:function(swiper1){
+        	var idx = swiper1.realIndex;
+        	var len = swiper1.slides.length;
+        	if(idx==0){
+            	$('.arrow-left').removeClass('active')
+	        }else{
+	            $('.arrow-left').addClass('active');
+	        }
+	        if(idx==len-1){
+	            $('.arrow-right').removeClass('active')
+	        }else{
+	            $('.arrow-right').addClass('active');
+	        }
+	        $(".pagination1 .counter>span").html((+swiper1.realIndex+1)+"/"+len);
+        }
     });
     $(".pagination1 .timer").html("00:00:00");
     var itemlen = $(".swiper-slide").length;
@@ -166,7 +181,6 @@
         }else{
             that.addClass('active');
         }
-        
     });
 
     $('.pagination1 .swiper-pagination-switch').click(function(){
@@ -179,6 +193,164 @@
         //TOTO 清理录音，微信录音处理，文件本地存储等操作
     })
 
+    /**我的-子页面滑动**/
+    $(".content-my").on("click",".userinfo",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-userinfo");
+    	dialog.tip("正在获取数据");
+    	$.ajax({
+    		url: '/user/profile',
+    		type: 'GET',
+    		dataType: 'json',
+    		data: {},
+    	})
+    	.done(function(res) {
+    		if(res.code=="0"){
+    			var data = res.data;
+    			if(!$.isEmptyObject(data)){
+    				var dom = $(".layout-userinfo");
+    				dom.find(".user_img").attr("src",data.headimgurl)
+    				dom.find(".user_name").html(data.name)
+    				if(data.sex=="1"){
+    					$(dom.find(".sex-item label")[0]).trigger("click");
+    				}else{
+    					$(dom.find(".sex-item label")[1]).trigger("click");
+    				}
+    				dom.find("input[name=user_name]").val(data.name);
+    				dom.find("input[name=age]").val(data.age);
+    				dom.find("input[name=school]").val(data.school);
+    				dom.find("input[name=phone]").val(data.parent_tel);
+    				dialog.destroy()
+    			}else{
+    				dialog.tip({"msg":"用户信息获取失败","time":1600});
+    			}
+    		}
+    	})
+    	.fail(function() {
+    		dialog.tip({"msg":"用户信息获取失败","time":1600});
+    	})
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    $(".content-my").on("click",".progress",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-progress");
+    	/*获取数据*/
+    	dialog.tip("正在获取数据");
+    	$.ajax({
+    		url: '/learn/my',
+    		type: 'GET',
+    		dataType: 'json',
+    		data:{},
+    	})
+    	.done(function() {
+    		console.log("success");
+    	})
+    	.fail(function() {
+    		console.log("error");
+    	})
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    $(".content-my").on("click",".history",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-history");
+    	dialog.tip("正在获取数据");
+    	$.ajax({
+    		url: '/learn/history',
+    		type: 'GET',
+    		dataType: 'json',
+    		data:{},
+    	})
+    	.done(function() {
+    		console.log("success");
+    	})
+    	.fail(function() {
+    		console.log("error");
+    	})
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    $(".content-my").on("click",".deposit",function(e){
+    	e.preventDefault();
+    	e.stopPropagation();
+    	var that = $(this);
+    	var dom = $(".layout-deposit");
+    	dialog.tip("正在获取数据");
+    	$.ajax({
+    		url: '/deposit/my',
+    		type: 'GET',
+    		dataType: 'json',
+    		data:{},
+    	})
+    	.done(function(res) {
+    		if(res.code=="0"){
+    			var data = res.data;
+    			if(!$.isEmptyObject(data)){
+    				var dom = $(".layout-deposit");
+    				dom.find(".money").html(data.user_money);
+    				var tmp="";
+    				for(var i=0,len=data.money_list.length;i<len;i++){
+    					var item = data.money_list[i]
+    					tmp+='<div class="list-item"><p class="act-time">'+item.updated_at+'</p><div class="box">'
+                        tmp+='<div class="boxflex"><p>'+item.remarks+'</p>'
+                        tmp+='</div><div class="boxflex"><p class="textright">扣除保证金：'+item.money+'元</p></div></div></div>'
+    				}
+    				dom.find(".list").append(tmp);
+    				dialog.destroy();	
+    			}else{
+    				dialog.tip({'msg':"保证金数据获取失败","time":1600});
+    			}
+    		}else{
+    			dialog.tip({'msg':"保证金数据获取失败","time":1600});
+    		}
+    	})
+    	.fail(function() {
+    		dialog.tip({'msg':"保证金数据获取失败","time":1600});
+    	})
+    	dom.fadeIn(200,function(){
+    		dom.addClass('on');
+    	});
+    })
+    /*页面数据初始化*/
+    function getUser(){
+    	$.ajax({
+    		url: '/user/my',
+    		type: 'GET',
+    		dataType: 'json',
+    		data: {},
+    	})
+    	.done(function(res) {
+    		if(res.code=="0"){
+    			var data = res.data;
+    			if(!$.isEmptyObject(data)){
+    				var dom = $(".content-my")
+    				$(".user_name").html(data.name)
+    				$(".user_img").attr("src",data.headimgurl)
+    				//dom.find(".user_img").attr("src",data.headimgurl);
+    				//dom.find(".user_name").html(data.name);
+    				dom.find(".progress .small").html('('+data.point+'分)');
+    				dom.find(".history .small").html('('+data.learning+'本)');
+    				dom.find(".deposit .small").html('('+data.money+'元)');
+    				dialog.destroy();
+    			}
+    		}else{
+    			dialog.tip({"msg":"用户数据拉取失败","time":1600});
+    		}
+    	})
+    	.fail(function() {
+    		dialog.tip({"msg":"用户数据拉取失败","time":1600});
+    	})
+    }
     /*评分及进度*/
     function initProgress(a,b,c){
     	var num = 66;// 百分制
@@ -201,42 +373,4 @@
 	    //$(".processingbar2 .text-info").css({width:size2});
     }
     initProgress();
-    /**我的-子页面滑动**/
-    $(".content-my").on("click",".userinfo",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-userinfo");
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    $(".content-my").on("click",".progress",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-progress");
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    $(".content-my").on("click",".history",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-history");
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    $(".content-my").on("click",".deposit",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-deposit");
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    
 //})
