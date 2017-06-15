@@ -1,4 +1,6 @@
-console.log("I'm is global a.js")
+console.log("/js/global/a.js");
 function test(){
-	console.log("我是global目录 a.js")
+	console.log("js目录");
+	//测试有php变量的问题{{$domain}}
+	///////////
 }
