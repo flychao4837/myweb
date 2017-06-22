@@ -31,18 +31,18 @@ var fnImportReplace = function(src, filename){
 	})
 }
 
-//fnImportReplace(src, filename);
+fnImportReplace(src, filename);
 
-// 监控文件，变更后重新生成
-// fs.watch(src, function(event, filename) {
-// 	//src+"/"+filename filename指向index.html
-// 	//这里的filename如果不引进变量的值，在callback里会指向变化的任意页
-//     if (event == 'change') {
-//         //console.log(src + '/' + filename + '发生了改变，重新生成...');
-//         fnImportReplace(src, "index.html"); //直接指明 filename 
+/**监控文件，变更后重新生成**/
+fs.watch(src, function(event, filename) {
+	//src+"/"+filename filename指向index.html
+	//这里的filename如果不引进变量的值，在callback里会指向变化的任意页
+    if (event == 'change') {
+        //console.log(src + '/' + filename + '发生了改变，重新生成...');
+        fnImportReplace(src, "index.html"); //直接指明 filename 
 
-//     }
-// });
+    }
+});
 
 //监控js文件变化，更新import模版 同时更新js时间戳
 // 1、在指明模版文件的情况下替换
@@ -111,15 +111,31 @@ function handleFile(path, floor,filename,filedir) {
             		fs.readFile(path,{"encoding":"utf-8"}, function(err,data){
             			//资源路径两种形式，href是引用和页面关联，是在当前元素和引用资源之间建立联系，
             			//src表示引用资源，表示替换当前元素
+            			var dataReplace;
 						if(ext==="css"){
-							//"href(\\s)*=(\\s)*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|\\'+\\+\\s*\\S*\\s*\\+\\'+)+?)?"+filedir+"\/"+filename+"(\\?v=(\\w+))?(\\s)?(\"|')?"
-							var str = "href(\\s)*=(\\s)*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|\\'+\\+\\s*\\S*\\s*\\+\\'+)+?)?"+filedir+"\/"+filename+"(\\?v=(\\w+))?(\\s)?(\"|')?"
-							var re = new RegExp(str)
-							var dataReplace = data.replace(re,function(matchs,m1){
-								return "href=\""+filedir+"/"+filename+"?v="+timeHash+"\""
+							//"href\\s*=.*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|(\"|')?\\s*\\S*\\s*(\"|')?)?)?"+filedir+"\/"+filename+"\\s*(\\?\\s*(v\\s*=\\s*)?\\s*\\w*\\W*?\\S*?)?\\s*(\"|')?"
+							var str = "href\\s*=.*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|(\"|')?\\s*\\S*\\s*(\"|')?)?)?"+filedir+"\/"+filename+"\\s*(\\?\\s*(v\\s*=\\s*)?\\s*\\w*\\W*?\\S*?)?\\s*(\"|')?"
+							var re = new RegExp(str);
+							var verstr = '(\\?v=(\\w+))+?(\\s)?';
+							var verre =  new RegExp(verstr,"g");
+							dataReplace = data.replace(re,function(matchs,m1){
+								console.log("replace str"+matchs);
+								if(matchs.match(verre)){
+									/*替换时间戳*/
+									return matchs.replace(verre ,function(mch,m0){
+										console.log("mch"+mch)
+										return "?v="+timeHash;
+									})
+
+								}else{
+									/*添加时间戳*/
+									console.log(matchs.replace(filename ,filename+"?v="+timeHash))
+									return matchs.replace(filename ,filename+"?v="+timeHash)
+								}	
 							});
 						}else{
 							//"src(\\s)*=(\\s)*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|\\'+\\+\\s*\\S*\\s*\\+\\'+)+?)?"+filedir+"\/"+filename+"(\\?v=(\\w+))?(\\s)?(\"|')?"
+							//src\\s*=.*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|(\"|')?\\s*\\S*\\s*(\"|')?)?)?"+filedir+"\/"+filename+"\\s*(\\?\\s*(v\\s*=\\s*)?\\s*\\w*\\W*?\\S*?)?\\s*(\"|')?
 							/*
 								匹配的四种格式
 								src="'+window.domain+'/js/a.js" //js变量
@@ -127,44 +143,30 @@ function handleFile(path, floor,filename,filedir) {
 								src="/js/a.js"  				//根路径
 								src="js/a.js"					//相对路径
 							*/
-							var str = "src(\\s)*=(\\s)*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|\\'+\\+\\s*\\S*\\s*\\+\\'+)+?)?"+filedir+"\/"+filename+"(\\?v=(\\w+))?(\\s)?(\"|')?"
+							//src\s*=.*("|')?(((\{+\W+\S+\}+)|\/|("|')?\s*\S*\s*\+("|')?)?)?global\/a.js\s*(\?\s*(v\s*=\s*)?\s*\w*\W*?\S*?)?\s*("|')?
+							var str = "src\\s*=.*(\"|')?(((\\{+\\W+\\S+\\}+)|\\/|(\"|')?\\s*\\S*\\s*(\"|')?)?)?"+filedir+"\/"+filename+"\\s*(\\?\\s*(v\\s*=\\s*)?\\s*\\w*\\W*?\\S*?)?\\s*(\"|')?"
 							var re = new RegExp(str,"g")
 							console.log("reg = "+re);
-							var dataReplace;
-							// var dataReplace = data.replace(re,function(matchs,m0){
-							// 	//返回干净完整的match，不要时间戳
-							// 	console.log("matchs"+matchs);
-							// 	//return "src=\""+filedir+"/"+filename+"?v="+timeHash+"\""
-							// 	return matchs.replace(new RegExp( '(\\?v=(\\w+))+?(\\s)?' ) ,function(mch,m0){
-							// 		console.log("mch"+mch)
-							// 		return "?v="+timeHash+"\"";
-							// 	})
-								
-							// });
+
 							var verstr = '(\\?v=(\\w+))+?(\\s)?';
 							var verre =  new RegExp(verstr,"g");
-							if(data.match(verre)){
-								/*替换时间戳*/
-								var dataReplace = data.replace(re,function(matchs,m0){
-									//返回干净完整的match，不要时间戳
-									console.log("replace str"+matchs);
-									return matchs.replace(new RegExp( '(\\?v=(\\w+))+?(\\s)?',"g" ) ,function(mch,m0){
+
+							dataReplace = data.replace(re,function(matchs,m1){
+								console.log("replace str"+matchs);
+								if(matchs.match(verre)){
+									/*替换时间戳*/
+									return matchs.replace(verre ,function(mch,m0){
 										console.log("mch"+mch)
 										return "?v="+timeHash;
 									})
-									
-								});
-							}else{
-								/*添加时间戳*/
-								var dataReplace = data.replace(re,function(matchs,m0){
-									console.log("add timehash"+matchs);
-									return matchs.replace(filename ,filename+"?v="+timeHash)
-									
-								});
-							}
 
+								}else{
+									/*添加时间戳*/
+									console.log(matchs.replace(filename ,filename+"?v="+timeHash))
+									return matchs.replace(filename ,filename+"?v="+timeHash)
+								}	
+							});
 						}
-						
 						//console.log("读取的文件数据"+data);
 						//console.log(dataReplace);
 						// 判断下替换文本的长度
@@ -223,8 +225,10 @@ var getFileExt = function(filename){
 		return false;
 	}
 }
-var list = ["js","js/global","js/global/js"];//要监视的文件目录
-var fileext = ["js","css","jpeg","jpg","gif","png","bmp"];//要监视的文件类型
+/*要监视的文件目录 以import.js目录为根目录*/
+var list = ["js","js/global","js/global/js","css","image"];
+/*要监视的文件类型 不要监视*/
+var fileext = ["js","css","jpeg","jpg","gif","png","bmp"];
 
 //["js","js/global","js/global/js"].forEach() 会返回一个undefined 这个是forEach函数的返回值，跟数据无关
 list.forEach(function(pathdir){
@@ -233,7 +237,7 @@ list.forEach(function(pathdir){
 			if(event=="change"){
 				timeHash = randomNumber();
 				console.log( pathdir+"/"+filename + "发生修改，更新文件");
-				fnChangeJSFiles(["import"],filename,pathdir);
+				fnChangeJSFiles(["import","html","html/tmp"],filename,pathdir);
 			}
 		});
 	}

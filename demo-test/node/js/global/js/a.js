@@ -1,5 +1,5 @@
-console.log("/js/global/js/a.js");
-function test(){
-	console.log("js目录");
-	////
+console.log("I'm js.global.js.a.js");
+function testa(){
+	console.log("global/js a.js");
+	///
 }

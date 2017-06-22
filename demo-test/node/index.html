@@ -1,23 +1,60 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="css/a.css">
-<link rel="stylesheet" type="text/css" href="css/b.css">
-<link rel="stylesheet" type="text/css" href="css/c.css">
-<script type="text/javascript" src="{{$domain}}/js/a.js"></script>
-<script type="text/javascript" src="js/global/js/a.js"></script>
-<script type="text/javascript" src="js/global/a.js"></script>
-<script type="text/javascript" src="js/a.js"></script>
+<head lang="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Node</title>
+</head>
+<style type="text/css">
+*{padding:0;margin:0;}
+a{cursor:pointer;}
+img{width: 50px;}
+.footer{
+	position: fixed;
+	bottom:0;
+	display: inline-block;
+	width: 100%;
+	height: 32px;
+	line-height: 32px;
+}
+.footer>p{
+	text-align: center;
+	font-size: 14px;
+	text-shadow:1px 0 2px #666, 0 1px #999, 1px 1px #666, -1px 0 3px #999;
+	color:#999;
+}
+</style>
+<script type="text/javascript" src="/global/jquery.min.js?time=new Date()"></script>
+<script type="text/javascript" src="js/a.js?v=14975832476955926"></script>
 <script type="text/javascript" src="js/b.js"></script>
 <script type="text/javascript" src="js/c.js"></script>
+<!--//TODO 文件多次修改后 script标签下 多了个闭合的尖括号-->
+
+<!--多重目录下的js文件时间戳替换-->
+<script type="text/javascript" src="{{$domain}}/js/global/a.js?v=14975832441387571"></script>
+<script type="text/javascript" src="js/global/global.a.js"></script>
+<script type="text/javascript" src="js/global/global.b.js"></script>
+<script type="text/javascript" src="js/global/global.c.js"></script>
+
+<script type="text/javascript" src="js/global/js/a.js?v=14975832476955926"></script>
+<script type="text/javascript" src="js/global/js/global.js.a.js"></script>
+<link rel="stylesheet" type="text/css" href="css/a.css?v=14975833790312806">
+<link rel="stylesheet" type="text/css" href="css/b.css?v=1497583442122163">
+<link rel="stylesheet" type="text/css" href="css/c.css?v=14975834447202102">
+<script type="text/javascript" src="js/a.js?v=14975832476955926"></script>
 <body>
 	<div id="box" style="width:300px;height:300px;background-color:#f6f6f6;">
 	   <p>nodeJs体验 link模版替换</p>
 	   <img src="image/1.png" width="20"/>
-	   <img src="image/2.png" width="20"/>
+	   <img src="image/2.png?v=14975806299215418" width="20"/>
+	   <img src="{{$domain}}/image/2.png?v=14975806299215418" width="20"/>
+	   <img src="/image/2.png?v=14975806299215418" width="20"/>
 	   <img src="image/1a.png" width="20"/>
-	   <img src="image/a.png" width="20"/>
+	   <img src="image/a.png?v=14930870942715536" width="20"/>
 	   <img src="image/asd asdf.png" width="20"/>
 	   <img src="image/1 (6).png" width="20"/>
 	</div>
+<div class="footer">
+	<p>Copyright&copy 2017-2019</p>
+</div>
 </body>
 </html>
