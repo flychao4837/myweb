@@ -1,4 +1,4 @@
-﻿seajs/
+seajs/
 react-demo/
 angular/
 im/
@@ -6,3 +6,6 @@ vue/
 demo-test/pack/
 demo-test/pack - 数学副本备份/
 react/
+demo-test/vue_admin/
+demo-test/ckeditor/
+demo-test/kindeditor/
