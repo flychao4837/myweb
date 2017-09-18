@@ -1,0 +1,203 @@
+.hide{display: none;}
+.show{display: block;}
+.block{display: block;}
+.clear{clear: both;overflow: hidden;zoom:1;}
+.left{float: left;}
+.right{float: right;}
+.fz_0{font-size: 0;}
+.rows{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-wrap:warp;
+    justify-content:space-between; /*flex-start | flex-end | center | space-between | space-around*/
+}
+
+/*首页*/
+.footer-margin{
+    margin-bottom: 1.333333rem;
+}
+/*搜索框*/
+.header{
+    background-color: #fff;
+}
+.search_box{
+    padding:0.26666rem 0.4rem;
+}
+.search_box [name=search_input]{
+    background: url(../images/icon_small_search@3x.png) no-repeat 0.2rem center;
+    background-size: 0.5rem;
+    display: inline-block;
+    width: 100%;
+    height: 0.746666rem;
+    line-height: 0.746666rem;
+    border-radius: 0.37333rem;
+    text-indent: 0.8rem;
+    border:none;
+    background-color: #f2f2f2;
+    font-size: 0.42666rem;
+    color: #666;
+}
+/*banner*/
+.banner >a{
+    display: inline-block;
+}
+.banner img{
+    width: 10rem;
+    height: 2.986666rem;
+    overflow: hidden;
+}
+/*商品列表*/
+.title_box{
+    height: 1.44rem;
+    line-height: 1.44rem;
+    background-color: #f9f9f9;
+    padding: 0 0.42666rem;
+} 
+.title_box >.title{
+    font-size: 0.533333rem;
+    color: #333;
+}
+.title_box>.more{
+    font-size: 0.45333rem;
+    color: #666;
+    padding-right: 0.5rem;
+    background: url(../images/icon_small_more@2x.png) no-repeat right center;
+    background-size: 0.5rem;
+}
+/*商品列表-详情*/
+.brand_list{
+    background-color: #f9f9f9;
+}
+.brand_rows{
+    margin:0 0.13333rem;
+}
+.brand_detail{
+    display: inline-block;
+    height: 4.7733rem;
+    margin: 0 0.13333rem 0.26666rem 0.13333rem;
+    width: 100%;
+    background-color: #fff;
+}
+
+.brand_detail .brand_cover{
+    width: 100%;
+    text-align: center;
+}
+.brand_detail .brand_cover>img{
+    width: 2.13333rem;
+    height: 2.13333rem;
+    margin-top: 0.61333rem;
+}
+.brand_detail .brand_name{
+    margin-top: 0.61333rem;
+    font-size: 0.42666rem;
+    color: #333;
+    text-align: center;
+    height: 0.45rem;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 1;
+    padding:0 0.2rem;
+}
+.brand_detail .price_rows{
+    padding:0 0.2rem;
+    margin-top: 0.13333rem;
+    font-size: 0.32rem;
+    color: #999;
+    line-height: 0.42666rem;
+}
+.brand_detail .price_rows .price{
+    color: #ff6464;
+    font-weight: 400;
+}
+/*footer 按钮*/
+.footer{
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+.footer>.menu{
+    height: 1.333333rem;
+}
+.footer>.menu>li{
+    width: 25%;
+    text-align: center;
+    margin:0.13333rem 0;
+}
+.footer>.menu>li p{
+    color: #999;
+    font-size: 0.32rem;
+    padding-top: 0.8rem;
+}
+.footer>.menu>li img{
+    width: 0.48rem;
+}
+.menu>li>a{
+    display: inline-block;
+    background-size: 0.69333rem;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+.menu>li.home>a{
+    background-image: url(../images/tabbar_home_2@3x.png) ;
+}
+.menu>li.category>a{
+    background-image: url(../images/tabbar_category_2@3x.png) ;
+}
+.menu>li.cart>a{
+    background-image: url(../images/tabbar_cart_2@3x.png) ;
+}
+.menu>li.mine>a{
+    background-image: url(../images/tabbar_mine_2@3x.png) ;
+}
+.footer>.menu>li.active p{
+    color: #333;
+}
+.menu>li.home.active>a{
+    background-image: url(../images/tabbar_home_1@3x.png) ;
+}
+.menu>li.category.active>a{
+    background-image: url(../images/tabbar_category_1@3x.png) ;
+}
+.menu>li.cart.active>a{
+    background-image: url(../images/tabbar_cart_1@3x.png) ;
+}
+.menu>li.mine.active>a{
+    background-image: url(../images/tabbar_mine_1@3x.png) ;
+}
+/* 
+@3倍图方案
+dpr<=2 都用750下的2倍图
+dpr =3 用1125下的 3倍图
+*/
+.btn-android {
+  background-image: url("../img/@2x/android.png?v=@@version");
+  [data-dpr="3"] & {
+    background-image: url("../img/@3x/android.png?v=@@version");
+  }
+}
+
+/* 1px 边框 IOS直接用1px android需重新适配*/
+.setTopLine(@c: #C7C7C7) {
+  & {
+    position: relative;
+  }
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid @c;
+  }
+
+  [data-dpr="1"] &:before {
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+  }
+}

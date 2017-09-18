@@ -1,0 +1,128 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none!important;
+    margin: 0
+}
+
+input[type=number] {
+    -moz-appearance: textfield
+}
+
+body {
+    background: #fff
+}
+img{
+	background-color: transparent !important;
+    background-image: none !important;
+}
+.hb-page {
+    padding-bottom: 40px
+}
+
+.hb-footer {
+    background: #fff;
+    color: #666;
+    font-size: 12px
+}
+.hb-index-screen{
+	background: url(../images/bg.png) no-repeat center;
+	background-color: #061827;
+	background-size: cover;
+	min-height: 1830px;
+}
+.hb-bg-fix{
+    background: url(../images/bg_earth.png) no-repeat center 440px;
+    background-color: transparent;
+    background-size: auto;
+    min-height: 1830px;
+}
+.hb-container {
+    width: 1024px;
+    position: relative
+}
+.scene_3{
+    margin-bottom: 30px;
+    color: #fff;
+}
+.scene_3 a{
+    color: #fff;
+    cursor: pointer;
+}
+.scene_3 dl{
+    margin-left: 72px;
+    margin-top: 16px;
+    font-size: 14px;
+}
+.scene_3 h4{
+    display: inline-block;
+    width: 146px;
+    text-align: center;
+    height: 33px;
+    line-height: 33px;
+    background-color: #061e28;
+    border-radius: 9px;
+    margin:34px 0 0 72px;
+}
+.scene_3 dl dt>span{
+    background-color: #061e27;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 3px;
+}
+.scene_3 p{
+    line-height: 150%;
+}
+.scene_4{
+	text-align: center;
+}
+.video-box{
+    background-color: #000;
+}
+.unstart{
+    background-color: #000;
+    position: relative;
+}
+.course-tip{
+    position: absolute;
+    display: inline-block;
+    top:50%;
+    left: 50%;
+    margin-top: -72px;
+    margin-left: -144px;
+}
+.course-tip>p{
+    color: #fff;
+    line-height: 1;
+}
+.course-tip>.title{
+    font-size: 42px;
+}
+.course-tip>.intro{
+    font-size: 14px;
+    padding-top: 18px;
+    text-indent: 2px;
+}
+.class-login{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    width: 100%;
+    display: inline-block;
+}
+.class-login>p{
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    text-indent: 35px;
+    color: #e0e0e0;
+}
+.class-login>p>a{
+    text-decoration: underline;
+    color: #ff9804;
+    cursor: pointer;
+}
