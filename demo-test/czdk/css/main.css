@@ -108,7 +108,11 @@
 }
 .brand_detail .price_rows .price{
     color: #ff6464;
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 0.37333rem;
+}
+.brand_detail .price_rows .sold{
+    margin-top: 0.025rem;
 }
 /*footer 按钮*/
 .footer{
@@ -168,6 +172,62 @@
 .menu>li.mine.active>a{
     background-image: url(../images/tabbar_mine_1@3x.png) ;
 }
+
+/*商品列表页*/
+.brand-sort-type{
+    border-top: 1px solid #f8f8f8;
+    background-color: #fff;
+    height: 1.33333rem;
+    margin-bottom: 0.32rem;
+}
+.brand-sort-type>li{
+    width: 33.333%;
+    text-align: center;
+    font-size: 0.4rem;
+    color: #999;
+    display: flex;
+    display: -webkit-flex;
+    justify-content:center;
+}
+.brand-sort-type>li.active{
+    color: #333;
+}
+.brand-sort-type>li>span{
+    height: 1.33333rem;
+    line-height: 1.33333rem;
+    cursor: pointer;
+    display: inline-block;
+}
+.brand-sort-type>li>.icon-sort{
+    width: 0.32rem;
+    height: auto;
+    background: url(../images/sort-both.png) no-repeat center/0.293333rem;
+    margin-left: 0.1333rem;
+}
+.brand-sort-type>li>.icon-sort.asc{
+    background-image: url(../images/sort-asc.png);
+}
+.brand-sort-type>li>.icon-sort.desc{
+    background-image: url(../images/sort-desc.png);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 @3倍图方案
 dpr<=2 都用750下的2倍图
