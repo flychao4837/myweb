@@ -18,85 +18,106 @@
     <link href="css/uiDialog.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="header">
-        <div class="search_box">
-            <input type="text" name="search_input" placeholder="请输入品牌名" />
-        </div>
-    </div>
     <div class="content footer-margin">
-        <ul class="brand-sort-type rows">
-            <li class="active"><span class="sort-name">销量高低</span><span class="icon-sort"></span></li>
-            <li><span class="sort-name">上架时间</span><span class="icon-sort asc"></span></li>
-            <li><span class="sort-name">价格高低</span><span class="icon-sort desc"></span></li>
-        </ul>
-        <div class="brand_list">
-            <div class="rows brand_rows">
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
-                    </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
-                    </div>
-                </a>
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
-                    </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
-                    </div>
-                </a>
+        <div class="goods-detail">
+            <div class="goods-cover fz_0">
+                <img src="./img/goods-cover.png" />
             </div>
-            <div class="rows brand_rows">
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
+            <div class="goods-info">
+                <p class="goods-name">嘉实多（Castrol）极护 钛流体全合成机油 5W-30 FE SN级 4L</p>
+                <div class="rows">
+                    <div class="price-info"><span class="price">￥438.00</span>&nbsp;/桶&nbsp;<span class="cost-price">￥899</span></div>
+                    <div class="sold">已售345</div>
+                </div>
+            </div>
+            <ul class="goods-intro-tabbar rows">
+                <li class="active">产品简介</li>
+                <li>产品参数</li>
+                <li>产品详情</li>
+            </ul>
+            <div class="detail_list">
+                <div class="product-description">
+                    <div class="product-cover fz_0">
+                        <img src="img/goods-intro-cover.png" />
                     </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
+                </div>
+                <div class="detail-sub-menu">产品参数</div>
+                <div class="product-parameters">
+                    <div class="parameters rows">
+                        <div class="left-side">
+                            <span class="param-title">名称</span>
+                            <span class="param-desc">嘉实多极护4L</span>
+                        </div>
+                        <div class="right-side">
+                            <span class="param-title">粘度</span>
+                            <span class="param-desc">5W-30</span>
+                        </div>
                     </div>
-                </a>
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
+                    <div class="parameters rows">
+                        <div class="left-side">
+                            <span class="param-title">分类</span>
+                            <span class="param-desc">全合成</span>
+                        </div>
+                        <div class="right-side">
+                            <span class="param-title">升数</span>
+                            <span class="param-desc">4L</span>
+                        </div>
                     </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
+                    <div class="parameters rows">
+                        <div class="left-side">
+                            <span class="param-title">等级</span>
+                            <span class="param-desc">SN</span>
+                        </div>
+                        <div class="right-side">
+                            <span class="param-title">产地</span>
+                            <span class="param-desc">国产</span>
+                        </div>
                     </div>
-                </a>
+                    <!--产品适用范围-->
+                    <div class="product-use">
+                        <div class="item">
+                            <p class="param-title">产品内容</p>
+                            <p class="param-desc">嘉实多（Castrol）极护 钛流体全合成机油</p>
+                        </div>
+                        <div class="item">
+                            <p class="param-title">适用车型</p>
+                            <p class="param-desc">涡轮增压</p>
+                        </div>
+                        <div class="item">
+                            <p class="param-title">车型分类</p>
+                            <p class="param-desc">30万-50万以上（高端型）</p>
+                        </div>
+                        <div class="item">
+                            <p class="param-title">保养周期</p>
+                            <p class="param-desc">10000公里/12个月</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-sub-menu">产品详情</div>
+                <div class="product-info fz_0 text-center">
+                    <img src="img/intro.png" />
+                </div>
             </div>
         </div>
     </div>
-    <div class="footer">
+    <div class="footer detail-footer">
         <ul class="menu rows">
-            <li class="home active">
+            <li class="home">
                 <a href="">
-                    <p>首页<p>
-                </a>
-            </li>
-            <li class="category">
-                <a href="#">
-                    <p>分类<p>
+                    <p>首页</p>
                 </a>
             </li>
             <li class="cart">
                 <a href="#">
-                    <p>购物车<p>
+                    <p>购物车</p>
+                    <span class="goods-num">99</span>
                 </a>
             </li>
-            <li class="mine">
-                <a href="#">
-                    <p>我的订单<p>
-                </a>
+            <li class="add-goods">
+                <p>加入购物车</p>
+            </li>
+            <li class="buy">
+                <p>立即购买</p>
             </li>
         </ul>
     </div>
