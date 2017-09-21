@@ -1,0 +1,154 @@
+.btn{
+	display: block;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	border-style: none;
+}
+.btn:hover,.btn.active{
+	opacity: 0.8;
+}
+button, input, select, textarea {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.register .register-form{
+	margin-top: 0.26666rem;
+	background-color: #fff;
+}
+.register .register-form .form-item{
+	height: 1.28rem;
+	margin-left: 0.53333rem;
+	border-bottom: 1px solid #f8f8f8;
+}
+.register .register-form .form-item:last-child{
+	border-bottom: none;
+}
+.register .register-form .form-item .title{
+	float: left;
+	line-height: 1.28rem;
+	color: #333;
+	font-size: 0.373333rem;
+}
+.register .register-form .form-item .form-input{
+	padding-left: 2.32rem;
+}
+.register .register-form .form-item .form-input>input{
+	border: none;
+	font-size: 0.37333rem;
+	line-height: 1.2rem;
+	display: inline-block;
+	width: 100%;
+}
+.register .register-form .form-item .randomnum-input{
+	position: relative;
+}
+.register .register-form .form-item .form-input .getRandomNum{
+	position: absolute;
+	top: 0.32rem;
+	right: 0.42666rem;
+	height: 0.64rem;
+	width:2.02666rem;
+	border-style: none;
+	background-color: #00a6ec;
+	color: #fff;
+	font-size: 0.32rem;
+}
+.register .add-register{
+	margin: 0.4rem;
+	height: 1.17333rem;
+	background-color: #00a6ec;
+	font-size: 0.42666rem;
+	color: #fff;
+	line-height: 1.17333rem;
+	width: 9.2rem;
+	border-radius: 2px;
+}
+
+.register .register-form .form-input .rows > a {
+    display: inline-block;
+    line-height: 1.28rem;
+    width: 25%;
+}
+
+.el-radio-group {
+	padding-top: 0.37333rem;
+    /*display: inline-block;*/
+    font-size: 0;
+    line-height: 1;
+    vertical-align: middle;
+}
+.el-radio {
+    -moz-user-select: none;
+    color: #1f2d3d;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+}
+.el-radio + .el-radio {
+    margin-left: 0.4rem;
+}
+.el-radio-group .el-radio {
+    font-size: 0.37333rem;
+}
+
+.el-radio__input {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    outline: medium none;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.el-radio__inner {
+    background-color: #fff;
+    border: 1px solid #bfcbd9;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    height: 0.42666rem;
+    position: relative;
+    width: 0.42666rem;
+}
+
+.el-radio__inner::after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 0.1333rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6) 0s;
+    width: 0.1333rem;
+}
+.el-radio__original {
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    outline: medium none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.el-radio__label {
+    font-size: 0.42666rem;
+    padding-left: 0.1333rem;
+}
+.el-radio__input.is-checked .el-radio__inner {
+    background: #20a0ff none repeat scroll 0 0;
+    border-color: #20a0ff;
+}
+
+.el-radio__input.is-checked .el-radio__inner::after {
+    transform: translate(-50%, -50%) scale(1);
+}
