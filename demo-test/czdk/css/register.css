@@ -22,6 +22,8 @@ button, input, select, textarea {
 	height: 1.28rem;
 	margin-left: 0.53333rem;
 	border-bottom: 1px solid #f8f8f8;
+    overflow: hidden;
+    clear: both;
 }
 .register .register-form .form-item:last-child{
 	border-bottom: none;
@@ -66,7 +68,6 @@ button, input, select, textarea {
 	width: 9.2rem;
 	border-radius: 2px;
 }
-
 .register .register-form .form-input .rows > a {
     display: inline-block;
     line-height: 1.28rem;

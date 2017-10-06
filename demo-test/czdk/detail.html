@@ -21,7 +21,19 @@
     <div class="content footer-margin">
         <div class="goods-detail">
             <div class="goods-cover fz_0">
-                <img src="./img/goods-cover.png" />
+                <div class="swiper-container swiper-home">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./img/goods-cover.png" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/goods-cover.png" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/goods-cover.png" />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="goods-info">
                 <p class="goods-name">嘉实多（Castrol）极护 钛流体全合成机油 5W-30 FE SN级 4L</p>
@@ -31,17 +43,17 @@
                 </div>
             </div>
             <ul class="goods-intro-tabbar rows">
-                <li class="active">产品简介</li>
-                <li>产品参数</li>
-                <li>产品详情</li>
+                <li class="active" data-tag="intro">产品简介</li>
+                <li data-tag="parm">产品参数</li>
+                <li data-tag="detail">产品详情</li>
             </ul>
             <div class="detail_list">
-                <div class="product-description">
+                <div class="product-description" data-tag="intro">
                     <div class="product-cover fz_0">
                         <img src="img/goods-intro-cover.png" />
                     </div>
                 </div>
-                <div class="detail-sub-menu">产品参数</div>
+                <div class="detail-sub-menu" data-tag="parm">产品参数</div>
                 <div class="product-parameters">
                     <div class="parameters rows">
                         <div class="left-side">
@@ -93,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="detail-sub-menu">产品详情</div>
+                <div class="detail-sub-menu" data-tag="detail">产品详情</div>
                 <div class="product-info fz_0 text-center">
                     <img src="img/intro.png" />
                 </div>
@@ -121,10 +133,64 @@
             </li>
         </ul>
     </div>
+    <!--查看图片 大图片 幻灯片-->
+    <div class="layout lavout-box">
+        <div class="goods-cover fz_0">
+            <div class="swiper-container swiper-cover-view">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./img/goods-cover.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/goods-cover.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/goods-cover.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rows slider-bar">
+            <a class="close-slider">关闭</a>
+            <div class="menu-num">
+                <span class="cur">1</span>/<span class="total">5</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
 <script type="text/javascript" src="js/uiDialog.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".goods-intro-tabbar").on("click" ,"li" ,function(){
+        var that = $(this);
+        var tag = that.attr("data-tag");
+        var posTop = $(".detail_list").find("div[data-tag="+tag+"]").offset().top;
+        that.siblings('li').removeClass('active');
+        that.addClass('active');
+        $("body,html").animate({
+            scrollTop:posTop,
+        },300); 
+    });
+    /*幻灯1*/
+    var swiper1 = new Swiper('.swiper-home', {
+        loop:false,
+        grabCursor: true,
+        onImagesReady: function(){
+        }
+    });
+    var swiperView = new Swiper('.swiper-cover-view', {
+        loop:false,
+        grabCursor: true,
+        onImagesReady: function(){
+        },
+        onTransitionEnd:function(swiper1){
+            var idx = swiperView.realIndex;
+            var len = swiperView.slides.length;
+        }
+    });
+})
+</script>

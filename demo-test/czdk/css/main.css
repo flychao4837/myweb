@@ -14,7 +14,19 @@
     flex-wrap:warp;
     justify-content:space-between; /*flex-start | flex-end | center | space-between | space-around*/
 }
-
+.btn:hover{
+    opacity: .8;
+}
+.layout{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #050505;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 100;
+}
 /*首页*/
 .footer-margin{
     margin-bottom: 1.333333rem;
@@ -26,7 +38,7 @@
 .search_box{
     padding:0.26666rem 0.4rem;
 }
-.search_box [name=search_input]{
+.search_box [name=brand]{
     background: url(../images/icon_small_search@3x.png) no-repeat 0.2rem center;
     background-size: 0.5rem;
     display: inline-block;
@@ -125,6 +137,7 @@
     left: 0;
     bottom: 0;
     background-color: #fff;
+    border-top: 1px solid #f7f7f7;
 }
 .footer>.menu{
     height: 1.333333rem;
@@ -221,7 +234,7 @@
     text-align: center;
     overflow: hidden;
 }
-.goods-detail .goods-cover>img{
+.goods-detail .goods-cover img{
     max-height: 6.53333rem;
     width: auto;
 }
@@ -356,14 +369,692 @@
     position: absolute;
     display: inline-block;
     background-color: #ff6464;
-    width: 0.48rem;
+    min-width: 0.48rem;
+    width: auto;
     height: 0.48rem;
-    border-radius: 50%;
+    border-radius: 0.24rem;
     font-size: 0.34666rem;
     line-height: 0.48rem;
     color: #fff;
     top: -0.0266rem;
     right: 0;
+    padding: 0 0.1333rem;
+    font-weight: thin;
+}
+.lavout-box .goods-cover{
+    text-align: center;
+    margin-top: 30%;
+}
+.lavout-box .goods-cover img{
+    width: 10rem;
+}
+/*购物车*/
+.cart-lists-item{
+    background-color: #fff;
+    margin-bottom: 0.32rem;
+}
+.cart-lists-item:last-child{
+    margin-bottom: 0;
+}
+
+.cart-lists-item>.brand{
+    height: 1.2rem;
+    line-height: 1.2rem;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #f8f8f8;
+}
+.cart-lists-item>.brand>.js-select-brandall,.js-select-branditem,.js-select-all{
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    overflow: hidden;
+    background: url(../images/select_3@3x.png) no-repeat center/0.42666rem;
+    float: left;
+}
+.cart-lists-item>.brand>.js-select-brandall.active,.js-select-branditem.active,.js-select-all.active{
+    background-image: url(../images/select_2@3x.png);
+}
+.cart-lists-item>.brand>.brand-name{
+    color: #333;
+    font-size: 0.37333rem;
+}
+.brand-item>.rows{
+    border-bottom: 1px solid #f8f8f8;
+    padding: 0.48rem 0 0.53333rem 0;
+}
+.cart-lists-item:last-child .brand-item>.rows{
+    border-bottom: none;
+}
+.item-img{
+    font-size: 0;
+    text-align: center;
+    margin-right: 0.32rem;
+}
+.item-img>img{
+    width: 1.65333rem;
+    height: 1.65333rem;
+}
+.item-intro>.title{
+    font-size: 0.3733rem;
+    line-height: 0.42666rem;
+    color: #333;
+    height: 0.42666rem;
+    overflow: hidden;
+}
+.item-intro>.subtitle{
+    font-size: 0.32rem;
+    line-height: 0.42666rem;
+    color: #999;
+    margin-bottom: 0.2666rem;
+    margin-top: 0.1333rem;
+}
+.item-price{
+    position: relative;
+}
+.item-price>.price{
+    font-size: 0.37333rem;
+    color: #ff3636;
+    line-height: 120%;
+    font-weight: 600;
+    margin-right: 0.4266rem;
+}
+.item-price>.del-item{
+    display: inline-block;
+    width: 0.5333rem;
+    height: 0.5333rem;
+    margin-right: 0.42666rem;
+    background: url(../images/icon_small_delete@3x.png) no-repeat center/100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.addtotal{
+    clear: both;
+    overflow: hidden;
+}
+.addtotal>.nums,.addtotal>.minus,.addtotal>.addon{
+    float: left;
+}
+.addtotal>.minus,.addtotal>.addon{
+    display: inline-block;
+    width: 0.5333rem;
+    height: 0.5333rem;
+}
+.addtotal>.minus{
+    background: url(../images/number_miuns@3x.png) no-repeat center/100%;
+}
+.addtotal>.addon{
+    background: url(../images/number_add@3x.png) no-repeat center/100%;
+}
+.addtotal>.nums{
+    font-size: 0.3733rem;
+    color: #666;
+    line-height: 0.533rem;
+    padding: 0 0.2666rem;
+}
+.accounts-footer{
+    position: fixed;
+    bottom: 1.33333rem;
+    background-color: #fff;
+    line-height: 1.3333rem;
+    width: 100%;
+    font-size: 0.37333rem;
+    color: #333;
+}
+.js-select-all{
+    height: 1.333rem;
+}
+.total-pay{
+    width: 4.9rem;
+    text-align: right;
+}
+.total-pay>.total-price{
+    color: #ff3636;
+}
+.js-pay-accounts{
+    display: inline-block;
+    width: 2.56rem;
+    height: 0.96rem;
+    text-align: center;
+    background-color: #00a5ec;
+    color: #fff;
+    font-size: 0.42666rem;
+    line-height: 0.96rem;
+    border-radius: 5px;
+    margin-top: 0.16rem;
+    margin-right: 0.32rem;
+}
+/*我的*/
+.mine .list-tabbar{
+    height: 1.28rem;
+    line-height: 1.28rem;
+    background-color: #fff;
+    margin-bottom: 0.26666rem;
+}
+.mine .list-tabbar>li{
+    width: 33.333%;
+    text-align: center;
+    font-size: 0.37333rem;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 2px solid #fff;
+}
+.mine .list-tabbar>li.active{
+    color: #00a6ec;
+    border-bottom: 2px solid #00a6ec;
+}
+.mine .cart-lists-item{
+    margin-bottom: 0;
+}
+.mine .cart-lists-item .brand-item{
+    margin-left: 0.64rem;
+}
+.mine .item-intro > .title {
+    color: #333;
+    font-size: 0.3733rem;
+    height: 0.42666rem;
+    line-height: 0.42666rem;
+    overflow: hidden;
+}
+.mine .item-intro > .subtitle {
+    color: #999;
+    font-size: 0.32rem;
+    line-height: 0.42666rem;
+    margin-bottom: 0.2666rem;
+    margin-top: 0.1333rem;
+}
+.mine .item-price > .price {
+    color: #333;
+    font-size: 0.32rem;
+    font-weight: 100;
+    line-height: 150%;
+    margin-right: 0.37333rem;
+}
+.mine .sub-total{
+    font-size: 0.32rem;
+    line-height: 150%;
+    color: #999;
+}
+.mine .pay-detail-intro{
+    padding-right: 0.48rem;
+    background-color: #fff;
+    padding-bottom: 0.48rem;
+    /*border-top: 1px solid #f8f8f8;*/
+    margin-bottom: 0.32rem;
+}
+.mine .pay-detail-intro .pay-num,.mine .pay-detail-intro .btn-group{
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+}
+.mine .pay-detail-intro .pay-num{
+    margin: 0.45333rem 0;
+
+}
+.mine .pay-detail-intro .pay-num>div{
+    display: inline-block;
+    font-size: 0.32rem;
+    color: #333;
+}
+.mine .pay-detail-intro .btn-group .cancel-order{
+    width: 2.24rem;
+    height: 0.85333rem;
+    line-height: 0.85333rem;
+    border: 1px solid #f8f8f8;
+    border-radius: 0.1333rem;
+    color: #666;
+    font-size: 0.3733rem;
+    display: inline-block;
+    text-align: center;
+    margin-right: 0.32rem;
+}
+.mine .pay-detail-intro .btn-group .pay-order{
+    width: 2.24rem;
+    height: 0.85333rem;
+    line-height: 0.85333rem;
+    border: 1px solid #00a5ec;
+    border-radius: 0.1333rem;
+    color: #fff;
+    font-size: 0.3733rem;
+    display: inline-block;
+    text-align: center;
+    background-color: #00a5ec;
+}
+.mine .order-paid .btn-group .order-status ,.mine .order-done .btn-group .order-status{
+    color: #00a6ec;
+    font-size: 0.37333rem;
+}
+.mine .order-cancel .btn-group .order-status{
+    color: #999;
+    font-size: 0.37333rem;
+}
+/*填写订单*/
+.order .address-box{
+    background-color: #fff;
+    padding-top: 0.37333rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.32rem;
+}
+.order .icon-address{
+    display: inline-block;
+    background: url(../images/icon_address@3x.png) no-repeat center/0.5333rem auto;
+    width: 1.44rem;
+    height: 0.96rem;
+}
+.order .address-info{
+    display: inline-block;
+    margin-right: 0.4rem;
+    width: 9rem;
+    background: url(../images/icon_small_more@3x.png) no-repeat right center/0.32rem;
+}
+.order .users-info{
+    font-size: 0.37333rem;
+    color: #333;
+    line-height: 1;
+}
+.order .users-info>span{
+    margin-right: 0.32rem;
+}
+.order .address-info>.address{
+    padding-top: 0.2666rem;
+    font-size: 0.32rem;
+    color: #666;
+}
+.order .item-img{
+    margin-left: 0.64rem;
+}
+.order .pay-detail-intro{
+    padding-right: 0.48rem;
+    background-color: #fff;
+    padding-bottom: 0.48rem;
+    /*border-top: 1px solid #f8f8f8;*/
+    margin-bottom: 0.32rem;
+}
+.order .pay-detail-intro .pay-num,.mine .pay-detail-intro .btn-group{
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+}
+.order .pay-detail-intro .pay-num{
+    margin: 0.45333rem 0;
+
+}
+.order .pay-detail-intro .pay-num>div{
+    display: inline-block;
+    font-size: 0.32rem;
+    color: #333;
+}
+.order .btn-group .note{
+    margin:0 0.4rem 0.4rem;
+    border:none;
+    width: 9.2rem;
+    display: inline-block;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding:0.32rem;
+    min-height: 1.6rem;
+    font-size: 0.3733rem;
+}
+.order-footer{
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 1px solid #f7f7f7;
+    height: 1.333rem;
+    clear: both;
+    overflow: hidden;
+}
+.order-footer .order-total{
+    padding: 0.42666rem 0 0.42666rem 0.42666rem;
+    float: left;
+    line-height: 120%;
+}
+.order-footer .order-total .order-total-price{
+    color: #ff6464;
+    font-weight: 600;
+    font-size: 0.42666rem;
+    line-height: 1;
+}
+.order-footer .js-order-pay{
+    float: right;
+    display: inline-block;
+    width: 3.4666rem;
+    height: 1.333rem;
+    text-align: center;
+    line-height: 1.333rem;
+    color: #fff;
+    background-color: #00a5ec;
+}
+.edit-user-info,
+.choose-user-info{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background-color: #333;
+    top: 0;
+    bottom: 0;    
+}
+.edit-user-info .register,
+.choose-user-info .register{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+}
+.edit-user-info .register .register-form,
+.choose-user-info .register .register-form{
+    background-color: #fff;
+}
+.edit-user-info .register .form-title,
+.choose-user-info .register .form-title{
+    height: 1.28rem;
+    padding-left: 0.53333rem;
+    border-bottom: 1px solid #f8f8f8;
+    overflow: hidden;
+    clear: both;
+}
+.edit-user-info .register .icon-back{
+    background: url(../images/icon_back@3x.png) no-repeat left center/0.48rem;
+    display: inline-block;
+    width: 1.28rem;
+    height: 1.28rem;
+    float: left;
+    cursor: pointer;
+}
+.edit-user-info .register .form-title>p,
+.choose-user-info  .register .form-title>p{
+    text-align: center;
+    font-size: 0.42666rem;
+    line-height: 1.28rem;
+    color: #333;
+    padding-right: 2rem;
+}
+.edit-user-info .register .register-form .form-item{
+    height: 1.28rem;
+    margin-left: 0.53333rem;
+    border-bottom: 1px solid #f8f8f8;
+    overflow: hidden;
+    clear: both;
+}
+.edit-user-info .register .register-form .form-item:last-child{
+    border-bottom: none;
+}
+.edit-user-info .register .register-form .form-item .title{
+    float: left;
+    line-height: 1.28rem;
+    color: #333;
+    font-size: 0.373333rem;
+}
+.edit-user-info .register .register-form .form-item .form-input{
+    padding-left: 2.32rem;
+}
+.edit-user-info .register .register-form .form-item .form-input>input{
+    border: none;
+    font-size: 0.37333rem;
+    line-height: 1.2rem;
+    display: inline-block;
+    width: 100%;
+}
+.edit-user-info .register .register-form .form-input .rows{
+    padding-right: 0.8rem;
+}
+.edit-user-info .register .register-form .form-input .rows > a {
+    display: inline-block;
+    line-height: 1.28rem;
+    width: 25%;
+}
+.edit-user-info .register .add-user-info{
+    margin: 0.5333rem;
+    display: block;
+    width: 8.9333rem;
+    text-align: center;
+    height: 1.17333rem;
+    color: #fff;
+    background-color: #00a5ec;
+    line-height: 1.1733rem;
+    font-size: 0.42666rem;
+    border-radius: 2px;
+}
+.choose-user-info{
+
+}
+.choose-user-info .register .icon-close{
+    background: url(../images/icon_close@3x.png) no-repeat center/0.42rem;
+    display: inline-block;
+    width: 1.28rem;
+    height: 1.28rem;
+    float: right;
+    cursor: pointer;
+}
+.choose-user-info .register .form-title>p{
+    text-align: center;
+    font-size: 0.42666rem;
+    line-height: 1.28rem;
+    color: #333;
+    padding-left: 1.28rem;
+}
+.choose-user-info .register .register-form .form-item{
+    overflow: hidden;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+.choose-user-info .js-select{
+    float: left;
+    width: 1.3333rem;
+    height: 2.1rem;
+    display: inline-block;
+    background: url(../images/select_3@3x.png) no-repeat center/0.42666rem;
+}
+.choose-user-info .js-select.active{
+    background-image: url(../images/select_2@3x.png);
+}
+.choose-user-info .form-info{
+    border-bottom: 1px solid #f8f8f8;
+    padding: 0.48rem 0;
+    float: left;
+}
+.choose-user-info .form-item:last-child .form-info{
+    border-bottom: none;
+}
+.choose-user-info .form-info .users-info{
+    font-size: 0.37333rem;
+    line-height: 150%;
+    color: #333;
+}
+.choose-user-info .form-info .users-info>span{
+    padding-right: 0.32rem;
+}
+.choose-user-info .form-info .address{
+    font-size: 0.32rem;
+    line-height: 150%;
+    color: #666;
+}
+.choose-user-info .js-edit{
+    float: right;
+    width: 1.3333rem;
+    height: 2.1rem;
+    display: inline-block;
+    background: url(../images/icon_edit@3x.png) no-repeat center/0.64rem;
+}
+.choose-user-info .operate-new-box{
+    height: 1.5466rem;
+    border-top: 1px solid #f8f8f8;
+    line-height: 1.54666rem;
+    text-align: center;
+}
+.choose-user-info .operate-new-box .add-new-address{
+    display: inline-block;
+    font-size: 0.48rem;
+    color: #333;
+    padding-left: 0.8rem;
+    background: url(../images/icon_add@3x.png) no-repeat left center/0.64rem;
+}
+/*修改收货地址*/
+.modify-user-info{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background-color: #333;
+    top: 0;
+    bottom: 0;    
+}
+.modify-user-info .register{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+}
+.modify-user-info .register .register-form{
+    background-color: #fff;
+}
+.modify-user-info .register .form-title{
+    height: 1.28rem;
+    padding-left: 0.53333rem;
+    border-bottom: 1px solid #f8f8f8;
+    overflow: hidden;
+    clear: both;
+}
+.modify-user-info .register .icon-back{
+    background: url(../images/icon_back@3x.png) no-repeat left center/0.48rem;
+    display: inline-block;
+    width: 1.28rem;
+    height: 1.28rem;
+    float: left;
+    cursor: pointer;
+}
+.modify-user-info .register .form-title>p{
+    text-align: center;
+    font-size: 0.42666rem;
+    line-height: 1.28rem;
+    color: #333;
+    padding-right: 2rem;
+}
+.modify-user-info .register .register-form .form-item{
+    height: 1.28rem;
+    margin-left: 0.53333rem;
+    border-bottom: 1px solid #f8f8f8;
+    overflow: hidden;
+    clear: both;
+}
+.modify-user-info .register .register-form .form-item:last-child{
+    border-bottom: none;
+}
+.modify-user-info .register .register-form .form-item .title{
+    float: left;
+    line-height: 1.28rem;
+    color: #333;
+    font-size: 0.373333rem;
+}
+.modify-user-info .register .register-form .form-item .form-input{
+    padding-left: 2.32rem;
+}
+.modify-user-info .register .register-form .form-item .form-input>input{
+    border: none;
+    font-size: 0.37333rem;
+    line-height: 1.2rem;
+    display: inline-block;
+    width: 100%;
+}
+.modify-user-info .register .register-form .form-input .rows{
+    padding-right: 0.8rem;
+}
+.modify-user-info .register .register-form .form-input .rows > a {
+    display: inline-block;
+    line-height: 1.28rem;
+    width: 25%;
+}
+.modify-user-info .register .add-user-info{
+    margin: 0.5333rem;
+    display: block;
+    width: 8.9333rem;
+    text-align: center;
+    height: 1.17333rem;
+    color: #fff;
+    background-color: #00a5ec;
+    line-height: 1.1733rem;
+    font-size: 0.42666rem;
+    border-radius: 2px;
+}
+.modify-user-info .btn-group{
+    padding: 0.42666rem 0.5333rem;
+    clear: both;
+    overflow: hidden;
+}
+.modify-user-info .del-address{
+    display: inline-block;
+    border: 1px solid #969696;
+    width: 4.2666rem;
+    height: 1.17333rem;
+    line-height: 1.17333rem;
+    text-align: center;
+    font-size: 0.42666rem;
+    color: #666;
+    border-radius: 2px;
+    margin-right: 0.4rem;
+    float: left;
+}
+.modify-user-info .save-address{
+    display: inline-block;
+    border: 1px solid #00a5ec;
+    width: 4.2666rem;
+    height: 1.17333rem;
+    line-height: 1.17333rem;
+    text-align: center;
+    font-size: 0.42666rem;
+    color: #fff;
+    border-radius: 2px;
+    background-color: #00a5ec
+}
+/*订单详情*/
+.order-detail .sub-total{
+    font-size: 0.32rem;
+    color: #999;
+}
+.order-detail .address-info{
+    background: none;
+}
+.order-detail .cart-box{
+    background-color: #fff;
+}
+.order-detail .cart-lists ,.order-detail .note{
+    margin-left: 0.64rem;
+}
+.order-detail .note{
+    text-align: right;
+    color: #666;
+    font-size: 0.37333rem;
+    line-height: 1.17333rem;
+    padding-right: 0.4rem;
+}
+.order-detail  .brand-item{
+    border-bottom: 1px solid #f8f8f8;
+}
+.order-detail .item-img{
+    margin-left: 0;
+}
+.order-detail .pay-detail-intro,.order-detail .express-detail{
+    padding:0;
+    margin:0;
+    margin-top: 0.32rem;
+    background-color: #fff;
+}
+.order-detail .pay-detail-intro >.rows,.order-detail .express-detail>.rows{
+    padding:0.3733rem 0.4rem;
+    line-height: 1;
+    font-size: 0.37333rem;
+    color: #333;
+}
+.order-detail .express-detail .express-status{
+    color: #00a6ec;
 }
 /* 
 @3倍图方案

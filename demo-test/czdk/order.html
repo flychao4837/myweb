@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    
+    <meta content="填写订单" name="description" />
+    <meta content="" name="author" />
+    <title>填写订单</title>
+    <script type="text/javascript" src="js/flexible_css.js"></script>
+    <script type="text/javascript" src="js/flexible.js"></script>
+
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="css/uiDialog.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="content footer-margin order">
+        <div class="address-box rows">
+            <i class="icon-address"></i>
+            <a class="address-info">
+                <p class="users-info"><span class="user-name">罗会平</span><span class="phone">1234567890</span></p>
+                <p class="address">北京市海淀区学院路39号</p>
+            </a>
+        </div>
+        <div class="mine-pay-list">
+            <div class="order-to-pay">
+                <div class="cart-box">
+                    <div class="cart-lists">
+                        <div class="cart-lists-item">
+                            <div class="brand-item">
+                                <div class="rows">
+                                    <div class="item-img">
+                                        <img src="./img/product.png" />
+                                    </div>
+                                    <div class="item-intro">
+                                        <p class="title">嘉实多（Castrol）极护 钛流体全合成机油</p>
+                                        <p class="subtitle">5W-30 FE SN级 4L</p>
+                                        <div class="sub-total">
+                                            数量：<span class="nums">5</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-price">
+                                        <p class="price">￥438.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="brand-item">
+                                <div class="rows">
+                                    <div class="item-img">
+                                        <img src="./img/product.png" />
+                                    </div>
+                                    <div class="item-intro">
+                                        <p class="title">嘉实多（Castrol）极护 钛流体全合成机油</p>
+                                        <p class="subtitle">5W-30 FE SN级 4L</p>
+                                        <div class="sub-total">
+                                            数量：<span class="nums">5</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-price">
+                                        <p class="price">￥438.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pay-detail-intro">
+                    <div class="pay-num">
+                        <div>数量：<span>3</span></div>
+                        <div>运费：<span>￥0</span></div>
+                        <div>总计：<span>￥987.10</span></div>
+                    </div>
+                    <div class="btn-group">
+                        <textarea class="note" placeholder="请填写备注信息"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="order-footer">
+        <div class="order-total">
+            <p>订单总额：<span class="order-total-price">￥438.00</span></p>
+        </div>
+        <a class="btn js-order-pay">立即支付</a>
+    </div>
+    <!--选择收货人信息-->
+    <div class="choose-user-info hide">
+        <div class="register">
+            <div class="register-form">
+                <div class="form-title">
+                    <i class="icon-close"></i>
+                    <p>收货地址</p>
+                </div>
+                <div class="form-item">
+                    <a class="js-select active" data-id="1"></a>
+                    <div class="form-info">
+                        <p class="users-info"><span class="name">罗会平</span><span class="phone">1234567890</span></p>
+                        <p class="address">北京市海淀区学院路39号</p>
+                    </div>
+                    <a class="js-edit" data-id="1"></a>
+                </div>
+                <div class="form-item">
+                    <a class="js-select" data-id="2"></a>
+                    <div class="form-info">
+                        <p class="users-info"><span class="name">罗会平</span><span class="phone">1234567890</span></p>
+                        <p class="address">北京市海淀区学院路39号</p>
+                    </div>
+                    <a class="js-edit" data-id="2"></a>
+                </div>
+            </div>
+            <div class="operate-new-box">
+                <a class="btn add-new-address">添加新收货地址</a>
+            </div>
+        </div>
+    </div>
+    <!--编辑收货人信息-->
+    <div class="modify-user-info hide">
+        <div class="register">
+            <div class="register-form">
+                <div class="form-title">
+                    <i class="icon-back"></i>
+                    <p>编辑收货地址</p>
+                </div>
+                <div class="form-item">
+                    <div class="title">收货人</div>
+                    <div class="form-input">
+                        <input type="tel" name="unser-name" placeholder="填写收货人姓名"/>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="title">联系电话</div>
+                    <div class="form-input">
+                        <input type="tel" name="phone" maxlength="11" autocomplate="false" placeholder="填写手机号"/>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="title">选择地区</div>
+                    <div class="form-input">
+                        <div class="rows">
+                            <a name="province" placeholder="请选择省">请选择省</a>
+                            <a name="city" placeholder="请选择市">请选择市</a>
+                            <a name="country" placeholder="请选择区">请选择区</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="title">详细地址</div>
+                    <div class="form-input">
+                        <input type="tel" name="address" placeholder="填写地址,如北京市海淀区学院路38号"/>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="btn-group">
+                <a class="btn del-address">删除</a>
+                <a class="btn save-address">保存</a>
+            </div>
+        </div>
+    </div>
+    <!--填写收货人信息-->
+    <div class="edit-user-info hide">
+        <div class="register">
+            <div class="register-form">
+                <div class="form-title">
+                    <i class="icon-back"></i>
+                    <p>添加收货地址</p>
+                </div>
+                <div class="form-item">
+                    <div class="title">收货人</div>
+                    <div class="form-input">
+                        <input type="tel" name="unser-name" placeholder="填写收货人姓名"/>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="title">联系电话</div>
+                    <div class="form-input">
+                        <input type="tel" name="phone" maxlength="11" autocomplate="false" placeholder="填写手机号"/>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="title">选择地区</div>
+                    <div class="form-input">
+                        <div class="rows">
+                            <a name="province" placeholder="请选择省">请选择省</a>
+                            <a name="city" placeholder="请选择市">请选择市</a>
+                            <a name="country" placeholder="请选择区">请选择区</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="title">详细地址</div>
+                    <div class="form-input">
+                        <input type="tel" name="address" placeholder="填写地址,如北京市海淀区学院路38号"/>
+                    </div>
+                </div>
+                
+            </div>
+            <a class="btn add-user-info">保存</a>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/uiDialog.js"></script>
+
+<script type="text/javascript">
+$(".address-info").on("click" ,function(){
+    $(".choose-user-info").removeClass('hide');
+});
+$(".choose-user-info .icon-close").on("click" ,function(){
+    $(".choose-user-info").addClass('hide');
+})
+/*选地址*/
+$(".choose-user-info").on("click" ,".js-select" ,function(){
+    var that = $(this);
+    that.parents(".register-form").find(".js-select.active").removeClass('active')
+    that.addClass('active');
+    //TODO 更新订单上的地址
+})
+/*编辑地址*/
+$(".choose-user-info").on("click" ,".js-edit" ,function(){
+    var that = $(this);
+    $(".choose-user-info").addClass('hide');
+    $(".modify-user-info").removeClass('hide');
+})
+$(".modify-user-info").on("click" ,".icon-back" ,function(){
+    var that = $(this);
+    $(".choose-user-info").removeClass('hide');
+    $(".modify-user-info").addClass('hide');
+})
+/*添加新地址*/
+$(".add-new-address").on("click" ,function(){
+    $(".choose-user-info").addClass('hide');
+    $(".edit-user-info").removeClass('hide');
+})
+$(".edit-user-info").on("click" ,".icon-back" ,function(){
+    $(".choose-user-info").removeClass('hide');
+    $(".edit-user-info").addClass('hide');
+})
+</script>

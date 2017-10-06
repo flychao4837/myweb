@@ -6,9 +6,9 @@
     <meta content="yes" name="apple-touch-fullscreen">
     <meta content="telephone=no,email=no" name="format-detection">
     
-    <meta content="车主大咖" name="description" />
+    <meta content="嘉实多" name="description" />
     <meta content="" name="author" />
-    <title>车主大咖</title>
+    <title>嘉实多</title>
     <script type="text/javascript" src="js/flexible_css.js"></script>
     <script type="text/javascript" src="js/flexible.js"></script>
 
@@ -20,45 +20,18 @@
 <body>
     <div class="header">
         <div class="search_box">
-            <form name="brand-search" id="search-form" onsubmit="return false;" method="get">
-                <input type="search" id="search-input" name="brand" placeholder="请输入品牌名" />
-            </form>
-        </div>
-        <div class="swiper-main banner">
-            <div class="swiper-container swiper-home">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="detail.html?brand=嘉实多">
-                            <img src="./img/banner.png" />
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="detail.html?brand=嘉实多">
-                            <img src="./img/banner.png" />
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="detail.html?brand=嘉实多">
-                            <img src="./img/banner.png" />
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <input type="text" name="search_input" placeholder="请输入品牌名" />
         </div>
     </div>
     <div class="content footer-margin">
-        <div class="brand">
-            
-        </div>
+        <ul class="brand-sort-type rows">
+            <li class="active"><span class="sort-name">销量高低</span><span class="icon-sort"></span></li>
+            <li><span class="sort-name">上架时间</span><span class="icon-sort asc"></span></li>
+            <li><span class="sort-name">价格高低</span><span class="icon-sort desc"></span></li>
+        </ul>
         <div class="brand_list">
-            <!--更多按钮 跳转到品牌列表页 根据品牌名或者品牌ID区分 brand.htm-->
-            <div class="title_box rows">
-                <div class="title">嘉实多</div>
-                <a class="more" href="brand.html?brand=嘉实多">更多</a>
-            </div>
             <div class="rows brand_rows">
-                <!--商品跳转到 商品详情页 根据商品编号 区分 detail.html-->
-                <a class="brand_detail" href="detail.html?id=1001">
+                <a class="brand_detail" href="#">
                     <div class="brand_cover fz_0">
                         <img src="./img/product.png" />
                     </div>
@@ -68,7 +41,7 @@
                         <div class="sold">已销售329</div>
                     </div>
                 </a>
-                <a class="brand_detail" href="detail.html?id=1002">
+                <a class="brand_detail" href="#">
                     <div class="brand_cover fz_0">
                         <img src="./img/product.png" />
                     </div>
@@ -80,7 +53,7 @@
                 </a>
             </div>
             <div class="rows brand_rows">
-                <a class="brand_detail" href="detail.html?id=1003">
+                <a class="brand_detail" href="#">
                     <div class="brand_cover fz_0">
                         <img src="./img/product.png" />
                     </div>
@@ -90,7 +63,7 @@
                         <div class="sold">已销售329</div>
                     </div>
                 </a>
-                <a class="brand_detail" href="detail.html?id=1004">
+                <a class="brand_detail" href="#">
                     <div class="brand_cover fz_0">
                         <img src="./img/product.png" />
                     </div>
@@ -105,24 +78,24 @@
     </div>
     <div class="footer">
         <ul class="menu rows">
-            <li class="home active">
-                <a href="javascript:;">
+            <li class="home">
+                <a href="home.html">
                     <p>首页</p>
                 </a>
             </li>
-            <li class="category">
-                <a href="category.html">
+            <li class="category active">
+                <a href="#">
                     <p>分类</p>
                 </a>
             </li>
             <li class="cart">
-                <a href="#">
+                <a href="cart.html">
                     <p>购物车</p>
                     <span class="goods-num">9</span>
                 </a>
             </li>
             <li class="mine">
-                <a href="#">
+                <a href="mine.html">
                     <p>我的订单</p>
                 </a>
             </li>
@@ -131,41 +104,7 @@
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
 <script type="text/javascript" src="js/uiDialog.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
-<script type="text/javascript">
-$(function(){
-    var swiper1 = new Swiper('.swiper-home', {
-        loop:false,
-        grabCursor: true,
-        onImagesReady: function(){
-        },
-        onTransitionEnd:function(swiper1){
-            var idx = swiper1.realIndex;
-            var len = swiper1.slides.length;
-        }
-    });
-    /* 手机搜索事件*/
-    $('#search-form').on('search' ,function(){
-        var keyInput = $("#search-input");
-        var keyword = $.trim(keyInput.val());
-        if(!keyword){
-            return false;
-        }else{
-            $(this).attr("action" ,"brand.html");
-        }
-    });
-    $('#search-form').on('keydown' ,function(e){
-        var keyInput = $("#search-input");
-        var keyword = $.trim(keyInput.val());
-        var that = $(this);
-        if(!keyword){
-            //TODO
-        }else if(e.keyCode==13){
-            that.attr("action" ,"brand.html");
-            that[0].submit();
-        }
-    });
-})
-</script>
