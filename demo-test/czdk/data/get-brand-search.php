@@ -7,7 +7,7 @@ $v=array(
 	//异常状体 给出的错误提示
 	// result 为结果集
 	"result"=>array(
-		"sort"=>array("sortby"=>"soldnum","sorttype"=>"asc"), 
+		"sort"=>array("sortby"=>"soldnum","sorttype"=>"desc"), 
 		//排序(可为空)sortby=> soldnum(销量) ，addtime（上架时间） ，price（价格）   
 		//排序方式（可为空）sorttype => asc，desc，
 

@@ -19,14 +19,14 @@
 <body>
     <div class="search_box">
         <form name="brand-search" id="search-form" onsubmit="return false;" method="get">
-            <input type="search" id="search-input" name="brand" placeholder="请输入品牌名" />
+            <input type="search" id="search-input" name="brand" placeholder="请输入品牌名"/>
         </form>
     </div>
     <div class="content footer-margin" id="brand-content" v-show="searchresult.length>0">
         <ul class="brand-sort-type rows">
-            <li class="active" data-tag="soldnum"><span class="sort-name">销量高低</span><span class="icon-sort"></span></li>
-            <li data-tag="addtime"><span class="sort-name">上架时间</span><span class="icon-sort asc"></span></li>
-            <li data-tag="price"><span class="sort-name">价格高低</span><span class="icon-sort desc"></span></li>
+            <li class="active" data-tag="soldnum" @click="getSortList('soldnum')"><span class="sort-name">销量高低</span><span :class="['icon-sort',sortby=='soldnum' ? sorttype : '']"></span></li>
+            <li data-tag="addtime"><span class="sort-name" @click="getSortList('addtime')">上架时间</span><span :class="['icon-sort',sortby=='addtime' ? sorttype : '']"></span></li>
+            <li data-tag="price"><span class="sort-name" @click="getSortList('price')">价格高低</span><span :class="['icon-sort',sortby=='price' ? sorttype : '']"></span></li>
         </ul>
         <div class="brand_list" >
             <!--模版示例-->
@@ -102,7 +102,7 @@
 <script type="text/javascript">
     var QueryString = app.getQueryString("brand");
     var dialog = new Dialog();
-    var BrandBox = new Vue({
+    var search = new Vue({
         el:"#brand-content",
         template:"",
         data(){
@@ -110,18 +110,21 @@
                 sortby:"",
                 sorttype:"",
                 searchresult:[],
-                KEYWORD:"",
+                keyword:"",
             }
         },
         created() {
             if(QueryString){
-                this.KEYWORD = QueryString;
+                this.keyword = QueryString;
+            }else{
+                this.keyword = "";
             }
-            this.getKeyWordSearch(this.KEYWORD)
+            $("input[name=brand]").val(this.keyword);
+            this.getKeyWordSearch(this.keyword)
         },
         mounted() {},
         methods: {
-            getKeyWordSearch(keyword){
+            getKeyWordSearch(keyword,sortby,sorttype){
                 if(!keyword){
                     this.searchresult = [];
                     return;
@@ -130,7 +133,11 @@
                     url: './data/get-brand-search.php',
                     type: 'GET',
                     dataType: 'json',
-                    data: {"brand": keyword},
+                    data: {
+                        "brand": keyword,
+                        "sortby" : sortby ||"",
+                        "sorttype" : sorttype || "",
+                    },
                 })
                 .done(function(res) {
                     if(res.errcode=="0"){
@@ -146,7 +153,36 @@
                 .fail(function() {
                     dialog.tip({"msg":"获取数据错误，请稍候再试","time":2000});
                 })
+            },
+            getSortList(name){
+                if(name){
+                    this.getKeyWordSearch(this.keyword,name,this.sorttype=="asc"?"asc" :"desc");
+                }else{
+                    return false;
+                }
             }
         }
     })
+
+    /* 手机搜索事件*/
+    $('#search-form').on('search' ,function(){
+        var keyInput = $("#search-input");
+        var keyword = $.trim(keyInput.val());
+        if(!keyword){
+            return false;
+        }else{
+            $(this).attr("action" ,"brand.html");
+        }
+    });
+    $('#search-form').on('keydown' ,function(e){
+        var keyInput = $("#search-input");
+        var keyword = $.trim(keyInput.val());
+        var that = $(this);
+        if(!keyword){
+            //TODO
+        }else if(e.keyCode==13){
+            that.attr("action" ,"brand.html");
+            that[0].submit();
+        }
+    });
 </script>

@@ -68,7 +68,7 @@ var app = {
     getQueryString : function(e) {
         var t = new RegExp("(^|&)" + e + "=([^&]*)(&|$)"),
             n = window.location.search.substr(1).match(t);
-        return null != n ? unescape(n[2]) : null
+        return null != n ? decodeURIComponent(n[2]) : null
     },
     formatTime : function (t){
         if(isNaN(t)){
