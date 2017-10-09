@@ -14,66 +14,31 @@
 
     <link href="css/reset.css" rel="stylesheet" type="text/css"/>
     <link href="css/main.css" rel="stylesheet" type="text/css"/>
-    <link href="css/swiper.3.4.2.css" rel="stylesheet" type="text/css"/>
     <link href="css/uiDialog.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="header">
-        <div class="search_box">
-            <input type="text" name="search_input" placeholder="请输入品牌名" />
-        </div>
+    <div class="search_box">
+        <form name="brand-search" id="search-form" onsubmit="return false;" method="get">
+            <input type="search" id="search-input" name="brand" placeholder="请输入品牌名" />
+        </form>
     </div>
     <div class="content footer-margin">
-        <ul class="brand-sort-type rows">
-            <li class="active"><span class="sort-name">销量高低</span><span class="icon-sort"></span></li>
-            <li><span class="sort-name">上架时间</span><span class="icon-sort asc"></span></li>
-            <li><span class="sort-name">价格高低</span><span class="icon-sort desc"></span></li>
-        </ul>
-        <div class="brand_list">
-            <div class="rows brand_rows">
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
-                    </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
-                    </div>
-                </a>
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
-                    </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
-                    </div>
-                </a>
-            </div>
-            <div class="rows brand_rows">
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
-                    </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
-                    </div>
-                </a>
-                <a class="brand_detail" href="#">
-                    <div class="brand_cover fz_0">
-                        <img src="./img/product.png" />
-                    </div>
-                    <p class="brand_name">嘉实多磁护5W-40 SN</p>
-                    <div class="rows price_rows">
-                        <div><span class="price">￥540.00</span><span class="range">/桶</span></div>
-                        <div class="sold">已销售329</div>
-                    </div>
-                </a>
-            </div>
+        <div class="category_box">
+            <a class="category_list" href="brand.html?brand=嘉实多">
+                <div class="category_rows">
+                    <span class="brand-name">嘉实多</span>
+                </div>
+            </a>
+            <a class="category_list" href="brand.html?brand=嘉实多">
+                <div class="category_rows">
+                    <span class="brand-name">嘉实多</span>
+                </div>
+            </a>
+            <a class="category_list" href="brand.html?brand=嘉实多">
+                <div class="category_rows">
+                    <span class="brand-name">嘉实多</span>
+                </div>
+            </a>
         </div>
     </div>
     <div class="footer">
@@ -84,7 +49,7 @@
                 </a>
             </li>
             <li class="category active">
-                <a href="#">
+                <a href="category.html">
                     <p>分类</p>
                 </a>
             </li>
@@ -104,7 +69,5 @@
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
-<script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
 <script type="text/javascript" src="js/uiDialog.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
