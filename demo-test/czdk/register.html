@@ -28,8 +28,8 @@
             <div class="form-item">
                 <div class="title">验证码</div>
                 <div class="form-input randomnum-input">
-                    <input type="tel" name="randomnum" maxlength="6" autocomplate="false" placeholder="填写验证码"/>
-                    <button :class="['getRandomNum',{ disabled:btnRandomNum}]" @click="getRandomNum()">获取验证码</button>
+                    <input type="tel" v-model="randomnum" name="randomnum" maxlength="6" autocomplate="false" placeholder="填写验证码"/>
+                    <button :class="['getRandomNum',{ 'disabled':btnRandomNum}]" @click="getRandomNum()">获取验证码</button>
                 </div>
             </div>
         </div>
@@ -44,16 +44,16 @@
                 <div class="title">性别</div>
                 <div class="form-input el-radio-group">
                     <label class="el-radio">
-                        <span class="el-radio__input">
+                        <span :class="['el-radio__input',{'is-checked':sex===0}]" @click="setSex(0)">
                             <span class="el-radio__inner"></span>
-                            <input type="radio" class="el-radio__original" value="男">
+                            <input type="radio" class="el-radio__original" value="0">
                         </span>
                         <span class="el-radio__label">男</span>
                     </label>
                     <label class="el-radio">
-                        <span class="el-radio__input is-checked">
+                        <span :class="['el-radio__input',{'is-checked':sex===1}]" @click="setSex(1)">
                             <span class="el-radio__inner"></span>
-                            <input type="radio" class="el-radio__original" value="女">
+                            <input type="radio" class="el-radio__original" value="1">
                         </span>
                         <span class="el-radio__label">女</span>
                     </label>
@@ -65,9 +65,21 @@
                 <div class="title">选择地区</div>
                 <div class="form-input">
                     <div class="rows">
-                        <a name="province" placeholder="请选择省">请选择省</a>
-                        <a name="city" placeholder="请选择市">请选择市</a>
-                        <a name="country" placeholder="请选择区">请选择区</a>
+                        <select name="province" v-model="province">
+                            <option value="">请选择省</option>
+                            <option value="1">北京市</option>
+                            <option value="2">上海市</option>
+                        </select>
+                        <select name="city" v-model="city">
+                            <option value="">请选择市</option>
+                            <option value="1">北京市</option>
+                            <option value="2">上海市</option>
+                        </select>
+                        <select name="country" v-model="country">
+                            <option value="">请选择区</option>
+                            <option value="1">东城区</option>
+                            <option value="2">海淀区</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -84,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <a class="btn add-register">保存</a>
+        <a class="btn add-register" @click="checkForm()">保存</a>
     </div>
 </body>
 </html>
@@ -111,6 +123,7 @@
                 btnRandomNum: false,
                 timer:"",
                 times:60,
+                btnRegist: false,
             }
         },
         created() {
@@ -121,12 +134,103 @@
             getRandomNum(){
                 if(this.btnRandomNum){
                     return;
+                }else{
+                    if(!this.phone){
+                        dialog.tip({"icon":"warning","msg":"请填写手机号","time":1200});
+                        return;
+                    }else if(!app.isMobile(this.phone)){
+                        dialog.tip({"icon":"warning","msg":"请填写正确的手机号","time":1200});
+                        return;  
+                    }
+                    this.btnRandomNum = true;
+                    this.showLastTime(this.times);
+                    //获取手机验证码
+                    $.ajax({
+                        url: './data/getrandomnum.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {"phone": this.phone},
+                    })
+                    .done(function(res) {
+                        console.log("success");
+                    })
+                    .fail(function() {
+                        dialog.tip({"icon":"warning","msg":"请求失败，请稍后再试","time":2000});
+                    })   
                 }
-                console.log(1)
-                this.btnRandomNum = true;
+                this.timer = setInterval(function(){
+                    if(register.times<=0){
+                        register.times=0;
+                        clearInterval(register.timer);
+                        register.times=60;
+                        register.btnRandomNum = false;
+                        $(".getRandomNum.disabled").html("重新获取").removeClass('disabled');
+                    }else{
+                        --register.times; 
+                        register.showLastTime(register.times);
+                    }
+                },1000)
             },
-            checkForm(name){
-                
+            showLastTime(t){
+                $(".getRandomNum").html(t+"S");
+            },
+            setSex(v){
+                this.sex = v;
+            },
+            checkForm(){
+                if(this.btnRegist){
+                    return;
+                }
+                if(!this.phone){
+                    dialog.tip({"icon":"warning","msg":"请填写手机号","time":1200});
+                    return;
+                }else if(!this.randomnum){
+                    dialog.tip({"icon":"warning","msg":"请填写验证码","time":1200});
+                    return;
+                }else if(!this.username){
+                    dialog.tip({"icon":"warning","msg":"请填写用户名","time":1200});
+                    return;
+                }else if(this.sex === ""){
+                    dialog.tip({"icon":"warning","msg":"请选择您的性别","time":1200});
+                    return;
+                }else if(!this.province){
+                    dialog.tip({"icon":"warning","msg":"请选择您所在的省","time":1200});
+                    return;
+                }else if(!this.city){
+                    dialog.tip({"icon":"warning","msg":"请选择您所在的市","time":1200});
+                    return;
+                }else if(!this.country){
+                    dialog.tip({"icon":"warning","msg":"请选择您所在的区","time":1200});
+                    return;
+                }else if(!this.address){
+                    dialog.tip({"icon":"warning","msg":"请填写您的详细地址","time":1200});
+                    return;
+                }else if(this.email !=="" && !app.isEmail(this.email)){
+                    dialog.tip({"icon":"warning","msg":"请填写正确的邮箱地址","time":1200});
+                    return;
+                }else{
+                    this.btnRegist = true;
+                    dialog.tip({"icon":"loading","msg":"正在提交..."});
+                    $.ajax({
+                        url: './data/register.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: this.$data,
+                    })
+                    .done(function(res) {
+                        if(res.errcode=="0"){
+                            dialog.tip({"icon":"succeed","msg":"注册成功","time":1200});
+                            location.replace("home.html");
+                        }else{
+                            this.btnRegist = false;
+                            dialog.tip({"icon":"warning","msg":res.errmsg||"注册失败，请稍后再试","time":1200});
+                        }
+                    }.bind(this))
+                    .fail(function() {
+                        this.btnRegist = false;
+                        dialog.tip({"icon":"warning","msg":"提交失败，请稍后再试","time":1200});
+                    }.bind(this))                    
+                }
             }
         }
     })

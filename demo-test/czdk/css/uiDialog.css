@@ -9,61 +9,145 @@
     background-color: rgba(0,0,0,.3);
 }
 .btn_list{
-    height: 44px;
-    line-height: 44px;
+    height: 1.333rem;
+    line-height: 1.333rem;
     text-align: center;
+    border-top: 1px solid #f7f7f7;
 }
 /* tip */
-.tip_msg {
-    background-color: rgba(0, 0, 0, 0.6);
+.dialog-box {
+    background-color: rgba(0, 0, 0, 0.86);
     border-radius: 5px;
     color: #ccc;
-    font-size: 16px;
-    height: 60px;
+    font-size: 0.37333rem;
+    height: 3.2rem;
     left: 50%;
-    line-height: 60px;
-    margin-left: -100px;
-    margin-top: -30px;
+    line-height: 1;
+    margin-left: -1.6rem;
+    margin-top: -1.6rem;
     position: absolute;
     text-align: center;
-    top: 50%;
+    top: 40%;
     vertical-align: middle;
-    width: 200px;
+    width: 3.2rem;
 }
-.tip_msg.alert{
-    background-image: url('../image/alert.png');
+.dialog-box > .icon {
+    display: inline-block;
+    height: 1.28rem;
+    margin-top: 0.48rem;
+    width: 3.2rem;
+}
+.dialog-box>.icon.loading{
+    background-image: url('../images/toast_loading@3x.png');
     background-repeat: no-repeat;
-    background-size: 24px;
-    background-position: 20px center;
-    text-indent: 24px;
+    background-size: 1.28rem;
+    background-position: center top;
+    animation: dorotate 3.4s ease-in-out infinite;
+    -webkit-animation: dorotate 3.4s ease-in-out infinite;
 }
-.tip_msg.tip{
-    background-image: url('../image/tip.png');
+@keyframes dorotate{
+    0% {
+        transform:rotate(1deg);
+        transform-origin: center center 0;
+    }
+    100% {
+        transform:rotate(359deg);
+        transform-origin: center center 0;
+    }
+}
+@-webkit-keyframes dorotate{
+    0% {
+        -webkit-transform:rotate(1deg);
+        transform-origin: center center 0;
+    }
+    100% {
+        -webkit-transform:rotate(359deg);
+        transform-origin: center center 0;
+    }
+}
+.dialog-box>.icon.warning{
+    background-image: url('../images/toast_waring@3x.png');
     background-repeat: no-repeat;
-    background-size: 24px;
-    background-position: 20px center;
-    text-indent: 24px;
+    background-size: 1.28rem;
+    background-position: center top;
 }
-
+.dialog-box>.icon.succeed{
+    background-image: url('../images/toast_succeed@3x.png');
+    background-repeat: no-repeat;
+    background-size: 1.28rem;
+    background-position: center top;
+}
+.dialog-box .tip_msg{
+    color: #fff;
+    line-height: 140%;
+    padding: 0 0.32rem;
+    max-height: 1.1rem;
+    overflow: hidden;
+}
+.dialog-box .icon +.tip_msg{
+    margin-top: 0.2rem;
+}
+.dialog-box :not(.icon)+.tip_msg {
+    display: table-cell;
+    height: 3.2rem;
+    width: 3.2rem;
+    line-height: 150%;
+    margin-top: 50%;
+    padding: 0 0.56rem;
+    vertical-align: middle;
+}
 /* alert */
 .alert_content{
-    background-color: #ccc;
+    background-color: #fff;
     border-radius: 5px;
-    height: 120px;
+    height: 4.16rem;
     left: 50%;
-    margin-left: -100px;
-    margin-top: -60px;
-    position: fixed;
-    top: 50%;
-    width: 200px;
+    margin-left: -3.46rem;
+    margin-top: -2.08rem;
+    position: absolute;
+    top: 40%;
+    width: 6.9333rem;
+}
+.dialog_title{
+    text-align: center;
+    font-size: 0.42666rem;
+    color: #333;
+    font-weight: 600;
+    width: 100%;
+    margin: 0.6666rem 0 0.37333rem 0;
 }
 .alert_msg{
-    padding:10px;
-    height: 60px;
-    background-color: rgba(255,255,255,.75);
-    line-height: 80px;
+    padding:0 0.32rem;
+    height: 1.333rem;
+    line-height: 150%;
     text-align: center;
-    border-radius: 5px 5px 0 0;
+    color: #999;
+    font-size: 0.3733rem;
+}
+.alert_btn_list .btn_alert{
+    font-size: 0.4266rem;
+    text-align: center;
+    color: #ff3636;
 }
 
-
+/*comfirm*/
+.comfirm_btn_group{
+    overflow: hidden;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap:warp;
+}
+.comfirm_btn_group >.btn{
+    border-right: 1px solid #f7f7f7;
+    font-size: 0.4266rem;
+    text-align: center;
+}
+.comfirm_btn_group >.btn:last-child{
+    border-right: none;
+}
+.comfirm_btn_group >.btn_comfirm_cancel{
+    color: #666;
+}
+.comfirm_btn_group >.btn_comfirm_ok{
+    color: #ff3636;
+}

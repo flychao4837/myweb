@@ -40,9 +40,15 @@ button, input, select, textarea {
 .register .register-form .form-item .form-input>input{
 	border: none;
 	font-size: 0.37333rem;
-	line-height: 1.2rem;
+	line-height: 1.28rem;
 	display: inline-block;
 	width: 100%;
+}
+.register .register-form .form-item .form-input select{
+    border:medium;
+    font-size: 0.37333rem;
+    color: #333;
+    margin-top: 0.32rem;
 }
 .register .register-form .form-item .randomnum-input{
 	position: relative;

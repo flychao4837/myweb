@@ -24,7 +24,7 @@ var app = {
         },
         remove: function (name, path) {
             var path = path ? path + ';' : '/';
-            window.document.cookie = name + '=; expires=Mon, 1 Jun 2014 01:00:00 GMT; ' + (path ? ('path=' + path + '; ')  : 'path=/; ');
+            window.document.cookie = name + '=; expires=Mon, 1 Jun 2017 01:00:00 GMT; ' + (path ? ('path=' + path + '; ')  : 'path=/; ');
         }
     },
     localStorage: {
@@ -58,6 +58,15 @@ var app = {
     },
     isMobile: function (str) {
         var regu = /^[1][0-9]{10}$/;
+        var re = new RegExp(regu);
+        if (re.test(str)) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    isEmail:function(str){
+        var regu = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
         var re = new RegExp(regu);
         if (re.test(str)) {
             return true;
