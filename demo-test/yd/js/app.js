@@ -1,376 +1,72 @@
-'use strict'
-//$(function(){
-	/*返回*/
-	$(".goback").on("click" ,function(){
-		$(this).parents(".layout").removeClass('on');
-	})
-	/*首页JS*/
-    var globalAudio = $("#globalAudio");
-    var dialog = new Dialog();
-    /*tab页面切换*/
-    $(".tab-home").on("click" ,function(){
-        var that = $(this);
-        if(that.hasClass('active')){
-            return;
-        }else{
-        	$(".tab.active").removeClass('active');
-        	that.addClass('active');
-            globalAudio[0].pause();
-            $(".layout.on").removeClass('on');
-            $(".content-home").show();
-            $(".content-my").hide();
-            //TODO 我的滑动页初始位置,
+var app = {
+    win: $(window),
+    cookie: {
+        set: function (name, value, options) {
+            if (!options) {
+                options = options || {
+                };
+            }
+            var hour = options.hour ? options.hour : 0;
+            var path = options.path ? options.path + ';' : '/';
+            if (hour) {
+                var today = new Date();
+                var expire = new Date();
+                expire.setTime(today.getTime() + 3600000 * hour);
+            }
+            window.document.cookie = name + '=' + encodeURI(value) + '; ' + (hour ? ('expires=' + expire.toGMTString() + '; ')  : '') + ('path=' + path);
+            return true;
+        },
+        get: function (name) {
+            var reg = new RegExp('(?:^|;+|\\s+)' + name + '=([^;]*)');
+            var m = window.document.cookie.match(reg);
+            return (!m ? '' : decodeURI(m[1]));
+        },
+        remove: function (name, path) {
+            var path = path ? path + ';' : '/';
+            window.document.cookie = name + '=; expires=Mon, 1 Jun 2014 01:00:00 GMT; ' + (path ? ('path=' + path + '; ')  : 'path=/; ');
         }
-    })
-    $(".tab-my").on("click" ,function(){
-        var that = $(this);
-        if(that.hasClass('active')){
-            return;
-        }else{
-        	$(".tab.active").removeClass('active');
-        	that.addClass('active');
-            globalAudio[0].pause();
-            $(".content-my").show();
-            $(".content-home").hide();
-            //TODO 我的滑动页初始位置,
-        }
-    })
-    //首页幻灯
-    var swiper = new Swiper('.swiper', {
-        pagination : '.pagination-home', //分页容器
-        loop:false,                  //无缝循环滚动
-        grabCursor: true,            //滑动时鼠标样式     
-        onImagesReady: function(){
-            console.log("onImagesReady");
-        }  
-    });
-
-    $(".task-tips").on("click" ,function(){
-        $(".layout-task-tip-box").show();
-    })
-    /*关闭周提示*/
-    $(".close-task-tip").on("click" ,function(){
-        $(".layout-task-tip-box").hide();
-        $(".layout-task-progress-box").show()
-    })
-
-    /*关闭分享提示*/
-    $(".close-task-progress").on("click" ,function(){
-        $(".layout-task-progress-box").hide();
-    });
-
-    $(".layout-task-progress-box .btn-share").on("click" ,function(){
-        alert("微信分享");
-    })
-
-    //switchery切换 判断是否有个人录音，来决定是否切换、翻转
-    $(".switchery").on("click" ,function(){
-        var that = $(this);
-        var curIdx = swiper.realIndex;
-        var box = $($(".content-home .home-device .swiper-slide")[curIdx]);
-        var eleFront = box.find(".listen.default");
-        var eleBack = box.find(".listen.my");
-        if(that.hasClass('off')){
-            eleFront.addClass("out").removeClass("in");
-            setTimeout(function() {
-                eleBack.addClass("in").removeClass("out");
-            }, 225);
-        }else{
-            eleBack.addClass("out").removeClass("in");
-            setTimeout(function() {
-                eleFront.addClass("in").removeClass("out");
-            }, 225);
-        }
-        that.toggleClass('off');
-        that.toggleClass('on');
-    })
-
-    /*朗读录音试听*/
-    $(".home-device").on("click" ,".listen", function(){
-        var that = $(this);
-        var src = that.attr("data-media");
-        globalAudio[0].pause();
-        globalAudio.off("ended")
-        if(that.hasClass('active')){
-            globalAudio[0].pause();
-            that.removeClass('active');
-        }else{
-            $(".home-device").find(".listen.active").removeClass('active');
-            if(src){
-                that.addClass('active');
-                globalAudio.attr('src',src);
-                globalAudio[0].play()
-                globalAudio.on("ended", function(){
-                    that.removeClass('active');
-                })
-            }else{
-                console.log("没有找到录音地址")
+    },
+    localStorage: {
+        set: function (key, value) {
+            if (window.localStorage) {
+                localStorage.setItem(key, value);
+            } else {
+                app.cookie.set(key, value);
+            }
+        },
+        get: function (key) {
+            if (window.localStorage) {
+                return localStorage.getItem(key);
+            } else {
+                return app.cookie.set(key);
+            }
+        },
+        remove: function (key) {
+            if (window.localStorage) {
+                localStorage.removeItem(key);
+            } else {
+                app.cookie.remove(key);
+            }
+        },
+        clear: function () {
+            if (window.localStorage) {
+                localStorage.clear();
+            } else {
             }
         }
-    })
-
-    /*开启录音页面*/
-    $(".action .recorder").on("click" ,function(){
-        var curIdx = swiper.realIndex;
-        var box = $($(".content-home .home-device .swiper-slide")[curIdx]);
-        var bookid = box.attr("data-book-id");
-        console.log(bookid);
-        dialog.tip("正在加载图片");
-        $(".layout-record").show();
-        $(".layout-record .swiper-wrapper").append('<div class="swiper-slide"><img src="image/8.jpg"></div>')
-        $(".layout-record .swiper-wrapper").append('<div class="swiper-slide"><img src="image/9.jpg"></div>')
-        $(".layout-record .swiper-wrapper").append('<div class="swiper-slide"><img src="image/10.jpg"></div>')
-        swiper1.init();
-        setTimeout(function(){
-            dialog.destroy();
-        },2000)
-    })
-    /*录音页幻灯*/
-    var swiper1 = new Swiper('.swiper1', {
-        //pagination : '.pagination1', //分页容器
-        loop:false,                  //无缝循环滚动
-        grabCursor: true,            //滑动时鼠标样式     
-        onImagesReady: function(){
-            console.log("onImagesReady");
-        },
-        onTransitionEnd:function(swiper1){
-        	var idx = swiper1.realIndex;
-        	var len = swiper1.slides.length;
-        	if(idx==0){
-            	$('.arrow-left').removeClass('active')
-	        }else{
-	            $('.arrow-left').addClass('active');
-	        }
-	        if(idx==len-1){
-	            $('.arrow-right').removeClass('active')
-	        }else{
-	            $('.arrow-right').addClass('active');
-	        }
-	        $(".pagination1 .counter>span").html((+swiper1.realIndex+1)+"/"+len);
+    },
+    isMobile: function (str) {
+        var regu = /^[1][0-9]{10}$/;
+        var re = new RegExp(regu);
+        if (re.test(str)) {
+            return true;
+        } else {
+            return false;
         }
-    });
-    $(".pagination1 .timer").html("00:00:00");
-    var itemlen = $(".swiper-slide").length;
-    $(".pagination1 .counter>span").html("1/"+itemlen);
-
-    $('.arrow-left').click(function(e) {
-        var idx = swiper1.realIndex;
-        var len = swiper1.slides.length;
-        var that = $(this);
-        e.preventDefault();
-        
-        swiper1.slidePrev();
-        $(".pagination1 .counter>span").html((+swiper1.realIndex+1)+"/"+len);
-        $('.arrow-right').addClass('active')
-        if(idx==0|| idx==1){
-            that.removeClass('active')
-        }else{
-            that.addClass('active');
-        }
-    });
-    $('.arrow-right').click(function(e) {
-        var idx = swiper1.realIndex;
-        var len = swiper1.slides.length;
-        var that = $(this);
-        e.preventDefault();
-        swiper1.slideNext();
-        $(".pagination1 .counter>span").html((+swiper1.realIndex+1)+"/"+len);
-        $('.arrow-left').addClass('active');
-        if(idx==len-1|| idx==len-2){
-            that.removeClass('active')
-        }else{
-            that.addClass('active');
-        }
-    });
-
-    $('.pagination1 .swiper-pagination-switch').click(function(){
-        swiper1.swipeTo($(this).index())
-    })
-    /*关闭录音页*/
-    $(".layout-record .close-page").on("click" ,function(){
-        $(".layout-record").hide();
-        globalAudio[0].pause();
-        //TOTO 清理录音，微信录音处理，文件本地存储等操作
-    })
-
-    /**我的-子页面滑动**/
-    $(".content-my").on("click",".userinfo",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-userinfo");
-    	dialog.tip("正在获取数据");
-    	$.ajax({
-    		url: '/user/profile',
-    		type: 'GET',
-    		dataType: 'json',
-    		data: {},
-    	})
-    	.done(function(res) {
-    		if(res.code=="0"){
-    			var data = res.data;
-    			if(!$.isEmptyObject(data)){
-    				var dom = $(".layout-userinfo");
-    				dom.find(".user_img").attr("src",data.headimgurl)
-    				dom.find(".user_name").html(data.name)
-    				if(data.sex=="1"){
-    					$(dom.find(".sex-item label")[0]).trigger("click");
-    				}else{
-    					$(dom.find(".sex-item label")[1]).trigger("click");
-    				}
-    				dom.find("input[name=user_name]").val(data.name);
-    				dom.find("input[name=age]").val(data.age);
-    				dom.find("input[name=school]").val(data.school);
-    				dom.find("input[name=phone]").val(data.parent_tel);
-    				dialog.destroy()
-    			}else{
-    				dialog.tip({"msg":"用户信息获取失败","time":1600});
-    			}
-    		}
-    	})
-    	.fail(function() {
-    		dialog.tip({"msg":"用户信息获取失败","time":1600});
-    	})
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    $(".content-my").on("click",".progress",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-progress");
-    	/*获取数据*/
-    	dialog.tip("正在获取数据");
-    	$.ajax({
-    		url: '/learn/my',
-    		type: 'GET',
-    		dataType: 'json',
-    		data:{},
-    	})
-    	.done(function() {
-    		console.log("success");
-    	})
-    	.fail(function() {
-    		console.log("error");
-    	})
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    $(".content-my").on("click",".history",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-history");
-    	dialog.tip("正在获取数据");
-    	$.ajax({
-    		url: '/learn/history',
-    		type: 'GET',
-    		dataType: 'json',
-    		data:{},
-    	})
-    	.done(function() {
-    		console.log("success");
-    	})
-    	.fail(function() {
-    		console.log("error");
-    	})
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    $(".content-my").on("click",".deposit",function(e){
-    	e.preventDefault();
-    	e.stopPropagation();
-    	var that = $(this);
-    	var dom = $(".layout-deposit");
-    	dialog.tip("正在获取数据");
-    	$.ajax({
-    		url: '/deposit/my',
-    		type: 'GET',
-    		dataType: 'json',
-    		data:{},
-    	})
-    	.done(function(res) {
-    		if(res.code=="0"){
-    			var data = res.data;
-    			if(!$.isEmptyObject(data)){
-    				var dom = $(".layout-deposit");
-    				dom.find(".money").html(data.user_money);
-    				var tmp="";
-    				for(var i=0,len=data.money_list.length;i<len;i++){
-    					var item = data.money_list[i]
-    					tmp+='<div class="list-item"><p class="act-time">'+item.updated_at+'</p><div class="box">'
-                        tmp+='<div class="boxflex"><p>'+item.remarks+'</p>'
-                        tmp+='</div><div class="boxflex"><p class="textright">扣除保证金：'+item.money+'元</p></div></div></div>'
-    				}
-    				dom.find(".list").append(tmp);
-    				dialog.destroy();	
-    			}else{
-    				dialog.tip({'msg':"保证金数据获取失败","time":1600});
-    			}
-    		}else{
-    			dialog.tip({'msg':"保证金数据获取失败","time":1600});
-    		}
-    	})
-    	.fail(function() {
-    		dialog.tip({'msg':"保证金数据获取失败","time":1600});
-    	})
-    	dom.fadeIn(200,function(){
-    		dom.addClass('on');
-    	});
-    })
-    /*页面数据初始化*/
-    function getUser(){
-    	$.ajax({
-    		url: '/user/my',
-    		type: 'GET',
-    		dataType: 'json',
-    		data: {},
-    	})
-    	.done(function(res) {
-    		if(res.code=="0"){
-    			var data = res.data;
-    			if(!$.isEmptyObject(data)){
-    				var dom = $(".content-my")
-    				$(".user_name").html(data.name)
-    				$(".user_img").attr("src",data.headimgurl)
-    				//dom.find(".user_img").attr("src",data.headimgurl);
-    				//dom.find(".user_name").html(data.name);
-    				dom.find(".progress .small").html('('+data.point+'分)');
-    				dom.find(".history .small").html('('+data.learning+'本)');
-    				dom.find(".deposit .small").html('('+data.money+'元)');
-    				dialog.destroy();
-    			}
-    		}else{
-    			dialog.tip({"msg":"用户数据拉取失败","time":1600});
-    		}
-    	})
-    	.fail(function() {
-    		dialog.tip({"msg":"用户数据拉取失败","time":1600});
-    	})
+    },
+    getQueryString : function(e) {
+        var t = new RegExp("(^|&)" + e + "=([^&]*)(&|$)"),
+            n = window.location.search.substr(1).match(t);
+        return null != n ? unescape(n[2]) : null
     }
-    /*评分及进度*/
-    function initProgress(a,b,c){
-    	var num = 66;// 百分制
-	    var r = 60; //圆半径
-	    var r2 = 129;
-	    var percent = num / 100, perimeter = Math.PI * 2 * r;
-	    var perimeter2 = Math.PI * 2 * r2;
-	    
-	    $(".processingbar1 #progress")[0].setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
-	    $(".processingbar2 #progress")[0].setAttribute('stroke-dasharray', perimeter2 * percent + " " + perimeter2 * (1- percent));
-	    $(".processingbar3 #progress")[0].setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1- percent));
-
-	    var rate = parseInt($("html").css("font-size"))
-	    var size = rate*1.8666666666666667;
-	    $(".processingbar1>svg,.processingbar3>svg").attr({width:size,height:size});
-	    //$(".processingbar1 .text-info,.processingbar3 .text-info").css({width:size});
-
-	    var size2 = rate*3.7066666666666666;
-	    $(".processingbar2>svg").attr({width:size2,height:size2});
-	    //$(".processingbar2 .text-info").css({width:size2});
-    }
-    initProgress();
-//})
+};

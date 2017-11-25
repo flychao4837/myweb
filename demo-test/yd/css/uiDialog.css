@@ -18,27 +18,28 @@
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     color: #ccc;
-    font-size: 16px;
-    height: 60px;
+    font-size: 0.5rem;
     left: 50%;
-    line-height: 60px;
-    margin-left: -100px;
-    margin-top: -30px;
+    line-height: 120%;
+    margin-left: -31%;
+    margin-top: -1rem;
+    min-height: 1.5rem;
+    padding: 20px;
     position: absolute;
     text-align: center;
-    top: 50%;
+    top: 40%;
     vertical-align: middle;
-    width: 200px;
+    width: 62%;
 }
 .tip_msg.alert{
-    background-image: url('../image/alert.png');
+    background-image: url('http://datainfo.b0.upaiyun.com/image/alert.png');
     background-repeat: no-repeat;
     background-size: 24px;
     background-position: 20px center;
     text-indent: 24px;
 }
 .tip_msg.tip{
-    background-image: url('../image/tip.png');
+    background-image: url('http://datainfo.b0.upaiyun.com/image/tip.png');
     background-repeat: no-repeat;
     background-size: 24px;
     background-position: 20px center;
